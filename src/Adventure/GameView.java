@@ -2,13 +2,9 @@ package Adventure;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Observable;
-import java.util.Observer;
 
-/**
- * Created by Etienne on 11/11/14.
- */
-public class GameView extends JFrame implements Observer {
+
+public class GameView extends JFrame {
 
     private JFrame window;
     private World gameModel;
@@ -36,74 +32,8 @@ public class GameView extends JFrame implements Observer {
     }
 
 
-    @Override
-    public void update(Observable o, Object arg) {
-
-    }
-
-    public String addRobot() {
-
-        JTextField firstName = new JTextField();
-        final JComponent[] inputs = new JComponent[] {
-                new JLabel("Robot : "),
-                firstName
-        };
-        JOptionPane.showMessageDialog(null, inputs, "Nom de votre robot", JOptionPane.PLAIN_MESSAGE);
-        if(!firstName.getText().equals("")) {
-            return firstName.getText();
-        }
-        else
-            return "";
-    }
-
     public World getGameModel() {
         return gameModel;
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
