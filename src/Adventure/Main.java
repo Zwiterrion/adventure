@@ -8,11 +8,11 @@ public class Main {
             @Override
             public void run() {
 
-                int width = 740;
-                int height = 790;
+                int width = 1040;
+                int height = 620;
 
                 PanelGame panel = new PanelGame();
-                World gameModel = new World(10,10, width, panel);
+                World gameModel = new World(10, 10, width, panel);
                 GameView view = new GameView(gameModel, width, height, panel);
                 view.getGameModel().requestFocus();
                 GameController controller = new GameController(view, gameModel);

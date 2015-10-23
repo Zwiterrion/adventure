@@ -23,4 +23,21 @@ public class Location {
         }
         return false;
     }
+
+
+    public static Location add (Location left, Location right) {
+        return new Location(left.x + right.x, left.y + right.y);
+    }
+
+    public static Location diff (Location left, Location right) {
+        return new Location(left.x - right.x, left.y - right.y);
+    }
+
+    public static Location mul (Location point, Location scalar) {
+        return new Location(point.x * scalar.x, point.y * scalar.y);
+    }
+
+    public static Location div (Location point, Location scalar) {
+        return new Location(point.x / scalar.x, point.y / scalar.y);
+    }
 }

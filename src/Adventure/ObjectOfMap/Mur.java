@@ -7,6 +7,11 @@ import Adventure.Images;
  */
 public class Mur extends ObjectMap {
 
+    public Mur() {
+        super();
+        this.poidsArete = 2;
+    }
+
     @Override
     public void assignImage() {
         image = Images.MUR;

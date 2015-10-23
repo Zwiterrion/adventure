@@ -16,7 +16,6 @@ public class GameView extends JFrame {
 
         panelGame = panel;
         this.gameModel = gameModel;
-        gameModel.setSize(new Dimension(569,569));
         window.add(gameModel);
 
         window.setBounds(475, 150, w, h);
@@ -25,8 +24,7 @@ public class GameView extends JFrame {
 
         window.setLayout(new BorderLayout());
 
-
-        window.add(gameModel, BorderLayout.LINE_START);
+        window.add(gameModel, BorderLayout.CENTER);
         window.add(panelGame, BorderLayout.SOUTH);
         window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }

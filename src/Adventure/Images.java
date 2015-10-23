@@ -27,16 +27,16 @@ public class Images {
     public static void chargementImage() {
         try {
             HERBE = ImageIO.read(new FileInputStream("res/herbe.png"));
-            TOURELLE = ImageIO.read(new FileInputStream("res/tourelle.png"));
+            TOURELLE = ImageIO.read(new FileInputStream("res/maison.png"));
             HEROS_N = ImageIO.read(new FileInputStream("res/haut.png"));
             HEROS_S = ImageIO.read(new FileInputStream("res/bas.png"));
             HEROS_E = ImageIO.read(new FileInputStream("res/droite.png"));
             HEROS_O = ImageIO.read(new FileInputStream("res/gauche.png"));
-            MUR = ImageIO.read(new FileInputStream("res/mur.png"));
+            MUR = ImageIO.read(new FileInputStream("res/rocher.png"));
             MUR_BOUGEABLE = ImageIO.read(new FileInputStream("res/deplacable.png"));
-            PILE = ImageIO.read(new FileInputStream("res/pile.png"));
+            PILE = ImageIO.read(new FileInputStream("res/maison.png"));
             BULLET = ImageIO.read(new FileInputStream("res/bullet.png"));
-            TELEPORTATION = ImageIO.read(new FileInputStream("res/teleportation.png"));
+            TELEPORTATION = ImageIO.read(new FileInputStream("res/teleport.png"));
             SORTIE = ImageIO.read(new FileInputStream("res/sortie.png"));
 
         } catch (IOException e) {

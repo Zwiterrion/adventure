@@ -11,7 +11,6 @@ public class Heros {
     public static BufferedImage image;
 
     public Direction dir = Direction.RIGHT;
-
     private CopyOnWriteArrayList<Missile> stockMissiles = new CopyOnWriteArrayList<Missile>();
 
     public Heros() {

@@ -47,7 +47,7 @@ public class World extends Canvas {
 
         initImages();
         initLevel();
-        gameLoop();
+        //gameLoop();
     }
 
     void initImages() {
@@ -112,21 +112,22 @@ public class World extends Canvas {
     public void paint(Graphics g) {
 
         super.paint(g);
+        g.setColor(new Color(10, 55, 51));
+        g.fillRect(0, 0, SCREEN_SIZE, SCREEN_SIZE);
 
-        for (int j = 0; j < Y_MAX; j++)
-            for(int i = 0; i < X_MAX; i++)
-                g.drawImage(Images.HERBE, i * TILE_SIZE, j * TILE_SIZE, TILE_SIZE, TILE_SIZE, null);
-
-        for (int j = 0; j < Y_MAX; j++) {
-            for (int i = 0; i < X_MAX; i++) {
+        for (int i = 0; i < X_MAX; i++) {
+            for (int j = Y_MAX-1; j >= 0; j--) {
+                Location point = IsometricHelper.point2DToIso(new Location(j * TILE_SIZE/2, (i * TILE_SIZE/2)));
+                point.y += 120;
                 ObjectMap object = mapObjects.get(locations[i][j]);
-                g.drawImage(object.getImage(), i * TILE_SIZE, j * TILE_SIZE, TILE_SIZE, TILE_SIZE, null);
+                if(object instanceof Tourelle || object instanceof Mur || object instanceof Pile || object instanceof Herbe)
+                    g.drawImage(object.getImage(), point.x, point.y, TILE_SIZE, TILE_SIZE*2, null);
             }
         }
 
-       annonce.paint(g);
+       //annonce.paint(g);
 
-        for(Tourelle tower : towers)
+     /*   for(Tourelle tower : towers)
             g.drawImage(Images.BULLET, tower.p.x, tower.p.y, TILE_SIZE/3, TILE_SIZE/3, null);
 
         for(Missile p : mainRobot.getStockMissiles()) {
@@ -134,7 +135,7 @@ public class World extends Canvas {
         }
 
         g.drawImage(Heros.image, locationMainRobot.x * TILE_SIZE, locationMainRobot.y * TILE_SIZE , TILE_SIZE, TILE_SIZE, null);
-
+    */
     }
 
     public Boolean freeOrNot(Location p, Direction dir, int x, int y) {
