@@ -9,7 +9,7 @@ public class Main {
             public void run() {
 
                 int width = 1040;
-                int height = 620;
+                int height = 650;
 
                 PanelGame panel = new PanelGame();
                 World gameModel = new World(10, 10, width, panel);

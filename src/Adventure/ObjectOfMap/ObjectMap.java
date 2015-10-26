@@ -1,30 +1,19 @@
 package Adventure.ObjectOfMap;
 
 
-import Adventure.Location;
-
-import java.awt.image.BufferedImage;
-import java.util.Hashtable;
+import java.awt.*;
 
 public abstract class ObjectMap {
 
-    protected BufferedImage image;
-
-    public int poidsArete;
-    public int poidsNoeud;
-    public boolean parcouru;
-    public Hashtable<Location, ObjectMap> objetAdjacent;
+    protected Image image;
 
     public ObjectMap() {
-        this.parcouru = false;
-        this.poidsNoeud = -1;
-        this.poidsArete = 4;
         assignImage();
     }
 
     public abstract void assignImage();
 
-    public BufferedImage getImage() {
+    public Image getImage() {
         return image;
     }
 }

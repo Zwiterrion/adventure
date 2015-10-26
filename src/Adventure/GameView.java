@@ -18,7 +18,7 @@ public class GameView extends JFrame {
         this.gameModel = gameModel;
         window.add(gameModel);
 
-        window.setBounds(475, 150, w, h);
+        window.setBounds(100, 50, w, h);
         window.setVisible(true);
         window.setResizable(false);
 

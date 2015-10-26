@@ -9,7 +9,6 @@ public class Mur extends ObjectMap {
 
     public Mur() {
         super();
-        this.poidsArete = 2;
     }
 
     @Override

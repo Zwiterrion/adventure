@@ -7,7 +7,6 @@ public class Herbe extends ObjectMap {
 
     public Herbe() {
         super();
-        this.poidsArete = 1;
     }
 
     @Override

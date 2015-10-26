@@ -24,16 +24,16 @@ public class GameController extends MouseInputAdapter implements KeyListener {
         switch (e.getKeyCode())
         {
             case KeyEvent.VK_D:
-                gameModel.moveMainRobot(1,0, Direction.RIGHT);
+                gameModel.moveRobotPixel(1, 0, Direction.RIGHT);
                 break;
             case KeyEvent.VK_Q:
-                gameModel.moveMainRobot(-1,0,Direction.LEFT);
+                gameModel.moveRobotPixel(-1, 0, Direction.LEFT);
                 break;
             case KeyEvent.VK_Z:
-                gameModel.moveMainRobot(0,-1,Direction.UP);
+                gameModel.moveRobotPixel(0, 1, Direction.UP);
                 break;
             case KeyEvent.VK_S:
-                gameModel.moveMainRobot(0,1,Direction.DOWN);
+                gameModel.moveRobotPixel(0,-1,Direction.DOWN);
                 break;
         }
 
@@ -43,5 +43,6 @@ public class GameController extends MouseInputAdapter implements KeyListener {
     @Override
     public void keyTyped(KeyEvent e){}
     @Override
-    public void keyReleased(KeyEvent e){}
+    public void keyReleased(KeyEvent e){
+    }
 }
