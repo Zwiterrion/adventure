@@ -4,17 +4,17 @@ import javax.swing.*;
 import java.awt.*;
 
 
-public class GameView extends JFrame {
+public class GameView {
 
     private JFrame window;
     private World gameModel;
-    public PanelGame panelGame;
+    public UIutilisateur UIutilisateur;
 
-    public GameView(World gameModel, int w, int h, PanelGame panel) {
+    public GameView(World gameModel, int w, int h, UIutilisateur panel) {
 
         window = new JFrame("Adventure");
 
-        panelGame = panel;
+        UIutilisateur = panel;
         this.gameModel = gameModel;
         window.add(gameModel);
 
@@ -25,7 +25,7 @@ public class GameView extends JFrame {
         window.setLayout(new BorderLayout());
 
         window.add(gameModel, BorderLayout.CENTER);
-        window.add(panelGame, BorderLayout.SOUTH);
+        window.add(UIutilisateur, BorderLayout.SOUTH);
         window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 

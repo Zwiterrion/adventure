@@ -1,7 +1,5 @@
 package Adventure;
 
-import Adventure.ObjectOfMap.Direction;
-
 import javax.swing.event.MouseInputAdapter;
 import java.awt.event.*;
 
@@ -14,9 +12,10 @@ public class GameController extends MouseInputAdapter implements KeyListener {
         this.gameView = view;
         this.gameModel = model;
     }
+
     @Override
     public void mouseClicked(MouseEvent e){
-        gameModel.newMissile(e);
+
     }
 
     @Override
@@ -24,20 +23,20 @@ public class GameController extends MouseInputAdapter implements KeyListener {
         switch (e.getKeyCode())
         {
             case KeyEvent.VK_D:
-                gameModel.moveRobotPixel(1, 0, Direction.RIGHT);
+                gameModel.deplacementHeros(1, 0, Direction.RIGHT);
                 break;
             case KeyEvent.VK_Q:
-                gameModel.moveRobotPixel(-1, 0, Direction.LEFT);
+                gameModel.deplacementHeros(-1, 0, Direction.LEFT);
                 break;
             case KeyEvent.VK_Z:
-                gameModel.moveRobotPixel(0, 1, Direction.UP);
+                gameModel.deplacementHeros(0, 1, Direction.UP);
                 break;
             case KeyEvent.VK_S:
-                gameModel.moveRobotPixel(0,-1,Direction.DOWN);
+                gameModel.deplacementHeros(0, -1, Direction.DOWN);
                 break;
         }
 
-        gameView.panelGame.lessEnergy();
+        gameView.UIutilisateur.lessEnergy();
     }
 
     @Override

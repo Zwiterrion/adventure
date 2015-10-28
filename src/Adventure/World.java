@@ -1,22 +1,18 @@
 package Adventure;
 
-import Adventure.ObjectOfMap.*;
+import Adventure.ObjetsCarte.*;
+import Adventure.Places.Place;
+import Adventure.Places.Quartiergeneral;
 
+import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
 import java.util.*;
-import javax.swing.Timer;
 
-/**
- * Created by Etienne on 23/09/15.
- */
-public class World extends Canvas {
+public class World extends JPanel {
 
     // Map
-    private Hashtable<Location, ObjectMap> mapObjects;
-    private Hashtable<Location, ObjectMap> mapSol;
+    private Hashtable<Location, ObjetCarte> mapObjects;
+    private Hashtable<Location, ObjetCarte> mapSol;
 
     private Location locations[][];
 
@@ -24,7 +20,7 @@ public class World extends Canvas {
 
     private Place placeCourante;
 
-    public PanelGame panelGame;
+    public UIutilisateur ath;
     public Annonce annonce;
 
     // Constantes
@@ -34,10 +30,10 @@ public class World extends Canvas {
     public static int Y_MAX;
 
 
-    public World(int X_MAX, int Y_MAX, int screen_size, PanelGame panel) {
+    public World(int X_MAX, int Y_MAX, int screen_size, UIutilisateur panel) {
         this.X_MAX = X_MAX;
         this.Y_MAX = Y_MAX;
-        this.panelGame = panel;
+        this.ath = panel;
 
         SCREEN_SIZE = screen_size;
         TILE_SIZE = SCREEN_SIZE / X_MAX;
@@ -48,67 +44,13 @@ public class World extends Canvas {
 
         annonce = new Annonce(SCREEN_SIZE);
 
-        initLevel();
-        //gameLoop();
+        this.ath.initialisation();
+        initialisationNiveau();
     }
 
     void initImages() {
         Images.chargementImage();
     }
-
-    public void gameLoop() {
-       /* int delay = 1;
-        int interval = 1;
-        Timer timer = new Timer();
-        timer.scheduleAtFixedRate(new TimerTask() {
-            public void run() {
-                impact();
-                impactMissileRobot();
-                repaint();
-            }
-        }, delay, interval);*/
-    }
-
-    public void impactMissileRobot() {
-
-        for(Missile m : heros.getStockMissiles()) {
-            int x = m.getX() / TILE_SIZE;
-            int y = m.getY() / TILE_SIZE;
-
-            Object object = mapObjects.get(locations[x][y]);
-
-            if(object instanceof Mur) {
-                m.setPower(false);
-            }
-            if(object instanceof Deplacable) {
-                m.setPower(false);
-                mapObjects.put(locations[x][y], new Herbe());
-            }
-        }
-        heros.removeMissile();
-    }
-
-    public void impact() {
-
-      /*  for(Tourelle tower : towers) {
-            int x = tower.p.x / TILE_SIZE;
-            int y = tower.p.y / TILE_SIZE;
-
-            if (heros.getPos_in().x == x && heros.getPos_in().y == y) {
-                tower.restartProjectile();
-                heros.getPos_in().x = 1;
-                heros.getPos_in().y = 1;
-                System.out.println("You loose");
-            }
-
-            ObjectMap object = mapObjects.get(locations[x][y]);
-            if (object instanceof Herbe || object instanceof Pile || object instanceof Tourelle) {
-            } else
-                tower.restartProjectile();
-        }
-*/
-    }
-
 
     @Override
     public void paint(Graphics g) {
@@ -125,11 +67,23 @@ public class World extends Canvas {
 
     public void repaintSol(Graphics g) {
 
+        /*for (int i = 0; i < X_MAX *2; i++) {
+            for (int j = Y_MAX*2 - 1; j >= 0; j--) {
+                Location point = IsometricHelper.point2DToIso(new Location(j,i));
+                Random r = new Random();
+                Random e = new Random();
+                point.y += e.nextInt(160) + 100;
+                point.x -= 400;
+                if (r.nextInt(10) == 0)
+                    g.drawImage(Images.NUAGE, point.x, point.y, TILE_SIZE, TILE_SIZE * 2, this);
+            }
+        }*/
+
         for (int i = 0; i < X_MAX; i++) {
             for (int j = Y_MAX-1; j >= 0; j--) {
                 Location point = IsometricHelper.point2DToIso(new Location(j,i));
                 point.y += 160;
-                ObjectMap object = mapSol.get(locations[i][j]);
+                ObjetCarte object = mapSol.get(locations[i][j]);
                 if(! (object instanceof Vide))
                     g.drawImage(object.getImage(), point.x, point.y, TILE_SIZE, TILE_SIZE * 2, this);
             }
@@ -143,54 +97,40 @@ public class World extends Canvas {
             for (int j = Y_MAX - 1; j >= 0; j--) {
                 Location point = IsometricHelper.point2DToIso(new Location(j, i));
                 point.y += 160;
-                ObjectMap object = mapObjects.get(locations[i][j]);
-                if (!(object instanceof Vide)) {
+                ObjetCarte object = mapObjects.get(locations[i][j]);
+
+                if (!(object instanceof Vide))
                     g.drawImage(object.getImage(), point.x, point.y, TILE_SIZE, TILE_SIZE * 2, this);
-                }
-                if( i == heros.getPos_in().x && j == heros.getPos_in().y) {
+
+                if( i == heros.getPos_in().x && j == heros.getPos_in().y)
                     g.drawImage(heros.getImage(), point.x, point.y, TILE_SIZE, TILE_SIZE * 2, this);
-                }
             }
         }
     }
 
-    public void drawHeros(Location a) {
-
-        Location depart = IsometricHelper.point2DToIso(a);
-        Location arrivee = IsometricHelper.point2DToIso(new Location(heros.getPos_in().x, heros.getPos_in().y));
-
-        Location offset = Location.diff(arrivee,depart);
-        System.out.println(offset);
-
-
-    }
 
     public Boolean freeOrNot(Location p, Direction dir, int x, int y) {
 
         if ((p.x >= 0 && p.x < X_MAX) && (p.y >= 0 && p.y < Y_MAX)) {
 
-            ObjectMap object = mapObjects.get(locations[p.x][p.y]);
-            ObjectMap objectSol = mapSol.get(locations[p.x][p.y]);
+            ObjetCarte object = mapObjects.get(locations[p.x][p.y]);
+            ObjetCarte objectSol = mapSol.get(locations[p.x][p.y]);
 
             if(objectSol instanceof Herbe) {
 
                 if (object instanceof Vide)
                     return true;
 
-                if (object instanceof Sortie) {
-                    nextLevel(p);
-                    return false;
-
-                } else if (object instanceof Teleportation) {
-                    teleportationRobot(p, dir);
+                else if (object instanceof Sortie) {
+                    niveauSuivant(x, y, dir);
                     return false;
 
                 } else if (object instanceof Mur || object instanceof Tourelle) {
                     return false;
 
-                } else if (object instanceof Pile) {
-                    panelGame.moreEnergy();
-                    mapObjects.put(locations[p.x][p.y], new Herbe());
+                } else if (object instanceof Vie || object instanceof Mana) {
+                    ath.moreEnergy();
+                    mapObjects.put(locations[p.x][p.y], new Vide());
                     return true;
 
                 } else if (object instanceof Deplacable) {
@@ -200,7 +140,8 @@ public class World extends Canvas {
                 } else
                     return true;
             }
-            return false;
+            else
+                return false;
         }
         else
             return false;
@@ -212,8 +153,8 @@ public class World extends Canvas {
 
         if ((p.x >= 0 && p.x < X_MAX) && (p.y >= 0 && p.y < Y_MAX)) {
 
-            ObjectMap object = mapObjects.get(locations[p.x][p.y]);
-            ObjectMap objectSol = mapSol.get(locations[p.x][p.y]);
+            ObjetCarte object = mapObjects.get(locations[p.x][p.y]);
+            ObjetCarte objectSol = mapSol.get(locations[p.x][p.y]);
 
             if(object instanceof  Vide ) {
 
@@ -232,7 +173,7 @@ public class World extends Canvas {
 
                 if (objectSol instanceof Vide) {
 
-                    mapSol.put(locations[p.x][p.y], new Herbe());
+                    mapSol.put(locations[p.x][p.y], new Herbe(-1));
 
                     mapObjects.put(locations[positionWall.x][positionWall.y], new Vide());
 
@@ -245,67 +186,36 @@ public class World extends Canvas {
         }
     }
 
-    public void teleportationRobot(Location l, Direction dir)  {
 
-        heros.setPos_in(l);
+    public void niveauSuivant(int x, int y, Direction dir) {
 
+        deplacement(x, y, dir);
+        sleep(300);
+        pageDeDescription();
+        sleep(1000);
+        initialisationNiveau();
         repaint();
+    }
 
+    public void pageDeDescription() {
+
+        getGraphics().setColor(Color.BLACK);
+        getGraphics().fillRect(0,0, SCREEN_SIZE, SCREEN_SIZE);
+        annonce.setAnnonce(placeCourante.getNom());
+        annonce.paint(getGraphics());
+    }
+
+    public void sleep(int time) {
         try {
-            Thread.sleep(200);
+            Thread.sleep(time);
         }catch ( InterruptedException e) {
             e.printStackTrace();
         }
-
-        Teleportation t = (Teleportation) mapObjects.get(locations[l.x][l.y]);
-
-        heros.setPos_in(t.getEnd());
-
-        heros.changeImage(dir);
-        repaint();
     }
 
-    public void newMissile(MouseEvent e) {
-
-        int x = heros.getPos_in().x;
-        int y = heros.getPos_in().y;
-
-        if(e.getButton() == MouseEvent.BUTTON1) {
-            heros.addMissile(x * TILE_SIZE + TILE_SIZE / 2, y * TILE_SIZE + TILE_SIZE / 2, 0, -1);
-            heros.addMissile(x * TILE_SIZE + TILE_SIZE / 2, y * TILE_SIZE + TILE_SIZE / 2, 1, 0);
-            heros.addMissile(x * TILE_SIZE + TILE_SIZE / 2, y * TILE_SIZE + TILE_SIZE / 2, 0, 1);
-            heros.addMissile(x * TILE_SIZE + TILE_SIZE / 2, y * TILE_SIZE + TILE_SIZE / 2, -1, 0);
-        }
-        if(e.getButton() == MouseEvent.BUTTON3) {
-            heros.addMissile(x * TILE_SIZE + TILE_SIZE / 2, y * TILE_SIZE + TILE_SIZE / 2, 1, -1);
-            heros.addMissile(x * TILE_SIZE + TILE_SIZE / 2, y * TILE_SIZE + TILE_SIZE / 2, 1, 1);
-            heros.addMissile(x * TILE_SIZE + TILE_SIZE / 2, y * TILE_SIZE + TILE_SIZE / 2, -1, 1);
-            heros.addMissile(x * TILE_SIZE + TILE_SIZE / 2, y * TILE_SIZE + TILE_SIZE / 2, -1, -1);
-        }
-
-    }
-
-    public void nextLevel(Location p) {
-
-        mapObjects.put(locations[p.x][p.y], new Herbe());
-
-        heros.setPos_in(p);
-
-        repaint();
-
-        try {
-            Thread.sleep(300);
-        }catch ( InterruptedException e) {
-            e.printStackTrace();
-        }
-
-
-        initLevel();
-        repaint();
-    }
-
-    public void initLevel() {
-        placeCourante = new Place(heros);
+    public void initialisationNiveau() {
+        //placeCourante = new Place(heros);
+        placeCourante = new Quartiergeneral(heros);
         annonce.setAnnonce("Bienvenue");
 
         mapObjects = placeCourante.getMapObjects();
@@ -316,24 +226,20 @@ public class World extends Canvas {
         heros.setPos_in(placeCourante.getHeros().getPos_in());
     }
 
-    public void moveRobotPixel(int x, int y, Direction dir) {
+    public void deplacementHeros(int x, int y, Direction dir) {
 
-        int ax = heros.getPos_in().x;
-        int ay = heros.getPos_in().y;
+        Location nextPos = new Location(heros.getPos_in().x + x, heros.getPos_in().y + y);
 
-        Location nextPos = new Location(ax + x, ay + y);
+        if (freeOrNot(nextPos, dir, x ,y))
+            deplacement(x,y,dir);
+    }
 
-        if (freeOrNot(nextPos, dir, x ,y)) {
+    public void deplacement(int x, int y, Direction dir) {
 
-            mapObjects.put(locations[ax][ay], new Vide());
-            Location a = heros.getPos_in();
-            heros.setPos_in(new Location(heros.getPos_in().x + x, heros.getPos_in().y + y));
-            mapObjects.put(locations[heros.getPos_in().x][heros.getPos_in().y], new Vide());
-            heros.changeImage(dir);
-
-            drawHeros(a);
-            repaint();
-        }
+        mapObjects.put(locations[heros.getPos_in().x][heros.getPos_in().y], new Vide());
+        heros.setPos_in(new Location(heros.getPos_in().x + x, heros.getPos_in().y + y));
+        heros.changeImage(dir);
+        paint(getGraphics());
     }
 }
 
