@@ -1,22 +1,28 @@
-package Adventure.ObjetsCarte;
+package Adventure;
 
-import Adventure.*;
+import Adventure.ObjetsInventaire.Inventaire;
+import Adventure.ObjetsInventaire.Potion;
 
 import java.awt.*;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
 
-public class Heros  {
+public class Heros {
 
     private Image image;
-
     public Direction dir = Direction.RIGHT;
-    private CopyOnWriteArrayList<Missile> stockMissiles = new CopyOnWriteArrayList<Missile>();
-
-    private Location pos_in = new Location(0,0);
+    private Location pos_in;
+    private Inventaire inventaire;
 
     public Heros()  {
         image = Images.HEROS_E;
+        inventaire = new Inventaire();
+    }
+
+    public void ramasserObjet(Potion p) {
+        inventaire.ajouterElement(p);
+    }
+
+    public void utiliserObjet(Potion p) {
+        inventaire.supprimerElement(p);
     }
 
     public void changeImage(Direction dir) {
@@ -37,24 +43,6 @@ public class Heros  {
         }
     }
 
-    public void addMissile(int x1, int y1, int ajoutX, int ajoutY) {
-        stockMissiles.add(new Missile(ajoutX, ajoutY, x1, y1));
-    }
-
-    public void removeMissile() {
-        Iterator<Missile> iter = stockMissiles.iterator();
-        while (iter.hasNext()) {
-            Missile m = iter.next();
-            if (!m.getPower())
-                stockMissiles.remove(m);
-        }
-
-    }
-
-    public CopyOnWriteArrayList<Missile> getStockMissiles() {
-        return stockMissiles;
-    }
-
     public Location getPos_in() {
         return pos_in;
     }
@@ -65,6 +53,10 @@ public class Heros  {
 
     public Image getImage() {
         return image;
+    }
+
+    public Inventaire getInventaire() {
+        return inventaire;
     }
 }
 

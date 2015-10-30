@@ -1,11 +1,10 @@
 package Adventure.Places;
 
-import Adventure.Direction;
+import Adventure.Heros;
 import Adventure.Location;
 import Adventure.ObjetsCarte.*;
 import Adventure.World;
 
-import java.awt.*;
 import java.util.Hashtable;
 
 /**
@@ -77,10 +76,9 @@ public class Place {
             case 3 : mapObjects.put(locations[i][j], new Vie()); break;
             case 4 : mapObjects.put(locations[i][j], new Mana()); break;
             case 5 : mapObjects.put(locations[i][j], new Teleportation()); break;
-            case 6 : mapObjects.put(locations[i][j], new Tourelle(Direction.DOWN, i, j)); break;
-            case 7 : mapObjects.put(locations[i][j], new Sortie(true)); break;
-            case 8 : mapObjects.put(locations[i][j], new Sortie(false)); break;
-            case 9 :
+            case 6 : mapObjects.put(locations[i][j], new Sortie(true)); break;
+            case 7 : mapObjects.put(locations[i][j], new Sortie(false)); break;
+            case 8 :
                 mapObjects.put(locations[i][j], new Vide());
                 heros.setPos_in(locations[i][j]);
                 break;

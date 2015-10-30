@@ -6,7 +6,7 @@ import Adventure.Places.Quartiergeneral;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.*;
+import java.util.Hashtable;
 
 public class World extends JPanel {
 
@@ -29,29 +29,21 @@ public class World extends JPanel {
     public static int X_MAX;
     public static int Y_MAX;
 
-
-    public World(int X_MAX, int Y_MAX, int screen_size, UIutilisateur panel) {
+    public World(int X_MAX, int Y_MAX, int screen_size) {
         this.X_MAX = X_MAX;
         this.Y_MAX = Y_MAX;
-        this.ath = panel;
 
         SCREEN_SIZE = screen_size;
         TILE_SIZE = SCREEN_SIZE / X_MAX;
 
-        initImages();
 
         heros = new Heros();
+        ath = new UIutilisateur(heros);
 
         annonce = new Annonce(SCREEN_SIZE);
 
-        this.ath.initialisation();
         initialisationNiveau();
     }
-
-    void initImages() {
-        Images.chargementImage();
-    }
-
     @Override
     public void paint(Graphics g) {
 
@@ -59,30 +51,16 @@ public class World extends JPanel {
         g.setColor(new Color(10, 55, 51));
         g.fillRect(0, 0, SCREEN_SIZE, SCREEN_SIZE);
 
-        repaintSol(g);
-        repaintObjectsMap(g);
-
-        g.dispose();
+        dessineSol(g);
+        dessineObjetsMap(g);
+        dessineATH(g);
     }
 
-    public void repaintSol(Graphics g) {
-
-        /*for (int i = 0; i < X_MAX *2; i++) {
-            for (int j = Y_MAX*2 - 1; j >= 0; j--) {
-                Location point = IsometricHelper.point2DToIso(new Location(j,i));
-                Random r = new Random();
-                Random e = new Random();
-                point.y += e.nextInt(160) + 100;
-                point.x -= 400;
-                if (r.nextInt(10) == 0)
-                    g.drawImage(Images.NUAGE, point.x, point.y, TILE_SIZE, TILE_SIZE * 2, this);
-            }
-        }*/
+    public void dessineSol(Graphics g) {
 
         for (int i = 0; i < X_MAX; i++) {
             for (int j = Y_MAX-1; j >= 0; j--) {
                 Location point = IsometricHelper.point2DToIso(new Location(j,i));
-                point.y += 160;
                 ObjetCarte object = mapSol.get(locations[i][j]);
                 if(! (object instanceof Vide))
                     g.drawImage(object.getImage(), point.x, point.y, TILE_SIZE, TILE_SIZE * 2, this);
@@ -91,12 +69,12 @@ public class World extends JPanel {
 
     }
 
-    public void repaintObjectsMap(Graphics g) {
+
+    public void dessineObjetsMap(Graphics g) {
 
         for (int i = 0; i < X_MAX; i++) {
             for (int j = Y_MAX - 1; j >= 0; j--) {
                 Location point = IsometricHelper.point2DToIso(new Location(j, i));
-                point.y += 160;
                 ObjetCarte object = mapObjects.get(locations[i][j]);
 
                 if (!(object instanceof Vide))
@@ -108,8 +86,11 @@ public class World extends JPanel {
         }
     }
 
+    public void dessineATH(Graphics g) {
+        ath.paint(g);
+    }
 
-    public Boolean freeOrNot(Location p, Direction dir, int x, int y) {
+    public Boolean videOuPas(Location p, Direction dir, int x, int y) {
 
         if ((p.x >= 0 && p.x < X_MAX) && (p.y >= 0 && p.y < Y_MAX)) {
 
@@ -125,16 +106,15 @@ public class World extends JPanel {
                     niveauSuivant(x, y, dir);
                     return false;
 
-                } else if (object instanceof Mur || object instanceof Tourelle) {
+                } else if (object instanceof Mur) {
                     return false;
 
                 } else if (object instanceof Vie || object instanceof Mana) {
-                    ath.moreEnergy();
                     mapObjects.put(locations[p.x][p.y], new Vide());
                     return true;
 
                 } else if (object instanceof Deplacable) {
-                    moveWall(p, dir, x, y);
+                    deplaceMur(p, dir, x, y);
                     return false;
 
                 } else
@@ -147,7 +127,7 @@ public class World extends JPanel {
             return false;
     }
 
-    public void moveWall(Location positionWall, Direction dir, int x, int y) {
+    public void deplaceMur(Location positionWall, Direction dir, int x, int y) {
 
         Location p = new Location(positionWall.x + x,positionWall.y + y);
 
@@ -186,26 +166,26 @@ public class World extends JPanel {
         }
     }
 
-
     public void niveauSuivant(int x, int y, Direction dir) {
 
         deplacement(x, y, dir);
-        sleep(300);
+        attente(300);
         pageDeDescription();
-        sleep(1000);
+        attente(1000);
         initialisationNiveau();
         repaint();
     }
 
     public void pageDeDescription() {
 
-        getGraphics().setColor(Color.BLACK);
-        getGraphics().fillRect(0,0, SCREEN_SIZE, SCREEN_SIZE);
+        Graphics g = getGraphics();
+        g.setColor(Color.BLACK);
+        g.fillRect(0, 0, SCREEN_SIZE, SCREEN_SIZE);
         annonce.setAnnonce(placeCourante.getNom());
-        annonce.paint(getGraphics());
+        annonce.paint(g);
     }
 
-    public void sleep(int time) {
+    public void attente(int time) {
         try {
             Thread.sleep(time);
         }catch ( InterruptedException e) {
@@ -214,7 +194,6 @@ public class World extends JPanel {
     }
 
     public void initialisationNiveau() {
-        //placeCourante = new Place(heros);
         placeCourante = new Quartiergeneral(heros);
         annonce.setAnnonce("Bienvenue");
 
@@ -230,7 +209,7 @@ public class World extends JPanel {
 
         Location nextPos = new Location(heros.getPos_in().x + x, heros.getPos_in().y + y);
 
-        if (freeOrNot(nextPos, dir, x ,y))
+        if (videOuPas(nextPos, dir, x, y))
             deplacement(x,y,dir);
     }
 

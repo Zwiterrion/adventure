@@ -1,6 +1,5 @@
 package Adventure.ObjetsCarte;
 
-
 import java.awt.*;
 
 public abstract class ObjetCarte {

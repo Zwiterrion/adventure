@@ -1,8 +1,5 @@
 package Adventure;
 
-
-import java.awt.*;
-
 public class Main {
 
     public static void main(String[] args) {
@@ -13,15 +10,14 @@ public class Main {
                 int width = 1040;
                 int height = 650;
 
-                UIutilisateur panel = new UIutilisateur();
-                World gameModel = new World(10, 10, width, panel);
-                GameView view = new GameView(gameModel, width, height, panel);
+                Images.chargementImage();
+                World gameModel = new World(10, 10, width);
+                GameView view = new GameView(gameModel, width, height);
                 view.getGameModel().requestFocus();
                 GameController controller = new GameController(view, gameModel);
 
                 view.getGameModel().addMouseListener(controller);
                 view.getGameModel().addKeyListener(controller);
-                panel.addMouseListener(controller);
             }
         });
 

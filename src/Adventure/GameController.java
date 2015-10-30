@@ -1,7 +1,9 @@
 package Adventure;
 
 import javax.swing.event.MouseInputAdapter;
-import java.awt.event.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
 
 public class GameController extends MouseInputAdapter implements KeyListener {
 
@@ -15,7 +17,7 @@ public class GameController extends MouseInputAdapter implements KeyListener {
 
     @Override
     public void mouseClicked(MouseEvent e){
-
+        //gameModel.repaint();
     }
 
     @Override
@@ -35,8 +37,6 @@ public class GameController extends MouseInputAdapter implements KeyListener {
                 gameModel.deplacementHeros(0, -1, Direction.DOWN);
                 break;
         }
-
-        gameView.UIutilisateur.lessEnergy();
     }
 
     @Override

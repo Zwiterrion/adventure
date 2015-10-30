@@ -1,21 +1,30 @@
 package Adventure.ObjetsInventaire;
 
 
+import java.awt.*;
+
 /**
  * Created by Etienne on 27/10/2015.
  */
-public abstract class Potion extends ObjetInventaire {
+public abstract class Potion  {
 
     protected int value;
+    protected Image image;
 
-    public Potion(int value, int x, int y, Adventure.UIutilisateur ath) {
-        super(x,y, ath);
+    public abstract void assign();
+
+    public Potion(int value) {
         this.value = value;
+        assign();
     }
 
     public boolean estVide() {
         if(value == 0)
             return true;
         return false;
+    }
+
+    public Image getImage() {
+        return image;
     }
 }

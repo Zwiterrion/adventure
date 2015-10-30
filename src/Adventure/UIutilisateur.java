@@ -1,52 +1,35 @@
 package Adventure;
 
-import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 
-public class UIutilisateur extends JPanel  {
+public class UIutilisateur extends Canvas {
 
-    public JProgressBar progressBar;
-    public JButton potionVie;
-    public JButton potionMana;
+    public Heros heros;
 
-    public void initialisation() {
-        setBorder(BorderFactory.createMatteBorder(3, 0, 0, 0, Color.BLACK));
-
-        progressBar = new JProgressBar();
-        progressBar.setMinimum(0);
-        progressBar.setMaximum(100);
-        progressBar.setValue(100);
-        progressBar.setPreferredSize(new Dimension(300, 20));
-        progressBar.setStringPainted(true);
-
-        potionVie = new JButton(new ImageIcon(Images.POTION_VIE));
-        potionMana = new JButton(new ImageIcon(Images.POTION_MANA));
-
-        setLayout(new BorderLayout());
-
-        JPanel p1 = new JPanel(new GridLayout(1, 6));
-        p1.add(potionMana);
-        p1.add(potionVie);
-
-        JPanel p2 = new JPanel(new GridLayout(4,1));
-        p2.add(new JLabel("Vie"));
-        p2.add(progressBar);
-        p2.add(new JLabel("Mana"));
-        p2.add(new JProgressBar(0, 100));
-
-        add(p1, BorderLayout.LINE_START);
-        add(p2, BorderLayout.LINE_END);
+    public UIutilisateur(Heros r) {
+        this.heros = r;
     }
 
-   public void lessEnergy() {
-        progressBar.setValue(progressBar.getValue()-2);
-       if(progressBar.getValue() < 0) progressBar.setValue(0);
-   }
+    @Override
+    public void paint(Graphics g) {
+        super.paint(g);
 
-    public void moreEnergy() {
-        progressBar.setValue(progressBar.getValue()+40);
-        if(progressBar.getValue() >= 100) progressBar.setValue(100);
+        heros.getInventaire().paint(g);
+        dessineBarres(g);
     }
 
+    public void dessineBarres(Graphics g) {
+        Location point = calculPositionBarres();
+        g.setColor(Color.GREEN);
+        g.fillRect(point.x + 28, point.y + World.TILE_SIZE / 2 - 6, 40, 5);
+        g.setColor(Color.CYAN);
+        g.fillRect(point.x + 28, point.y + World.TILE_SIZE/2, 40, 3);
+        g.setColor(new Color(16, 173, 255));
+        g.drawRect(point.x + 26, point.y + World.TILE_SIZE/2 - 8, 43, 12);
+    }
+
+    public Location calculPositionBarres() {
+        Location point = IsometricHelper.point2DToIso(heros.getPos_in());
+        return point;
+    }
 }
