@@ -11,4 +11,7 @@ public class Mana extends ObjetCarte {
         image = Images.MANA;
     }
 
+    public int getValue() {
+        return value;
+    }
 }

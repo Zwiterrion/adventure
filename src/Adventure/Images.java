@@ -41,6 +41,8 @@ public class Images {
     public static Image SORTIE2;
     public static Image NUAGE;
 
+    public static Image CLEF;
+
     public static void chargementImage() {
         try {
 
@@ -75,6 +77,8 @@ public class Images {
             POTION_MANA = ImageIO.read(new FileInputStream("res/potionMana.png"));
 
             INVENTAIRE = ImageIO.read(new FileInputStream("res/inventaire.png"));
+
+            CLEF = ImageIO.read(new FileInputStream("res/bombe.png"));
 
         } catch (IOException e) {
             e.printStackTrace();

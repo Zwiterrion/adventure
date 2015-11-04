@@ -82,6 +82,7 @@ public class Place {
                 mapObjects.put(locations[i][j], new Vide());
                 heros.setPos_in(locations[i][j]);
                 break;
+            case 9 : mapObjects.put(locations[i][j], new Clef()); break;
 
         }
     }

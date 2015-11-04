@@ -11,4 +11,7 @@ public class Vie extends ObjetCarte {
         image = Images.VIE;
     }
 
+    public int getValue() {
+        return value;
+    }
 }

@@ -13,6 +13,8 @@ public abstract class Potion  {
 
     public abstract void assign();
 
+    public Potion() {}
+
     public Potion(int value) {
         this.value = value;
         assign();

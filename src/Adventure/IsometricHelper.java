@@ -14,6 +14,7 @@ public class IsometricHelper {
         point = Location.mul(point,new Location(1, -1));
 
         point.y += 160;
+
         return point;
 
     }

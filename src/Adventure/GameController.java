@@ -17,7 +17,7 @@ public class GameController extends MouseInputAdapter implements KeyListener {
 
     @Override
     public void mouseClicked(MouseEvent e){
-        //gameModel.repaint();
+
     }
 
     @Override

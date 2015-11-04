@@ -1,7 +1,10 @@
 package Adventure;
 
-import Adventure.ObjetsInventaire.Inventaire;
-import Adventure.ObjetsInventaire.Potion;
+import Adventure.ObjetsCarte.Clef;
+import Adventure.ObjetsCarte.Mana;
+import Adventure.ObjetsCarte.ObjetCarte;
+import Adventure.ObjetsCarte.Vie;
+import Adventure.ObjetsInventaire.*;
 
 import java.awt.*;
 
@@ -17,8 +20,13 @@ public class Heros {
         inventaire = new Inventaire();
     }
 
-    public void ramasserObjet(Potion p) {
-        inventaire.ajouterElement(p);
+    public void ramasserObjet(ObjetCarte p) {
+        if(p instanceof Vie)
+            inventaire.ajouterElement(new PotionVie(((Vie) p).getValue()));
+        else if(p instanceof Mana)
+            inventaire.ajouterElement(new PotionMana(((Mana) p).getValue()));
+        else if(p instanceof Clef)
+            inventaire.ajouterElement(new PotionClef());
     }
 
     public void utiliserObjet(Potion p) {

@@ -69,7 +69,6 @@ public class World extends JPanel {
 
     }
 
-
     public void dessineObjetsMap(Graphics g) {
 
         for (int i = 0; i < X_MAX; i++) {
@@ -109,7 +108,8 @@ public class World extends JPanel {
                 } else if (object instanceof Mur) {
                     return false;
 
-                } else if (object instanceof Vie || object instanceof Mana) {
+                } else if (object instanceof Vie || object instanceof Mana || object instanceof Clef) {
+                    heros.ramasserObjet(object);
                     mapObjects.put(locations[p.x][p.y], new Vide());
                     return true;
 
