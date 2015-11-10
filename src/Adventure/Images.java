@@ -31,6 +31,8 @@ public class Images {
     public static Image HEROS_O;
 
     public static Image MUR;
+    public static Image MUR_BIS;
+    public static Image MUR_ANGLE;
     public static Image MUR_BOUGEABLE;
 
     public static Image VIE;
@@ -39,14 +41,14 @@ public class Images {
     public static Image TELEPORTATION;
     public static Image SORTIE;
     public static Image SORTIE2;
-    public static Image NUAGE;
 
     public static Image CLEF;
+    public static Image CARRELAGE;
 
     public static void chargementImage() {
         try {
 
-            HERBE = ImageIO.read(new FileInputStream("res/herbe.png"));
+            HERBE = ImageIO.read(new FileInputStream("res/parquet.png"));
             HERBE_BAS_HAUT = ImageIO.read(new FileInputStream("res/herbeBas.png"));
             HERBE_DROITE_GAUCHE = ImageIO.read(new FileInputStream("res/herbeDroite.png"));
 
@@ -62,7 +64,11 @@ public class Images {
             HEROS_E = Toolkit.getDefaultToolkit().createImage("res/droite.png");
             HEROS_O = ImageIO.read(new FileInputStream("res/gauche.png"));
 
-            MUR = ImageIO.read(new FileInputStream("res/rocher.png"));
+            //MUR = ImageIO.read(new FileInputStream("res/rocher.png"));
+            MUR = ImageIO.read(new FileInputStream("res/mur.png"));
+            MUR_BIS = ImageIO.read(new FileInputStream("res/murBis.png"));
+            MUR_ANGLE = ImageIO.read(new FileInputStream("res/murAngle.png"));
+
             MUR_BOUGEABLE = ImageIO.read(new FileInputStream("res/bloc.png"));
 
             VIE = ImageIO.read(new FileInputStream("res/vie.png"));
@@ -71,7 +77,6 @@ public class Images {
 
             SORTIE = ImageIO.read(new FileInputStream("res/sortie.png"));
             SORTIE2 = ImageIO.read(new FileInputStream("res/sortie2.png"));
-            NUAGE = ImageIO.read(new FileInputStream("res/nuage.png"));
 
             POTION_VIE = ImageIO.read(new FileInputStream("res/potionVie.png"));
             POTION_MANA = ImageIO.read(new FileInputStream("res/potionMana.png"));
@@ -79,6 +84,8 @@ public class Images {
             INVENTAIRE = ImageIO.read(new FileInputStream("res/inventaire.png"));
 
             CLEF = ImageIO.read(new FileInputStream("res/bombe.png"));
+            CARRELAGE = ImageIO.read(new FileInputStream("res/interieur.png"));
+
 
         } catch (IOException e) {
             e.printStackTrace();

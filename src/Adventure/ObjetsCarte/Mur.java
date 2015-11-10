@@ -7,8 +7,20 @@ import Adventure.Images;
  */
 public class Mur extends ObjetCarte {
 
+    int face;
+
+    public Mur(int f) {
+        super();
+        this.face = f;
+        assignImage();
+    }
     @Override
     public void assignImage() {
-        image = Images.MUR;
+        if(this.face == 0)
+            image = Images.MUR;
+        else if(this.face == 1)
+            image = Images.MUR_BIS;
+        else
+            image = Images.MUR_ANGLE;
     }
 }

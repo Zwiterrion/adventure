@@ -25,16 +25,16 @@ public class GameController extends MouseInputAdapter implements KeyListener {
         switch (e.getKeyCode())
         {
             case KeyEvent.VK_D:
-                gameModel.deplacementHeros(1, 0, Direction.RIGHT);
+                gameModel.deplacementHeros(1, 0, Direction.DROITE);
                 break;
             case KeyEvent.VK_Q:
-                gameModel.deplacementHeros(-1, 0, Direction.LEFT);
+                gameModel.deplacementHeros(-1, 0, Direction.GAUCHE);
                 break;
             case KeyEvent.VK_Z:
-                gameModel.deplacementHeros(0, 1, Direction.UP);
+                gameModel.deplacementHeros(0, 1, Direction.HAUT);
                 break;
             case KeyEvent.VK_S:
-                gameModel.deplacementHeros(0, -1, Direction.DOWN);
+                gameModel.deplacementHeros(0, -1, Direction.BAS);
                 break;
         }
     }

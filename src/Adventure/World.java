@@ -2,7 +2,8 @@ package Adventure;
 
 import Adventure.ObjetsCarte.*;
 import Adventure.Places.Place;
-import Adventure.Places.Quartiergeneral;
+import Adventure.Places.Futuroscope;
+import Adventure.Places.SP2MI;
 
 import javax.swing.*;
 import java.awt.*;
@@ -35,7 +36,6 @@ public class World extends JPanel {
 
         SCREEN_SIZE = screen_size;
         TILE_SIZE = SCREEN_SIZE / X_MAX;
-
 
         heros = new Heros();
         ath = new UIutilisateur(heros);
@@ -96,7 +96,7 @@ public class World extends JPanel {
             ObjetCarte object = mapObjects.get(locations[p.x][p.y]);
             ObjetCarte objectSol = mapSol.get(locations[p.x][p.y]);
 
-            if(objectSol instanceof Herbe) {
+            if(objectSol instanceof Herbe || objectSol instanceof Carrelage) {
 
                 if (object instanceof Vide)
                     return true;
@@ -105,7 +105,7 @@ public class World extends JPanel {
                     niveauSuivant(x, y, dir);
                     return false;
 
-                } else if (object instanceof Mur) {
+                } else if (object instanceof Mur || object instanceof Maison) {
                     return false;
 
                 } else if (object instanceof Vie || object instanceof Mana || object instanceof Clef) {
@@ -136,9 +136,9 @@ public class World extends JPanel {
             ObjetCarte object = mapObjects.get(locations[p.x][p.y]);
             ObjetCarte objectSol = mapSol.get(locations[p.x][p.y]);
 
-            if(object instanceof  Vide ) {
+            if(object instanceof Vide) {
 
-                if (objectSol instanceof Herbe) {
+                if (objectSol instanceof Herbe || objectSol instanceof Carrelage) {
 
                     Deplacable w = (Deplacable) mapObjects.get(locations[positionWall.x][positionWall.y]);
                     mapObjects.put(locations[p.x][p.y], w);
@@ -194,8 +194,8 @@ public class World extends JPanel {
     }
 
     public void initialisationNiveau() {
-        placeCourante = new Quartiergeneral(heros);
-        annonce.setAnnonce("Bienvenue");
+        placeCourante = new SP2MI(heros);
+        annonce.setAnnonce(placeCourante.getNom());
 
         mapObjects = placeCourante.getMapObjects();
         mapSol = placeCourante.getMapSol();

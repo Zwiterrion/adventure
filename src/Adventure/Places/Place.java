@@ -62,6 +62,7 @@ public class Place {
             case 5: mapSol.put(locations[i][j], new Herbe(5)); break;
             case 6: mapSol.put(locations[i][j], new Herbe(6)); break;
             case 7: mapSol.put(locations[i][j], new Vide());  break;
+            case 8: mapSol.put(locations[i][j], new Carrelage()); break;
 
             default:
                 mapSol.put(locations[i][j], new Herbe(0));
@@ -71,7 +72,7 @@ public class Place {
     public void creerObjet(int i, int j, int num) {
         switch (num){
             case 0 : mapObjects.put(locations[i][j], new Vide()); break;
-            case 1 : mapObjects.put(locations[i][j], new Mur()); break;
+            case 1 : mapObjects.put(locations[i][j], new Mur(0)); break;
             case 2 : mapObjects.put(locations[i][j], new Deplacable()); break;
             case 3 : mapObjects.put(locations[i][j], new Vie()); break;
             case 4 : mapObjects.put(locations[i][j], new Mana()); break;
@@ -83,6 +84,9 @@ public class Place {
                 heros.setPos_in(locations[i][j]);
                 break;
             case 9 : mapObjects.put(locations[i][j], new Clef()); break;
+            case 10 : mapObjects.put(locations[i][j], new Maison()); break;
+            case 11 : mapObjects.put(locations[i][j], new Mur(1)); break;
+            case 12 : mapObjects.put(locations[i][j], new Mur(2)); break;
 
         }
     }
@@ -105,6 +109,10 @@ public class Place {
 
     public String getNom() {
         return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
     public void setLEVEL_SOL(int[][] LEVEL_SOL) {
