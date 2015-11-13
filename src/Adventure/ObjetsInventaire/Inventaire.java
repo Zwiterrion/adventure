@@ -1,7 +1,6 @@
 package Adventure.ObjetsInventaire;
 
 import Adventure.Images;
-import Adventure.World;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -11,7 +10,6 @@ public class Inventaire extends JPanel {
 
     private Image image;
     private List<Potion> stock;
-    private int TILE_SIZE = World.TILE_SIZE;
 
     private int nbPotionVie = 0;
     private int nbPotionMana = 0;
@@ -74,8 +72,34 @@ public class Inventaire extends JPanel {
         repaint();
     }
 
-    public void supprimerElement(Potion p) {
-        this.stock.remove(p);
+    public void utiliser(int i) {
+
+        if(i == 0) {
+            if(nbPotionVie > 0)
+                supprimerElement(0);
+        }
+        else if(i == 1) {
+            if(nbPotionMana > 0)
+                supprimerElement(1);
+        }
+        else {
+            if(nbClefs > 0)
+                supprimerElement(2);
+        }
+    }
+    public void supprimerElement(int i) {
+
+        int a = 0;
+        while(a < stock.size()) {
+            Potion p = stock.get(a);
+            if(p instanceof PotionMana && i == 1 )
+                this.stock.remove(p);
+            if(p instanceof PotionVie && i == 0)
+                this.stock.remove(p);
+            if(p instanceof PotionClef && i == 2)
+                this.stock.remove(p);
+            a++;
+        }
         calculPotions();
         repaint();
     }

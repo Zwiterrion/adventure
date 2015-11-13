@@ -15,6 +15,9 @@ public class Heros {
     private Location pos_in;
     private Inventaire inventaire;
 
+    private int vie = 100;
+    private int mana = 100;
+
     public Heros()  {
         image = Images.HEROS_E;
         inventaire = new Inventaire();
@@ -29,8 +32,8 @@ public class Heros {
             inventaire.ajouterElement(new PotionClef());
     }
 
-    public void utiliserObjet(Potion p) {
-        inventaire.supprimerElement(p);
+    public void utiliserObjet(int i) {
+        inventaire.utiliser(i);
     }
 
     public void changeImage(Direction dir) {
@@ -65,6 +68,30 @@ public class Heros {
 
     public Inventaire getInventaire() {
         return inventaire;
+    }
+
+    public int getVie() {
+        return vie;
+    }
+
+    public int getMana() {
+        return mana;
+    }
+
+    public void setVie(int vie) {
+        if(this.vie < 100) {
+            this.vie += vie;
+        }
+        if(this.vie > 100)
+            this.vie = 100;
+    }
+
+    public void setMana(int mana) {
+        if(this.mana < 100) {
+            this.mana += mana;
+        }
+        if(this.mana > 100)
+            this.mana = 100;
     }
 }
 

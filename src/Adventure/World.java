@@ -241,6 +241,11 @@ public class World extends JPanel {
         heros.changeImage(dir);
         paint(getGraphics());
     }
+
+
+    public Heros getHeros() {
+        return heros;
+    }
 }
 
 
