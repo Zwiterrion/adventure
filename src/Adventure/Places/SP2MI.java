@@ -1,6 +1,5 @@
 package Adventure.Places;
 
-import Adventure.Direction;
 import Adventure.Heros;
 import Adventure.ObjetsCarte.Sortie;
 

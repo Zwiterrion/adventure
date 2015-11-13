@@ -1,9 +1,9 @@
 package Adventure.ObjetsCarte;
 
 import Adventure.Images;
+import Adventure.Interface.Deplacable;
 
-
-public class Deplacable extends ObjetCarte  {
+public class MurDeplacable extends ObjetCarte implements Deplacable {
 
     @Override
     public void assignImage() {

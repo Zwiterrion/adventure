@@ -3,9 +3,6 @@ package Adventure.Places;
 import Adventure.Heros;
 import Adventure.ObjetsCarte.Sortie;
 
-import java.util.Iterator;
-import java.util.Map;
-
 
 public class Futuroscope extends Place {
 

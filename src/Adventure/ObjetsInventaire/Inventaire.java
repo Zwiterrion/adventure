@@ -2,6 +2,8 @@ package Adventure.ObjetsInventaire;
 
 import Adventure.Heros;
 import Adventure.Images;
+import Adventure.Runnable.RunnableMana;
+import Adventure.Runnable.RunnableVie;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,13 +19,19 @@ public class Inventaire extends JPanel {
     private int nbPotionMana = 0;
     private int nbClefs = 0;
 
-    private Heros heros;
+    private Heros heros;;
+
+    public RunnableVie runnableVie;
+    public RunnableMana runnableMana;
 
     public Inventaire(Heros h) {
         image = Images.INVENTAIRE;
         stock = new ArrayList<Potion>();
         this.heros = h;
         calculPotions();
+
+        runnableVie = new RunnableVie(heros);
+        runnableMana = new RunnableMana(heros);
     }
 
     @Override
@@ -95,22 +103,59 @@ public class Inventaire extends JPanel {
     public void supprimerElement(int i) {
 
         int a = 0;
-        while(a < stock.size()) {
+        boolean nonTrouve = true;
+        while(a < stock.size() && nonTrouve) {
             Potion p = stock.get(a);
             if(p instanceof PotionVie && i == 0) {
-                heros.setVie(p.value);
                 this.stock.remove(p);
+                nextThread(true);
+                nonTrouve = false;
             }
             if(p instanceof PotionMana && i == 1 ) {
-                heros.setMana(p.value);
                 this.stock.remove(p);
+                nextThread(false);
+                nonTrouve = false;
             }
             if(p instanceof PotionClef && i == 2) {
                 this.stock.remove(p);
+                nonTrouve = false;
             }
             a++;
         }
         calculPotions();
-        repaint();
+    }
+
+    public void nextThread(boolean lequel) {
+
+        Thread t;
+        if(lequel)
+            t = new Thread(runnableVie);
+        else
+            t = new Thread(runnableMana);
+
+        demarreAnimation(t);
+    }
+
+    public void demarreAnimation(Thread t) {
+        t.start();
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

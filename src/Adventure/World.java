@@ -1,8 +1,8 @@
 package Adventure;
 
 import Adventure.ObjetsCarte.*;
-import Adventure.Places.Place;
 import Adventure.Places.Futuroscope;
+import Adventure.Places.Place;
 import Adventure.Places.SP2MI;
 
 import javax.swing.*;
@@ -118,7 +118,7 @@ public class World extends JPanel {
                     mapObjects.put(locations[p.x][p.y], new Vide());
                     return true;
 
-                } else if (object instanceof Deplacable) {
+                } else if (object instanceof MurDeplacable) {
                     deplaceMur(p, dir, x, y);
                     return false;
 
@@ -145,7 +145,7 @@ public class World extends JPanel {
 
                 if (objectSol instanceof Herbe || objectSol instanceof Carrelage) {
 
-                    Deplacable w = (Deplacable) mapObjects.get(locations[positionWall.x][positionWall.y]);
+                    MurDeplacable w = (MurDeplacable) mapObjects.get(locations[positionWall.x][positionWall.y]);
                     mapObjects.put(locations[p.x][p.y], w);
 
                     mapObjects.put(locations[positionWall.x][positionWall.y], new Vide());

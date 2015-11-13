@@ -1,7 +1,6 @@
 package Adventure.ObjetsCarte;
 
 import Adventure.Images;
-import Adventure.Places.Place;
 
 /**
  * Created by Etienne on 27/09/15.

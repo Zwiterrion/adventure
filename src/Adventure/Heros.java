@@ -4,7 +4,11 @@ import Adventure.ObjetsCarte.Clef;
 import Adventure.ObjetsCarte.Mana;
 import Adventure.ObjetsCarte.ObjetCarte;
 import Adventure.ObjetsCarte.Vie;
-import Adventure.ObjetsInventaire.*;
+import Adventure.ObjetsInventaire.Inventaire;
+import Adventure.ObjetsInventaire.PotionClef;
+import Adventure.ObjetsInventaire.PotionMana;
+import Adventure.ObjetsInventaire.PotionVie;
+import Adventure.Runnable.RunnableEstEnVie;
 
 import java.awt.*;
 
@@ -15,6 +19,7 @@ public class Heros {
     private Location pos_in;
     private Inventaire inventaire;
     private World world;
+    private Color couleurVie = Color.GREEN;
 
     private int vie = 10;
     private int mana = 10;
@@ -23,6 +28,7 @@ public class Heros {
         image = Images.HEROS_E;
         inventaire = new Inventaire(this);
         this.world = w;
+        demarreThread();
     }
 
     public void ramasserObjet(ObjetCarte p) {
@@ -105,6 +111,19 @@ public class Heros {
 
     public World getWorld() {
         return world;
+    }
+
+    public void demarreThread() {
+        Thread t = new Thread(new RunnableEstEnVie(this));
+        t.start();
+    }
+
+    public Color getCouleurVie() {
+        return couleurVie;
+    }
+
+    public void setCouleurVie(Color couleurVie) {
+        this.couleurVie = couleurVie;
     }
 }
 

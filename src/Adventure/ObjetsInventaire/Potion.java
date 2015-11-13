@@ -1,8 +1,6 @@
 package Adventure.ObjetsInventaire;
 
 
-import java.awt.*;
-
 /**
  * Created by Etienne on 27/10/2015.
  */
