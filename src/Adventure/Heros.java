@@ -96,6 +96,10 @@ public class Heros {
         if(this.mana > 100)
             this.mana = 100;
     }
+
+    public World getWorld() {
+        return world;
+    }
 }
 
 
