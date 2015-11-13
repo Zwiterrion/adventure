@@ -5,18 +5,22 @@ import Adventure.Location;
 import Adventure.ObjetsCarte.*;
 import Adventure.World;
 
+import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.List;
 
 /**
  * Created by Etienne on 30/09/15.
  */
-public class Place {
+public abstract class Place {
 
     private int LEVEL_SOL[][];
     private int LEVEL_OBJECTS[][];
 
     private Hashtable<Location,ObjetCarte> mapObjects;
     private Hashtable<Location,ObjetCarte> mapSol;
+    protected List<Sortie> sorties;
+
     private String nom = "Place Basique";
 
     private Location locations[][];
@@ -27,12 +31,15 @@ public class Place {
         mapObjects = new Hashtable<Location, ObjetCarte>();
         mapSol = new Hashtable<Location, ObjetCarte>();
         locations = new Location[World.X_MAX][World.Y_MAX];
+        sorties = new ArrayList<Sortie>();
     }
 
     public void initialisation() {
         initLocations();
         chargementNiveau();
     }
+
+    public abstract void initSorties();
 
     public void initLocations() {
         for(int i=0; i< World.X_MAX; i++)
@@ -48,7 +55,7 @@ public class Place {
 
 
         for(int i=0; i< World.X_MAX;i++)
-            for(int j=0; j< World.Y_MAX; j++)
+            for (int j = 0; j < World.Y_MAX; j++)
                 creerObjet(i, j, LEVEL_OBJECTS[i][j]);
     }
 
@@ -77,8 +84,16 @@ public class Place {
             case 3 : mapObjects.put(locations[i][j], new Vie()); break;
             case 4 : mapObjects.put(locations[i][j], new Mana()); break;
             case 5 : mapObjects.put(locations[i][j], new Teleportation()); break;
-            case 6 : mapObjects.put(locations[i][j], new Sortie(true)); break;
-            case 7 : mapObjects.put(locations[i][j], new Sortie(false)); break;
+            case 6 :
+                Sortie s = new Sortie(true);
+                mapObjects.put(locations[i][j], s);
+                sorties.add(s);
+                break;
+            case 7 :
+                Sortie s2 = new Sortie(false);
+                mapObjects.put(locations[i][j], s2);
+                sorties.add(s2);
+                break;
             case 8 :
                 mapObjects.put(locations[i][j], new Vide());
                 heros.setPos_in(locations[i][j]);

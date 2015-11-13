@@ -42,7 +42,7 @@ public class World extends JPanel {
 
         annonce = new Annonce(SCREEN_SIZE);
 
-        initialisationNiveau();
+        initialisationNiveau(null);
     }
     @Override
     public void paint(Graphics g) {
@@ -102,7 +102,7 @@ public class World extends JPanel {
                     return true;
 
                 else if (object instanceof Sortie) {
-                    niveauSuivant(x, y, dir);
+                    niveauSuivant(x, y, dir, (Sortie)object);
                     return false;
 
                 } else if (object instanceof Mur || object instanceof Maison) {
@@ -166,13 +166,13 @@ public class World extends JPanel {
         }
     }
 
-    public void niveauSuivant(int x, int y, Direction dir) {
+    public void niveauSuivant(int x, int y, Direction dir, Sortie s) {
 
         deplacement(x, y, dir);
         attente(300);
         pageDeDescription();
         attente(1000);
-        initialisationNiveau();
+        initialisationNiveau(s);
         repaint();
     }
 
@@ -193,8 +193,15 @@ public class World extends JPanel {
         }
     }
 
-    public void initialisationNiveau() {
-        placeCourante = new SP2MI(heros);
+    public void initialisationNiveau(Sortie s) {
+        if(s == null)
+            placeCourante = new Futuroscope(heros);
+        else {
+            placeCourante = placeCorrespondante(s.getDestination());
+            placeCourante.setNom(s.getNomPlace());
+        }
+
+
         annonce.setAnnonce(placeCourante.getNom());
 
         mapObjects = placeCourante.getMapObjects();
@@ -203,6 +210,20 @@ public class World extends JPanel {
         locations = placeCourante.getLocations();
 
         heros.setPos_in(placeCourante.getHeros().getPos_in());
+    }
+
+    public Place placeCorrespondante(String s) {
+
+        if(s.equals("SP2MI"))
+            return new SP2MI(heros);
+        /*else if(s.equals("IFMI"))
+            return new IFMI(heros);
+        else if(s.equals("TP"))
+            return new TP(heros);
+        else if(s.equals("BU"))
+            return new BU(heros);*/
+        else
+            return new Futuroscope(heros);
     }
 
     public void deplacementHeros(int x, int y, Direction dir) {

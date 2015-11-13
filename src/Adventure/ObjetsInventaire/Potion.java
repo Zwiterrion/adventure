@@ -9,24 +9,16 @@ import java.awt.*;
 public abstract class Potion  {
 
     protected int value;
-    protected Image image;
-
-    public abstract void assign();
 
     public Potion() {}
 
     public Potion(int value) {
         this.value = value;
-        assign();
     }
 
     public boolean estVide() {
         if(value == 0)
             return true;
         return false;
-    }
-
-    public Image getImage() {
-        return image;
     }
 }

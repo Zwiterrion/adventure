@@ -19,8 +19,6 @@ public class Images {
     public static Image COIN_GAUCHE_BAS;
     public static Image COIN_GAUCHE_HAUT;
 
-    public static Image POTION_VIE;
-    public static Image POTION_MANA;
     public static Image INVENTAIRE;
 
     public static Image TOURELLE;
@@ -48,7 +46,7 @@ public class Images {
     public static void chargementImage() {
         try {
 
-            HERBE = ImageIO.read(new FileInputStream("res/parquet.png"));
+            HERBE = ImageIO.read(new FileInputStream("res/herbe.png"));
             HERBE_BAS_HAUT = ImageIO.read(new FileInputStream("res/herbeBas.png"));
             HERBE_DROITE_GAUCHE = ImageIO.read(new FileInputStream("res/herbeDroite.png"));
 
@@ -78,9 +76,6 @@ public class Images {
             SORTIE = ImageIO.read(new FileInputStream("res/sortie.png"));
             SORTIE2 = ImageIO.read(new FileInputStream("res/sortie2.png"));
 
-            POTION_VIE = ImageIO.read(new FileInputStream("res/potionVie.png"));
-            POTION_MANA = ImageIO.read(new FileInputStream("res/potionMana.png"));
-
             INVENTAIRE = ImageIO.read(new FileInputStream("res/inventaire.png"));
 
             CLEF = ImageIO.read(new FileInputStream("res/bombe.png"));
@@ -88,8 +83,8 @@ public class Images {
 
 
         } catch (IOException e) {
-            e.printStackTrace();
             System.err.println("Impossible de charger tout le contenu : Images.chargementImage()");
+            e.printStackTrace();
         }
     }
 
