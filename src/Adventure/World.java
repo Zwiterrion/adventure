@@ -95,8 +95,13 @@ public class World extends JPanel {
 
             ObjetCarte object = mapObjects.get(locations[p.x][p.y]);
             ObjetCarte objectSol = mapSol.get(locations[p.x][p.y]);
-
-            if(objectSol instanceof Herbe || objectSol instanceof Carrelage || objectSol instanceof Trap) {
+            
+            if(objectSol instanceof Trap){
+                heros.perdVie(100);
+              return true;
+            }
+            
+            if(objectSol instanceof Herbe || objectSol instanceof Carrelage) {
 
                 if (object instanceof Vide)
                     return true;

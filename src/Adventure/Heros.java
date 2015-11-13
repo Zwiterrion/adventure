@@ -88,6 +88,12 @@ public class Heros {
         if(this.vie > 100)
             this.vie = 100;
     }
+    
+    public void perdVie(int vie){
+        this.vie -= vie;
+        if(this.vie <= 0)
+            this.vie = 0;
+    }
 
     public void setMana(int mana) {
         if(this.mana < 100) {
