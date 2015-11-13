@@ -70,6 +70,7 @@ public abstract class Place {
             case 6: mapSol.put(locations[i][j], new Herbe(6)); break;
             case 7: mapSol.put(locations[i][j], new Vide());  break;
             case 8: mapSol.put(locations[i][j], new Carrelage()); break;
+            case 9 : mapSol.put(locations[i][j], new Trap());break;
 
             default:
                 mapSol.put(locations[i][j], new Herbe(0));
@@ -102,6 +103,7 @@ public abstract class Place {
             case 10 : mapObjects.put(locations[i][j], new Maison()); break;
             case 11 : mapObjects.put(locations[i][j], new Mur(1)); break;
             case 12 : mapObjects.put(locations[i][j], new Mur(2)); break;
+            
 
         }
     }

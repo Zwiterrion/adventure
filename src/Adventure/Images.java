@@ -10,6 +10,9 @@ import java.io.IOException;
  */
 public class Images {
 
+    public static Image TRAP;
+    
+    
     public static Image HERBE;
     public static Image HERBE_DROITE_GAUCHE;
     public static Image HERBE_BAS_HAUT;
@@ -80,6 +83,8 @@ public class Images {
 
             CLEF = ImageIO.read(new FileInputStream("res/bombe.png"));
             CARRELAGE = ImageIO.read(new FileInputStream("res/interieur.png"));
+            
+            TRAP = ImageIO.read(new FileInputStream("res/piege.png"));
 
 
         } catch (IOException e) {
