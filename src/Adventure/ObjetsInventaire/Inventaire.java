@@ -1,6 +1,8 @@
 package Adventure.ObjetsInventaire;
 
+import Adventure.Heros;
 import Adventure.Images;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -15,9 +17,12 @@ public class Inventaire extends JPanel {
     private int nbPotionMana = 0;
     private int nbClefs = 0;
 
-    public Inventaire() {
+    private Heros heros;
+
+    public Inventaire(Heros h) {
         image = Images.INVENTAIRE;
         stock = new ArrayList<Potion>();
+        this.heros = h;
         calculPotions();
     }
 
@@ -92,12 +97,17 @@ public class Inventaire extends JPanel {
         int a = 0;
         while(a < stock.size()) {
             Potion p = stock.get(a);
-            if(p instanceof PotionMana && i == 1 )
+            if(p instanceof PotionVie && i == 0) {
+                heros.setVie(p.value);
                 this.stock.remove(p);
-            if(p instanceof PotionVie && i == 0)
+            }
+            if(p instanceof PotionMana && i == 1 ) {
+                heros.setMana(p.value);
                 this.stock.remove(p);
-            if(p instanceof PotionClef && i == 2)
+            }
+            if(p instanceof PotionClef && i == 2) {
                 this.stock.remove(p);
+            }
             a++;
         }
         calculPotions();

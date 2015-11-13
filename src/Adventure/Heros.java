@@ -14,26 +14,29 @@ public class Heros {
     public Direction dir = Direction.DROITE;
     private Location pos_in;
     private Inventaire inventaire;
+    private World world;
 
-    private int vie = 100;
-    private int mana = 100;
+    private int vie = 10;
+    private int mana = 10;
 
-    public Heros()  {
+    public Heros(World w)  {
         image = Images.HEROS_E;
-        inventaire = new Inventaire();
+        inventaire = new Inventaire(this);
+        this.world = w;
     }
 
     public void ramasserObjet(ObjetCarte p) {
         if(p instanceof Vie)
-            inventaire.ajouterElement(new PotionVie(((Vie) p).getValue()));
+            inventaire.ajouterElement(new PotionVie(50));
         else if(p instanceof Mana)
-            inventaire.ajouterElement(new PotionMana(((Mana) p).getValue()));
+            inventaire.ajouterElement(new PotionMana(50));
         else if(p instanceof Clef)
             inventaire.ajouterElement(new PotionClef());
     }
 
     public void utiliserObjet(int i) {
         inventaire.utiliser(i);
+        world.repaint();
     }
 
     public void changeImage(Direction dir) {

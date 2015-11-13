@@ -37,7 +37,7 @@ public class World extends JPanel {
         SCREEN_SIZE = screen_size;
         TILE_SIZE = SCREEN_SIZE / X_MAX;
 
-        heros = new Heros();
+        heros = new Heros(this);
         ath = new UIutilisateur(heros);
 
         annonce = new Annonce(SCREEN_SIZE);
