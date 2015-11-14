@@ -1,11 +1,12 @@
 package Adventure.ObjetsCarte;
 
 import Adventure.Images;
+import Adventure.Interface.Fixe;
 
 /**
  * Created by Etienne on 27/09/15.
  */
-public class Sortie extends ObjetCarte {
+public class Sortie extends ObjetCarte implements Fixe {
 
     private boolean face;
     private String courante;

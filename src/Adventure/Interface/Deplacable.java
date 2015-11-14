@@ -5,5 +5,4 @@ package Adventure.Interface;
  */
 public interface Deplacable {
 
-
 }

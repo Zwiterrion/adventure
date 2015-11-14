@@ -1,11 +1,12 @@
 package Adventure.ObjetsCarte;
 
 import Adventure.Images;
+import Adventure.Interface.Fixe;
 
 /**
  * Created by Etienne on 27/09/15.
  */
-public class Mur extends ObjetCarte {
+public class Mur extends ObjetCarte implements Fixe {
 
     int face;
 

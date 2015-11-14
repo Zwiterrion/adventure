@@ -2,8 +2,9 @@ package Adventure.ObjetsCarte;
 
 
 import Adventure.Images;
+import Adventure.Interface.Fixe;
 
-public class Herbe extends ObjetCarte {
+public class Herbe extends ObjetCarte implements Fixe {
 
     int face;
 

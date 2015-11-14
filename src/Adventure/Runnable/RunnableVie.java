@@ -14,6 +14,8 @@ public class RunnableVie implements Runnable {
     private static final int MAX_CONCURRENT_THREADS = 1;
     private final Semaphore lock = new Semaphore(MAX_CONCURRENT_THREADS, true);
 
+    private int potion;
+
     public RunnableVie(Heros h) {
         this.heros = h;
     }
@@ -27,19 +29,22 @@ public class RunnableVie implements Runnable {
             e.printStackTrace();
         }
 
-        int potion = 50;
 
         while(potion > 0) {
-            heros.setVie(5);
+            heros.setVie(1);
             heros.getWorld().repaint();
-            potion -= 5;
+            potion -= 1;
             try {
-                Thread.sleep(250);
+                Thread.sleep(80);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
 
         lock.release();
+    }
+
+    public void setPotion(int potion) {
+        this.potion = potion;
     }
 }

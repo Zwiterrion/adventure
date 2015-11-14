@@ -84,7 +84,6 @@ public abstract class Place {
             case 2 : mapObjects.put(locations[i][j], new MurDeplacable()); break;
             case 3 : mapObjects.put(locations[i][j], new Vie()); break;
             case 4 : mapObjects.put(locations[i][j], new Mana()); break;
-            case 5 : mapObjects.put(locations[i][j], new Teleportation()); break;
             case 6 :
                 Sortie s = new Sortie(true);
                 mapObjects.put(locations[i][j], s);

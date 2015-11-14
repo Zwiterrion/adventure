@@ -1,8 +1,8 @@
 package Adventure;
 
+import Adventure.Interface.Ramassable;
 import Adventure.ObjetsCarte.Clef;
 import Adventure.ObjetsCarte.Mana;
-import Adventure.ObjetsCarte.ObjetCarte;
 import Adventure.ObjetsCarte.Vie;
 import Adventure.ObjetsInventaire.Inventaire;
 import Adventure.ObjetsInventaire.PotionClef;
@@ -17,12 +17,13 @@ public class Heros {
     private Image image;
     public Direction dir = Direction.DROITE;
     private Location pos_in;
+
     private Inventaire inventaire;
     private World world;
-    private Color couleurVie = Color.GREEN;
 
-    private int vie = 10;
-    private int mana = 10;
+    private Color couleurVie = Color.GREEN;
+    private int vie = 100;
+    private int mana = 60;
 
     public Heros(World w)  {
         image = Images.HEROS_E;
@@ -31,11 +32,11 @@ public class Heros {
         demarreThread();
     }
 
-    public void ramasserObjet(ObjetCarte p) {
+    public void ramasserObjet(Ramassable p) {
         if(p instanceof Vie)
-            inventaire.ajouterElement(new PotionVie(50));
+            inventaire.ajouterElement(new PotionVie(p.quantite()));
         else if(p instanceof Mana)
-            inventaire.ajouterElement(new PotionMana(50));
+            inventaire.ajouterElement(new PotionMana(p.quantite()));
         else if(p instanceof Clef)
             inventaire.ajouterElement(new PotionClef());
     }

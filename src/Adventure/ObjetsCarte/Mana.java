@@ -1,17 +1,13 @@
 package Adventure.ObjetsCarte;
 
 import Adventure.Images;
+import Adventure.Interface.Fixe;
+import Adventure.Interface.Ramassable;
 
-public class Mana extends ObjetCarte {
-
-    private int value = 100;
+public class Mana extends ObjetCarte implements Ramassable,Fixe {
 
     @Override
     public void assignImage() {
         image = Images.MANA;
-    }
-
-    public int getValue() {
-        return value;
     }
 }

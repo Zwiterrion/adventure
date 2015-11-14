@@ -1,18 +1,18 @@
 package Adventure.ObjetsCarte;
 
 import Adventure.Images;
+import Adventure.Interface.Fixe;
+import Adventure.Interface.Ramassable;
 
-public class Vie extends ObjetCarte {
-
-    private int value = 100;
+public class Vie extends ObjetCarte implements Ramassable,Fixe {
 
     @Override
     public void assignImage() {
         image = Images.VIE;
     }
 
-
-    public int getValue() {
-        return value;
+    @Override
+    public int quantite() {
+        return 40;
     }
 }

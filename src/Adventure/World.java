@@ -1,5 +1,9 @@
 package Adventure;
 
+import Adventure.Interface.Deplacable;
+import Adventure.Interface.Fixe;
+import Adventure.Interface.Piege;
+import Adventure.Interface.Ramassable;
 import Adventure.ObjetsCarte.*;
 import Adventure.Places.Futuroscope;
 import Adventure.Places.Place;
@@ -91,48 +95,36 @@ public class World extends JPanel {
 
     public Boolean videOuPas(Location p, Direction dir, int x, int y) {
 
-        if ((p.x >= 0 && p.x < X_MAX) && (p.y >= 0 && p.y < Y_MAX)) {
+        ObjetCarte object = mapObjects.get(locations[p.x][p.y]);
+        ObjetCarte objectSol = mapSol.get(locations[p.x][p.y]);
 
-            ObjetCarte object = mapObjects.get(locations[p.x][p.y]);
-            ObjetCarte objectSol = mapSol.get(locations[p.x][p.y]);
-            
-            if(objectSol instanceof Trap){
-                heros.perdVie(100);
-              return true;
+        if(objectSol instanceof Fixe) {
+
+            if(objectSol instanceof Piege) {
+                heros.perdVie(((Piege) objectSol).degat());
+                return true;
             }
-            
-            if(objectSol instanceof Herbe || objectSol instanceof Carrelage) {
-
-                if (object instanceof Vide)
-                    return true;
-
-                else if (object instanceof Sortie) {
-                    niveauSuivant(x, y, dir, (Sortie)object);
-                    return false;
-
-                } else if (object instanceof Mur || object instanceof Maison) {
-                    return false;
-
-                } else if (object instanceof Vie || object instanceof Mana || object instanceof Clef) {
-                    heros.ramasserObjet(object);
-                    mapObjects.put(locations[p.x][p.y], new Vide());
-                    return true;
-
-                } else if (object instanceof MurDeplacable) {
-                    deplaceMur(p, dir, x, y);
-                    return false;
-
-                } else
-                    return true;
+            else if (object instanceof Sortie) {
+                niveauSuivant(x, y, dir, (Sortie)object);
+                return false;
+            }
+            else if (object instanceof Ramassable) {
+                heros.ramasserObjet((Ramassable)object);
+                mapObjects.put(locations[p.x][p.y], new Vide());
+                return true;
+            }
+            else if (object instanceof Deplacable) {
+                deplaceObjet(p, dir, x, y);
+                return false;
             }
             else
-                return false;
+                return !(object instanceof Fixe);
         }
         else
             return false;
     }
 
-    public void deplaceMur(Location positionWall, Direction dir, int x, int y) {
+    public void deplaceObjet(Location positionWall, Direction dir, int x, int y) {
 
         Location p = new Location(positionWall.x + x,positionWall.y + y);
 
@@ -143,10 +135,10 @@ public class World extends JPanel {
 
             if(object instanceof Vide) {
 
-                if (objectSol instanceof Herbe || objectSol instanceof Carrelage) {
+                if (objectSol instanceof Fixe) {
 
-                    MurDeplacable w = (MurDeplacable) mapObjects.get(locations[positionWall.x][positionWall.y]);
-                    mapObjects.put(locations[p.x][p.y], w);
+                    Deplacable w = (Deplacable) mapObjects.get(locations[positionWall.x][positionWall.y]);
+                    mapObjects.put(locations[p.x][p.y], (ObjetCarte)w);
 
                     mapObjects.put(locations[positionWall.x][positionWall.y], new Vide());
 
@@ -155,8 +147,7 @@ public class World extends JPanel {
                     heros.changeImage(dir);
                     repaint();
                 }
-
-                if (objectSol instanceof Vide) {
+                else {
 
                     mapSol.put(locations[p.x][p.y], new Herbe(-1));
 
@@ -235,8 +226,9 @@ public class World extends JPanel {
 
         Location nextPos = new Location(heros.getPos_in().x + x, heros.getPos_in().y + y);
 
-        if (videOuPas(nextPos, dir, x, y))
-            deplacement(x,y,dir);
+        if ((nextPos.x >= 0 && nextPos.x < X_MAX) && (nextPos.y >= 0 && nextPos.y < Y_MAX))
+            if (videOuPas(nextPos, dir, x, y))
+                deplacement(x,y,dir);
     }
 
     public void deplacement(int x, int y, Direction dir) {
@@ -246,7 +238,6 @@ public class World extends JPanel {
         heros.changeImage(dir);
         paint(getGraphics());
     }
-
 
     public Heros getHeros() {
         return heros;

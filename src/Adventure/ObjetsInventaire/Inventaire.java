@@ -107,13 +107,13 @@ public class Inventaire extends JPanel {
         while(a < stock.size() && nonTrouve) {
             Potion p = stock.get(a);
             if(p instanceof PotionVie && i == 0) {
+                nextThread(true, p);
                 this.stock.remove(p);
-                nextThread(true);
                 nonTrouve = false;
             }
             if(p instanceof PotionMana && i == 1 ) {
+                nextThread(false, p);
                 this.stock.remove(p);
-                nextThread(false);
                 nonTrouve = false;
             }
             if(p instanceof PotionClef && i == 2) {
@@ -125,13 +125,17 @@ public class Inventaire extends JPanel {
         calculPotions();
     }
 
-    public void nextThread(boolean lequel) {
+    public void nextThread(boolean lequel, Potion p) {
 
         Thread t;
-        if(lequel)
+        if(lequel) {
+            runnableVie.setPotion(p.value);
             t = new Thread(runnableVie);
-        else
+        }
+        else {
+            runnableMana.setPotion(p.value);
             t = new Thread(runnableMana);
+        }
 
         demarreAnimation(t);
     }
