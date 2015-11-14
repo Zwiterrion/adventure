@@ -84,6 +84,7 @@ public abstract class Place {
             case 2 : mapObjects.put(locations[i][j], new MurDeplacable()); break;
             case 3 : mapObjects.put(locations[i][j], new Vie()); break;
             case 4 : mapObjects.put(locations[i][j], new Mana()); break;
+            case 5 : mapObjects.put(locations[i][j], new Bureau(0)); break;
             case 6 :
                 Sortie s = new Sortie(true);
                 mapObjects.put(locations[i][j], s);
@@ -102,8 +103,9 @@ public abstract class Place {
             case 10 : mapObjects.put(locations[i][j], new Maison()); break;
             case 11 : mapObjects.put(locations[i][j], new Mur(1)); break;
             case 12 : mapObjects.put(locations[i][j], new Mur(2)); break;
-            
-
+            case 13 : mapObjects.put(locations[i][j], new Bureau(1)); break;
+            case 14 : mapObjects.put(locations[i][j], new Mur(3)); break;
+            case 15 : mapObjects.put(locations[i][j], new Mur(4)); break;
         }
     }
 

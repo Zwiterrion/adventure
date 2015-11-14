@@ -21,7 +21,11 @@ public class Mur extends ObjetCarte implements Fixe {
             image = Images.MUR;
         else if(this.face == 1)
             image = Images.MUR_BIS;
-        else
+        else if(this.face == 2)
             image = Images.MUR_ANGLE;
+        else if(this.face == 3)
+            image = Images.MUR_PALISSADE;
+        else
+            image = Images.TABLEAU;
     }
 }

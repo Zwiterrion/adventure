@@ -136,28 +136,16 @@ public class World extends JPanel {
             if(object instanceof Vide) {
 
                 if (objectSol instanceof Fixe) {
-
                     Deplacable w = (Deplacable) mapObjects.get(locations[positionWall.x][positionWall.y]);
                     mapObjects.put(locations[p.x][p.y], (ObjetCarte)w);
-
-                    mapObjects.put(locations[positionWall.x][positionWall.y], new Vide());
-
-                    heros.setPos_in(positionWall);
-
-                    heros.changeImage(dir);
-                    repaint();
                 }
-                else {
-
+                else
                     mapSol.put(locations[p.x][p.y], new Herbe(-1));
 
-                    mapObjects.put(locations[positionWall.x][positionWall.y], new Vide());
-
-                    heros.setPos_in(positionWall);
-
-                    heros.changeImage(dir);
-                    repaint();
-                }
+                mapObjects.put(locations[positionWall.x][positionWall.y], new Vide());
+                heros.setPos_in(positionWall);
+                heros.changeImage(dir);
+                repaint();
             }
         }
     }
@@ -243,13 +231,3 @@ public class World extends JPanel {
         return heros;
     }
 }
-
-
-
-
-
-
-
-
-
-

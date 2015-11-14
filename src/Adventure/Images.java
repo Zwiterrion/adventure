@@ -10,9 +10,7 @@ import java.io.IOException;
  */
 public class Images {
 
-    public static Image TRAP;
-    
-    
+    public static Image CARRELAGE;
     public static Image HERBE;
     public static Image HERBE_DROITE_GAUCHE;
     public static Image HERBE_BAS_HAUT;
@@ -23,6 +21,9 @@ public class Images {
     public static Image COIN_GAUCHE_HAUT;
 
     public static Image INVENTAIRE;
+    public static Image VIE;
+    public static Image MANA;
+    public static Image CLEF;
 
     public static Image TOURELLE;
 
@@ -34,17 +35,19 @@ public class Images {
     public static Image MUR;
     public static Image MUR_BIS;
     public static Image MUR_ANGLE;
+    public static Image MUR_PALISSADE;
     public static Image MUR_BOUGEABLE;
-
-    public static Image VIE;
-    public static Image MANA;
 
     public static Image TELEPORTATION;
     public static Image SORTIE;
     public static Image SORTIE2;
 
-    public static Image CLEF;
-    public static Image CARRELAGE;
+    public static Image BUREAU;
+    public static Image BUREAU_BIS;
+
+    public static Image TRAP;
+
+    public static Image TABLEAU;
 
     public static void chargementImage() {
         try {
@@ -65,12 +68,12 @@ public class Images {
             HEROS_E = Toolkit.getDefaultToolkit().createImage("res/droite.png");
             HEROS_O = ImageIO.read(new FileInputStream("res/gauche.png"));
 
-            //MUR = ImageIO.read(new FileInputStream("res/rocher.png"));
             MUR = ImageIO.read(new FileInputStream("res/mur.png"));
             MUR_BIS = ImageIO.read(new FileInputStream("res/murBis.png"));
             MUR_ANGLE = ImageIO.read(new FileInputStream("res/murAngle.png"));
 
             MUR_BOUGEABLE = ImageIO.read(new FileInputStream("res/bloc.png"));
+            MUR_PALISSADE = ImageIO.read(new FileInputStream("res/murPalissade.png"));
 
             VIE = ImageIO.read(new FileInputStream("res/vie.png"));
             MANA = ImageIO.read(new FileInputStream("res/mana.png"));
@@ -85,6 +88,11 @@ public class Images {
             CARRELAGE = ImageIO.read(new FileInputStream("res/interieur.png"));
             
             TRAP = ImageIO.read(new FileInputStream("res/piege.png"));
+
+            BUREAU = ImageIO.read(new FileInputStream("res/bureau.png"));
+            BUREAU_BIS = ImageIO.read(new FileInputStream("res/bureauBis.png"));
+
+            TABLEAU = ImageIO.read(new FileInputStream("res/tableau.png"));
 
 
         } catch (IOException e) {
