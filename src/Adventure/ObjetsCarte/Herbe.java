@@ -1,43 +1,48 @@
 package Adventure.ObjetsCarte;
 
 
+import Adventure.Direction;
 import Adventure.Images;
 import Adventure.Interface.Fixe;
 
 public class Herbe extends ObjetCarte implements Fixe {
 
-    int face;
-
-    public Herbe(int i) {
-        super();
-        this.face = i;
-        assignImage();
+    public Herbe(Direction d) {
+        super(d);
     }
 
     @Override
-    public void assignImage() {
-        switch (face) {
-            case 0:
+    public void assigneImage() {
+        switch (dir) {
+            case AUCUNE:
                 image = Images.HERBE;
                 break;
-            case 1:
-                image = Images.HERBE_BAS_HAUT;
+            case SUD:
+                image = Images.HERBE_SUD_NORD;
                 break;
-            case 2:
-                image = Images.HERBE_DROITE_GAUCHE;
+            case NORD:
+                image = Images.HERBE_SUD_NORD;
                 break;
-            case 3:
-                image = Images.COIN_DROITE_BAS;
+            case EST:
+                image = Images.HERBE_EST_OUEST;
                 break;
-            case 4:
-                image = Images.COIN_DROITE_HAUT;
+            case OUEST:
+                image = Images.HERBE_EST_OUEST;
                 break;
-            case 5:
-                image = Images.COIN_GAUCHE_BAS;
+            case NORD_EST:
+                image = Images.HERBE_NORD_EST;
                 break;
-            case 6:
-                image = Images.COIN_GAUCHE_HAUT;
+            case NORD_OUEST:
+                image = Images.HERBE_NORD_OUEST;
                 break;
+            case SUD_EST:
+                image = Images.HERBE_NORD_EST;
+                break;
+            case SUD_OUEST:
+                image = Images.HERBE_SUD_EST;
+                break;
+            default:
+                image = Images.HERBE;
         }
     }
 }

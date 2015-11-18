@@ -7,7 +7,7 @@ import Adventure.Interface.Ramassable;
 public class Vie extends ObjetCarte implements Ramassable, Fixe {
 
     @Override
-    public void assignImage() {
+    public void assigneImage() {
         image = Images.VIE;
     }
 

@@ -7,7 +7,7 @@ package Adventure.ObjetsCarte;
 public class Vide extends ObjetCarte {
 
     @Override
-    public void assignImage() {
+    public void assigneImage() {
         image = null;
     }
 }

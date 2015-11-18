@@ -1,9 +1,8 @@
 package Adventure.Places;
 
-import Adventure.Heros;
+import Adventure.*;
 import Adventure.ObjetsCarte.*;
-import Adventure.Position;
-import Adventure.World;
+import javafx.util.Pair;
 
 import java.util.ArrayList;
 import java.util.Hashtable;
@@ -12,8 +11,8 @@ import java.util.List;
 
 public abstract class Place {
 
-    private int LEVEL_SOL[][];
-    private int LEVEL_OBJECTS[][];
+    private Tuple LEVEL_SOL[][];
+    private Tuple LEVEL_OBJECTS[][];
 
     private Hashtable<Position, ObjetCarte> mapObjects;
     private Hashtable<Position, ObjetCarte> mapSol;
@@ -48,112 +47,48 @@ public abstract class Place {
 
     public void chargementNiveau() {
         for (int i = 0; i < World.X_MAX; i++)
-            for (int j = 0; j < World.Y_MAX; j++)
+            for (int j = 0; j < World.Y_MAX; j++) {
                 creerSol(i, j, LEVEL_SOL[i][j]);
-
-
-        for (int i = 0; i < World.X_MAX; i++)
-            for (int j = 0; j < World.Y_MAX; j++)
                 creerObjet(i, j, LEVEL_OBJECTS[i][j]);
+            }
     }
 
-    public void creerSol(int i, int j, int num) {
-        switch (num) {
-            case 0: mapSol.put(positions[i][j], new Herbe(0)); break;
-            case 1:
-                mapSol.put(positions[i][j], new Herbe(1));
-                break;
-            case 2:
-                mapSol.put(positions[i][j], new Herbe(2));
-                break;
-            case 3:
-                mapSol.put(positions[i][j], new Herbe(3));
-                break;
-            case 4:
-                mapSol.put(positions[i][j], new Herbe(4));
-                break;
-            case 5:
-                mapSol.put(positions[i][j], new Herbe(5));
-                break;
-            case 6:
-                mapSol.put(positions[i][j], new Herbe(6));
-                break;
-            case 7:
-                mapSol.put(positions[i][j], new Vide());
-                break;
-            case 8:
-                mapSol.put(positions[i][j], new Carrelage());
-                break;
-            case 9:
-                mapSol.put(positions[i][j], new Trap());
-                break;
-            case 10:
-                mapSol.put(positions[i][j], new Beton());
-                break;
+    public void creerSol(int i, int j, Tuple num) {
 
-            default:
-                mapSol.put(positions[i][j], new Herbe(0));
+        switch (num.type) {
+            case 0: mapSol.put(positions[i][j], new Herbe(num.dir)); break;
+            case 1: mapSol.put(positions[i][j], new Vide()); break;
+            case 2: mapSol.put(positions[i][j], new Carrelage()); break;
+            case 3: mapSol.put(positions[i][j], new Trap()); break;
+            case 4: mapSol.put(positions[i][j], new Beton()); break;
+            default: mapSol.put(positions[i][j], new Beton());
         }
     }
 
-    public void creerObjet(int i, int j, int num) {
-        switch (num) {
-            case 0:
-                mapObjects.put(positions[i][j], new Vide());
-                break;
-            case 1:
-                mapObjects.put(positions[i][j], new Mur(0));
-                break;
-            case 2:
-                mapObjects.put(positions[i][j], new MurDeplacable());
-                break;
-            case 3:
-                mapObjects.put(positions[i][j], new Vie());
-                break;
-            case 4:
-                mapObjects.put(positions[i][j], new Mana());
-                break;
-            case 5:
-                mapObjects.put(positions[i][j], new Bureau(0));
-                break;
+    public void creerObjet(int i, int j, Tuple num) {
+
+        switch (num.type) {
+            case 0: mapObjects.put(positions[i][j], new Vide());break;
+            case 1: mapObjects.put(positions[i][j], new Mur(num.dir)); break;
+            case 2: mapObjects.put(positions[i][j], new MurDeplacable(num.dir)); break;
+            case 3: mapObjects.put(positions[i][j], new Vie()); break;
+            case 4: mapObjects.put(positions[i][j], new Mana()); break;
+            case 5: mapObjects.put(positions[i][j], new Bureau(num.dir)); break;
             case 6:
-                Sortie s = new Sortie(true);
+                Sortie s = new Sortie(num.dir);
                 mapObjects.put(positions[i][j], s);
                 sorties.add(s);
                 break;
             case 7:
-                Sortie s2 = new Sortie(false);
-                mapObjects.put(positions[i][j], s2);
-                sorties.add(s2);
-                break;
-            case 8:
                 mapObjects.put(positions[i][j], new Vide());
                 heros.setPos_in(positions[i][j]);
                 break;
-            case 9:
-                mapObjects.put(positions[i][j], new Clef());
-                break;
-            case 10:
-                mapObjects.put(positions[i][j], new Maison());
-                break;
-            case 11:
-                mapObjects.put(positions[i][j], new Mur(1));
-                break;
-            case 12:
-                mapObjects.put(positions[i][j], new Mur(2));
-                break;
-            case 13:
-                mapObjects.put(positions[i][j], new Bureau(1));
-                break;
-            case 14:
-                mapObjects.put(positions[i][j], new Mur(3));
-                break;
-            case 15: mapObjects.put(positions[i][j], new Mur(4)); break;
-            case 16: mapObjects.put(positions[i][j], new Etagere(0)); break;
-            case 17: mapObjects.put(positions[i][j], new Etagere(1));break;
-            case 18: mapObjects.put(positions[i][j], new Etagere(2));break;
-
-            case 19: mapObjects.put(positions[i][j], new Tree());break;
+            case 8: mapObjects.put(positions[i][j], new Clef()); break;
+            case 9: mapObjects.put(positions[i][j], new Maison()); break;
+            case 10: mapObjects.put(positions[i][j], new Etagere(num.dir)); break;
+            case 11: mapObjects.put(positions[i][j], new Tree());break;
+            case 12: mapObjects.put(positions[i][j], new Tableau());break;
+            default: mapObjects.put(positions[i][j], new Vide());break;
 
         }
     }
@@ -182,11 +117,11 @@ public abstract class Place {
         this.nom = nom;
     }
 
-    public void setLEVEL_SOL(int[][] LEVEL_SOL) {
+    public void setLEVEL_SOL(Tuple[][] LEVEL_SOL) {
         this.LEVEL_SOL = LEVEL_SOL;
     }
 
-    public void setLEVEL_OBJECTS(int[][] LEVEL_OBJECTS) {
+    public void setLEVEL_OBJECTS(Tuple[][] LEVEL_OBJECTS) {
         this.LEVEL_OBJECTS = LEVEL_OBJECTS;
     }
 }

@@ -9,13 +9,13 @@ public class Images {
 
     public static Image CARRELAGE;
     public static Image HERBE;
-    public static Image HERBE_DROITE_GAUCHE;
-    public static Image HERBE_BAS_HAUT;
+    public static Image HERBE_EST_OUEST;
+    public static Image HERBE_SUD_NORD;
 
-    public static Image COIN_DROITE_BAS;
-    public static Image COIN_DROITE_HAUT;
-    public static Image COIN_GAUCHE_BAS;
-    public static Image COIN_GAUCHE_HAUT;
+    public static Image HERBE_SUD_EST;
+    public static Image HERBE_NORD_EST;
+    public static Image HERBE_SUD_OUEST;
+    public static Image HERBE_NORD_OUEST;
 
     public static Image INVENTAIRE;
     public static Image VIE;
@@ -58,13 +58,13 @@ public class Images {
         try {
 
             HERBE = ImageIO.read(new FileInputStream("res/herbe.png"));
-            HERBE_BAS_HAUT = ImageIO.read(new FileInputStream("res/herbeBas.png"));
-            HERBE_DROITE_GAUCHE = ImageIO.read(new FileInputStream("res/herbeDroite.png"));
+            HERBE_SUD_NORD = ImageIO.read(new FileInputStream("res/herbeDroite.png"));
+            HERBE_EST_OUEST = ImageIO.read(new FileInputStream("res/herbeBas.png"));
 
-            COIN_DROITE_BAS = ImageIO.read(new FileInputStream("res/coinDroiteBas.png"));
-            COIN_DROITE_HAUT = ImageIO.read(new FileInputStream("res/coinDroiteHaut.png"));
-            COIN_GAUCHE_BAS = ImageIO.read(new FileInputStream("res/coinGaucheBas.png"));
-            COIN_GAUCHE_HAUT = ImageIO.read(new FileInputStream("res/coinGaucheHaut.png"));
+            HERBE_SUD_EST = ImageIO.read(new FileInputStream("res/coinDroiteBas.png"));
+            HERBE_NORD_EST = ImageIO.read(new FileInputStream("res/coinDroiteHaut.png"));
+            HERBE_SUD_OUEST = ImageIO.read(new FileInputStream("res/coinGaucheBas.png"));
+            HERBE_NORD_OUEST = ImageIO.read(new FileInputStream("res/coinGaucheHaut.png"));
 
             TOURELLE = ImageIO.read(new FileInputStream("res/maison.png"));
 
@@ -103,10 +103,8 @@ public class Images {
             ETAGERE_BIS = ImageIO.read(new FileInputStream("res/etagere_bis.png"));
             ETAGERE_ANGLE = ImageIO.read(new FileInputStream("res/etagere_angle.png"));
 
-            TREE = ImageIO.read(new FileInputStream("res/tree.png"));
-
             BETON = ImageIO.read(new FileInputStream("res/beton.png"));
-
+           // TREE = ImageIO.read(new FileInputStream("res/tree.png"));
 
         } catch (IOException e) {
             System.err.println("Impossible de charger tout le contenu : Images.chargementImage()");

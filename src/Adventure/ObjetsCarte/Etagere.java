@@ -1,24 +1,20 @@
 package Adventure.ObjetsCarte;
 
+import Adventure.Direction;
 import Adventure.Images;
-import Adventure.Interface.Deplacable;
 import Adventure.Interface.Fixe;
 
 public class Etagere extends ObjetCarte implements Fixe {
 
-    private int face;
-
-    public Etagere(int face) {
-        super();
-        this.face = face;
-        assignImage();
+    public Etagere(Direction d) {
+        super(d);
     }
 
     @Override
-    public void assignImage() {
-        if (face == 0)
+    public void assigneImage() {
+        if(dir == Direction.SUD || dir == Direction.NORD)
             image = Images.ETAGERE;
-        else if( face == 1)
+        else if (dir == Direction.EST || dir == Direction.OUEST)
             image = Images.ETAGERE_BIS;
         else
             image = Images.ETAGERE_ANGLE;

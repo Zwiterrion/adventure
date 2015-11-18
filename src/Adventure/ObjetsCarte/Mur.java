@@ -1,32 +1,38 @@
 package Adventure.ObjetsCarte;
 
+import Adventure.Direction;
 import Adventure.Images;
 import Adventure.Interface.Fixe;
 
-/**
- * Created by Etienne on 27/09/15.
- */
 public class Mur extends ObjetCarte implements Fixe {
 
-    int face;
-
-    public Mur(int f) {
-        super();
-        this.face = f;
-        assignImage();
+    public Mur(Direction d) {
+        super(d);
     }
 
     @Override
-    public void assignImage() {
-        if (this.face == 0)
-            image = Images.MUR;
-        else if (this.face == 1)
-            image = Images.MUR_BIS;
-        else if (this.face == 2)
-            image = Images.MUR_ANGLE;
-        else if (this.face == 3)
-            image = Images.MUR_PALISSADE;
-        else
-            image = Images.TABLEAU;
+    public void assigneImage() {
+        switch (dir) {
+            case NORD:
+                image = Images.MUR;
+                break;
+            case SUD:
+                image = Images.MUR;
+                break;
+            case EST:
+                image = Images.MUR_BIS;
+                break;
+            case OUEST:
+                image = Images.MUR_BIS;
+                break;
+            case NORD_EST:
+                image = Images.MUR_ANGLE;
+                break;
+            case AUCUNE:
+                image = Images.MUR_PALISSADE;
+                break;
+            default:
+                image = Images.MUR_PALISSADE;
+        }
     }
 }

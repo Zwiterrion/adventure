@@ -7,7 +7,7 @@ import Adventure.Interface.Fixe;
 public class Carrelage extends ObjetCarte implements Fixe {
 
     @Override
-    public void assignImage() {
+    public void assigneImage() {
         image = Images.CARRELAGE;
     }
 }

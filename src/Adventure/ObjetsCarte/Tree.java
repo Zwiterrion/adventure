@@ -7,7 +7,7 @@ public class Tree extends ObjetCarte implements Fixe {
 
 
     @Override
-    public void assignImage() {
+    public void assigneImage() {
         image = Images.TREE;
     }
 }

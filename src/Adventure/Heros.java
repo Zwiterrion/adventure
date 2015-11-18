@@ -15,7 +15,7 @@ import java.awt.*;
 public class Heros {
 
     private Image image;
-    public Direction dir = Direction.DROITE;
+    public Direction dir = Direction.EST;
     private Position pos_in;
 
     private Inventaire inventaire;
@@ -49,16 +49,16 @@ public class Heros {
     public void changeImage(Direction dir) {
         this.dir = dir;
         switch (dir) {
-            case HAUT:
+            case NORD:
                 image = Images.HEROS_N;
                 break;
-            case DROITE:
+            case EST:
                 image = Images.HEROS_E;
                 break;
-            case BAS:
+            case SUD:
                 image = Images.HEROS_S;
                 break;
-            case GAUCHE:
+            case OUEST:
                 image = Images.HEROS_O;
                 break;
         }

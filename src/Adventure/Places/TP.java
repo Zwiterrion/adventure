@@ -1,42 +1,21 @@
 package Adventure.Places;
 
+import Adventure.Direction;
 import Adventure.Heros;
+import Adventure.LecteurNiveau;
 import Adventure.ObjetsCarte.Sortie;
+import javafx.util.Pair;
 
 /**
  * Created by Etienne on 10/11/2015.
  */
 public class TP extends Place {
 
-    private int LEVEL_SOL[][] = {
-            {8, 8, 8, 8, 8, 8, 8, 8, 8, 8},
-            {8, 8, 8, 8, 8, 8, 8, 8, 8, 8},
-            {8, 8, 8, 8, 8, 8, 8, 8, 8, 8},
-            {8, 8, 8, 8, 8, 8, 8, 8, 8, 8},
-            {8, 8, 8, 8, 8, 8, 8, 8, 8, 8},
-            {8, 8, 8, 8, 8, 8, 8, 8, 8, 8},
-            {8, 8, 8, 8, 8, 9, 8, 8, 8, 8},
-            {8, 8, 8, 8, 8, 8, 8, 8, 8, 8},
-            {8, 8, 8, 8, 8, 8, 8, 8, 8, 8},
-            {8, 8, 8, 8, 8, 8, 8, 8, 8, 8}};
-
-    private int LEVEL_OBJECTS[][] = {
-            {1, 1, 1, 1, 1, 1, 1, 1, 1, 12},
-            {0, 0, 0, 0, 3, 3, 0, 0, 0, 11},
-            {6, 8, 0, 0, 0, 4, 4, 0, 0, 11},
-            {0, 0, 5, 0, 13, 0, 5, 9, 0, 14},
-            {0, 0, 13, 0, 13, 0, 5, 0, 0, 14},
-            {0, 0, 13, 0, 5, 0, 5, 0, 0, 15},
-            {0, 0, 5, 0, 13, 0, 13, 0, 0, 14},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 11},
-            {0, 0, 3, 0, 0, 0, 0, 0, 0, 11},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 11}};
-
-
     public TP(Heros h) {
         super(h);
-        setLEVEL_OBJECTS(LEVEL_OBJECTS);
-        setLEVEL_SOL(LEVEL_SOL);
+        LecteurNiveau l = new LecteurNiveau("tp");
+        setLEVEL_OBJECTS(l.getLEVEL_OBJETS());
+        setLEVEL_SOL(l.getLEVEL_SOL());
         initialisation();
         setNom("SALLE TP");
         initSorties();

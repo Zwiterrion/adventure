@@ -1,27 +1,23 @@
 package Adventure.ObjetsCarte;
 
+import Adventure.Direction;
 import Adventure.Images;
 import Adventure.Interface.Fixe;
 
-/**
- * Created by Etienne on 27/09/15.
- */
+
 public class Sortie extends ObjetCarte implements Fixe {
 
-    private boolean face;
     private String courante;
     private String destination;
 
-    public Sortie(boolean i) {
-        super();
-        this.face = i;
-        assignImage();
+    public Sortie(Direction d) {
+        super(d);
     }
 
     @Override
-    public void assignImage() {
-        if (face)
-            image = Images.SORTIE;
+    public void assigneImage() {
+        if (dir == Direction.NORD || dir == Direction.SUD)
+                image = Images.SORTIE;
         else
             image = Images.SORTIE2;
     }

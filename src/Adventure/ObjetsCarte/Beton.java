@@ -6,7 +6,7 @@ import Adventure.Interface.Fixe;
 public class Beton extends ObjetCarte implements Fixe {
 
     @Override
-    public void assignImage() {
+    public void assigneImage() {
         image = Images.BETON;
     }
 }

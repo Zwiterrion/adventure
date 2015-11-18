@@ -1,5 +1,6 @@
 package Adventure.ObjetsCarte;
 
+import Adventure.Direction;
 import Adventure.Images;
 import Adventure.Interface.Fixe;
 
@@ -8,16 +9,13 @@ import Adventure.Interface.Fixe;
  */
 public class Bureau extends ObjetCarte implements Fixe {
 
-    private int face;
-
-    public Bureau(int face) {
-        super();
-        this.face = face;
+    public Bureau(Direction d) {
+        super(d);
     }
 
     @Override
-    public void assignImage() {
-        if (face == 0)
+    public void assigneImage() {
+        if(dir == Direction.SUD || dir == Direction.NORD)
             image = Images.BUREAU;
         else
             image = Images.BUREAU_BIS;

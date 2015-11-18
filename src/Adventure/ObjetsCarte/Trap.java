@@ -7,7 +7,7 @@ import Adventure.Interface.Piege;
 public class Trap extends ObjetCarte implements Fixe, Piege {
 
     @Override
-    public void assignImage() {
+    public void assigneImage() {
         image = Images.TRAP;
     }
 

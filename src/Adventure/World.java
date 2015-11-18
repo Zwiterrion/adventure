@@ -136,7 +136,7 @@ public class World extends JPanel {
                     Deplacable w = (Deplacable) mapObjects.get(positions[positionWall.x][positionWall.y]);
                     mapObjects.put(positions[p.x][p.y], (ObjetCarte) w);
                 } else
-                    mapSol.put(positions[p.x][p.y], new Herbe(-1));
+                    mapSol.put(positions[p.x][p.y], new Herbe(Direction.AUCUNE));
 
                 mapObjects.put(positions[positionWall.x][positionWall.y], new Vide());
                 heros.setPos_in(positionWall);
