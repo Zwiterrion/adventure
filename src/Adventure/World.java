@@ -8,9 +8,7 @@ import Adventure.ObjetsCarte.Herbe;
 import Adventure.ObjetsCarte.ObjetCarte;
 import Adventure.ObjetsCarte.Sortie;
 import Adventure.ObjetsCarte.Vide;
-import Adventure.Places.Futuroscope;
-import Adventure.Places.Place;
-import Adventure.Places.SP2MI;
+import Adventure.Places.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -152,9 +150,9 @@ public class World extends JPanel {
 
         deplacement(x, y, dir);
         attente(300);
+        initialisationNiveau(s);
         pageDeDescription();
         attente(1000);
-        initialisationNiveau(s);
         repaint();
     }
 
@@ -176,15 +174,11 @@ public class World extends JPanel {
     }
 
     public void initialisationNiveau(Sortie s) {
+
         if (s == null)
             placeCourante = new Futuroscope(heros);
-        else {
+        else
             placeCourante = placeCorrespondante(s.getDestination());
-            placeCourante.setNom(s.getNomPlace());
-        }
-
-
-        annonce.setAnnonce(placeCourante.getNom());
 
         mapObjects = placeCourante.getMapObjects();
         mapSol = placeCourante.getMapSol();
@@ -198,12 +192,14 @@ public class World extends JPanel {
 
         if (s.equals("SP2MI"))
             return new SP2MI(heros);
-        /*else if(s.equals("IFMI"))
+        else if(s.equals("IFMI"))
             return new IFMI(heros);
-        else if(s.equals("TP"))
+        else if(s.equals("SALLE TP"))
             return new TP(heros);
-        else if(s.equals("BU"))
-            return new BU(heros);*/
+        else if(s.equals("BIBLIOTHEQUE"))
+            return new BU(heros);
+        else if(s.equals("PARKING"))
+            return new Parking(heros);
         else
             return new Futuroscope(heros);
     }

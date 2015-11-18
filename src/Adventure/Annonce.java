@@ -37,8 +37,8 @@ public class Annonce extends Canvas {
 
         g.setColor(new Color(255, 255, 255, 125));
 
-        //int stringLen = (int) g.getFontMetrics().getStringBounds(annonce, g).getWidth();
+        int stringLen = (int) g.getFontMetrics().getStringBounds(annonce, g).getWidth();
         g.setFont(font);
-        g.drawString(annonce, SCREEN_SIZE / 8, SCREEN_SIZE / 2 - SCREEN_SIZE / 4);
+        g.drawString(annonce, SCREEN_SIZE / 2 - stringLen * 4, SCREEN_SIZE / 2 - SCREEN_SIZE / 4);
     }
 }
