@@ -176,7 +176,7 @@ public class World extends JPanel {
     public void initialisationNiveau(Sortie s) {
 
         if (s == null)
-            placeCourante = new Futuroscope(heros);
+            placeCourante = new Parking(heros);
         else
             placeCourante = placeCorrespondante(s.getDestination());
 
@@ -198,10 +198,8 @@ public class World extends JPanel {
             return new TP(heros);
         else if(s.equals("BIBLIOTHEQUE"))
             return new BU(heros);
-        else if(s.equals("PARKING"))
-            return new Parking(heros);
         else
-            return new Futuroscope(heros);
+            return new Parking(heros);
     }
 
     public void deplacementHeros(int x, int y, Direction dir) {

@@ -50,6 +50,10 @@ public class Images {
     public static Image ETAGERE_BIS;
     public static Image ETAGERE_ANGLE;
 
+    public static Image TREE;
+
+    public static Image BETON;
+
     public static void chargementImage() {
         try {
 
@@ -98,6 +102,10 @@ public class Images {
             ETAGERE = ImageIO.read(new FileInputStream("res/etagere.png"));
             ETAGERE_BIS = ImageIO.read(new FileInputStream("res/etagere_bis.png"));
             ETAGERE_ANGLE = ImageIO.read(new FileInputStream("res/etagere_angle.png"));
+
+            TREE = ImageIO.read(new FileInputStream("res/tree.png"));
+
+            BETON = ImageIO.read(new FileInputStream("res/beton.png"));
 
 
         } catch (IOException e) {

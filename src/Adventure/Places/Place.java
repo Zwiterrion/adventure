@@ -9,9 +9,7 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 
-/**
- * Created by Etienne on 30/09/15.
- */
+
 public abstract class Place {
 
     private int LEVEL_SOL[][];
@@ -89,6 +87,9 @@ public abstract class Place {
             case 9:
                 mapSol.put(positions[i][j], new Trap());
                 break;
+            case 10:
+                mapSol.put(positions[i][j], new Beton());
+                break;
 
             default:
                 mapSol.put(positions[i][j], new Herbe(0));
@@ -151,6 +152,9 @@ public abstract class Place {
             case 16: mapObjects.put(positions[i][j], new Etagere(0)); break;
             case 17: mapObjects.put(positions[i][j], new Etagere(1));break;
             case 18: mapObjects.put(positions[i][j], new Etagere(2));break;
+
+            case 19: mapObjects.put(positions[i][j], new Tree());break;
+
         }
     }
 

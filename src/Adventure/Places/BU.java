@@ -3,9 +3,7 @@ package Adventure.Places;
 import Adventure.Heros;
 import Adventure.ObjetsCarte.Sortie;
 
-/**
- * Created by Etienne on 10/11/2015.
- */
+
 public class BU extends Place {
 
     private int LEVEL_SOL[][] = {
@@ -50,7 +48,7 @@ public class BU extends Place {
 
             switch (i) {
                 case 0:
-                    s.initialisation(this.getNom(), "FUTUROSCOPE");
+                    s.initialisation(this.getNom(), "PARKING");
                     break;
             }
             i++;
