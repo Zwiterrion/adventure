@@ -5,9 +5,6 @@ import java.awt.*;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-/**
- * Created by Etienne on 21/10/2015.
- */
 public class Images {
 
     public static Image CARRELAGE;
@@ -48,6 +45,10 @@ public class Images {
     public static Image TRAP;
 
     public static Image TABLEAU;
+
+    public static Image ETAGERE;
+    public static Image ETAGERE_BIS;
+    public static Image ETAGERE_ANGLE;
 
     public static void chargementImage() {
         try {
@@ -93,6 +94,10 @@ public class Images {
             BUREAU_BIS = ImageIO.read(new FileInputStream("res/bureauBis.png"));
 
             TABLEAU = ImageIO.read(new FileInputStream("res/tableau.png"));
+
+            ETAGERE = ImageIO.read(new FileInputStream("res/etagere.png"));
+            ETAGERE_BIS = ImageIO.read(new FileInputStream("res/etagere_bis.png"));
+            ETAGERE_ANGLE = ImageIO.read(new FileInputStream("res/etagere_angle.png"));
 
 
         } catch (IOException e) {

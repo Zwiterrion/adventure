@@ -61,9 +61,7 @@ public abstract class Place {
 
     public void creerSol(int i, int j, int num) {
         switch (num) {
-            case 0:
-                mapSol.put(positions[i][j], new Herbe(0));
-                break;
+            case 0: mapSol.put(positions[i][j], new Herbe(0)); break;
             case 1:
                 mapSol.put(positions[i][j], new Herbe(1));
                 break;
@@ -149,9 +147,10 @@ public abstract class Place {
             case 14:
                 mapObjects.put(positions[i][j], new Mur(3));
                 break;
-            case 15:
-                mapObjects.put(positions[i][j], new Mur(4));
-                break;
+            case 15: mapObjects.put(positions[i][j], new Mur(4)); break;
+            case 16: mapObjects.put(positions[i][j], new Etagere(0)); break;
+            case 17: mapObjects.put(positions[i][j], new Etagere(1));break;
+            case 18: mapObjects.put(positions[i][j], new Etagere(2));break;
         }
     }
 

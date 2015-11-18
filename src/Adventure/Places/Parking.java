@@ -3,9 +3,7 @@ package Adventure.Places;
 import Adventure.Heros;
 import Adventure.ObjetsCarte.Sortie;
 
-/**
- * Created by Etienne on 10/11/2015.
- */
+
 public class Parking extends Place {
 
     private int LEVEL_SOL[][] = {

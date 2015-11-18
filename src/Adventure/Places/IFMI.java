@@ -38,7 +38,7 @@ public class IFMI extends Place {
         setLEVEL_OBJECTS(LEVEL_OBJECTS);
         setLEVEL_SOL(LEVEL_SOL);
         initialisation();
-        setNom("SP2MI");
+        setNom("IFMI");
         initSorties();
     }
 
