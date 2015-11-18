@@ -86,7 +86,7 @@ public class Images {
 
             CLEF = ImageIO.read(new FileInputStream("res/bombe.png"));
             CARRELAGE = ImageIO.read(new FileInputStream("res/interieur.png"));
-            
+
             TRAP = ImageIO.read(new FileInputStream("res/piege.png"));
 
             BUREAU = ImageIO.read(new FileInputStream("res/bureau.png"));

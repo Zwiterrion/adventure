@@ -16,7 +16,7 @@ public class Heros {
 
     private Image image;
     public Direction dir = Direction.DROITE;
-    private Location pos_in;
+    private Position pos_in;
 
     private Inventaire inventaire;
     private World world;
@@ -25,7 +25,7 @@ public class Heros {
     private int vie = 100;
     private int mana = 60;
 
-    public Heros(World w)  {
+    public Heros(World w) {
         image = Images.HEROS_E;
         inventaire = new Inventaire(this);
         this.world = w;
@@ -33,11 +33,11 @@ public class Heros {
     }
 
     public void ramasserObjet(Ramassable p) {
-        if(p instanceof Vie)
+        if (p instanceof Vie)
             inventaire.ajouterElement(new PotionVie(p.quantite()));
-        else if(p instanceof Mana)
+        else if (p instanceof Mana)
             inventaire.ajouterElement(new PotionMana(p.quantite()));
-        else if(p instanceof Clef)
+        else if (p instanceof Clef)
             inventaire.ajouterElement(new PotionClef());
     }
 
@@ -64,11 +64,11 @@ public class Heros {
         }
     }
 
-    public Location getPos_in() {
+    public Position getPos_in() {
         return pos_in;
     }
 
-    public void setPos_in(Location pos_in) {
+    public void setPos_in(Position pos_in) {
         this.pos_in = pos_in;
     }
 
@@ -89,24 +89,24 @@ public class Heros {
     }
 
     public void setVie(int vie) {
-        if(this.vie < 100) {
+        if (this.vie < 100) {
             this.vie += vie;
         }
-        if(this.vie > 100)
+        if (this.vie > 100)
             this.vie = 100;
     }
-    
-    public void perdVie(int vie){
+
+    public void perdVie(int vie) {
         this.vie -= vie;
-        if(this.vie <= 0)
+        if (this.vie <= 0)
             this.vie = 0;
     }
 
     public void setMana(int mana) {
-        if(this.mana < 100) {
+        if (this.mana < 100) {
             this.mana += mana;
         }
-        if(this.mana > 100)
+        if (this.mana > 100)
             this.mana = 100;
     }
 

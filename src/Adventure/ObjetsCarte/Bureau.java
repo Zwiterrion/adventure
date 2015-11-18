@@ -17,7 +17,7 @@ public class Bureau extends ObjetCarte implements Fixe {
 
     @Override
     public void assignImage() {
-        if(face == 0)
+        if (face == 0)
             image = Images.BUREAU;
         else
             image = Images.BUREAU_BIS;

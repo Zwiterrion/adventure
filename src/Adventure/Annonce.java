@@ -12,7 +12,7 @@ public class Annonce extends Canvas {
     private int SCREEN_SIZE;
     private Font font;
 
-    public Annonce(int SCREEN_SIZE){
+    public Annonce(int SCREEN_SIZE) {
         this.SCREEN_SIZE = SCREEN_SIZE;
 
 
@@ -35,10 +35,10 @@ public class Annonce extends Canvas {
     public void paint(Graphics g) {
         super.paint(g);
 
-        g.setColor(new Color(255,255,255, 125));
+        g.setColor(new Color(255, 255, 255, 125));
 
         //int stringLen = (int) g.getFontMetrics().getStringBounds(annonce, g).getWidth();
         g.setFont(font);
-        g.drawString(annonce, SCREEN_SIZE/8 , SCREEN_SIZE/2 - SCREEN_SIZE/4);
+        g.drawString(annonce, SCREEN_SIZE / 8, SCREEN_SIZE / 2 - SCREEN_SIZE / 4);
     }
 }

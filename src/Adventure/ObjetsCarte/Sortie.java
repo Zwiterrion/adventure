@@ -17,9 +17,10 @@ public class Sortie extends ObjetCarte implements Fixe {
         this.face = i;
         assignImage();
     }
+
     @Override
     public void assignImage() {
-        if(face)
+        if (face)
             image = Images.SORTIE;
         else
             image = Images.SORTIE2;

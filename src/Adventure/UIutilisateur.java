@@ -20,19 +20,19 @@ public class UIutilisateur extends Canvas {
     }
 
     public void dessineBarres(Graphics g) {
-        Location point = calculPositionBarres();
+        Position point = calculPositionBarres();
 
         g.setColor(heros.getCouleurVie());
-        g.fillRect(point.x + 28, point.y + World.TILE_SIZE / 2 - 6, (int)(0.4 * heros.getVie()), 5);
+        g.fillRect(point.x + 28, point.y + World.TILE_SIZE / 2 - 6, (int) (0.4 * heros.getVie()), 5);
 
         g.setColor(new Color(16, 173, 255));
 
-        g.fillRect(point.x + 28, point.y + World.TILE_SIZE/2, (int)(0.4 * heros.getMana()), 3);
-        g.drawRect(point.x + 26, point.y + World.TILE_SIZE/2 - 8, 43, 12);
+        g.fillRect(point.x + 28, point.y + World.TILE_SIZE / 2, (int) (0.4 * heros.getMana()), 3);
+        g.drawRect(point.x + 26, point.y + World.TILE_SIZE / 2 - 8, 43, 12);
     }
 
-    public Location calculPositionBarres() {
-        return IsometricHelper.point2DToIso(new Location(heros.getPos_in().y, heros.getPos_in().x));
+    public Position calculPositionBarres() {
+        return IsometricHelper.point2DToIso(new Position(heros.getPos_in().y, heros.getPos_in().x));
     }
 
 }

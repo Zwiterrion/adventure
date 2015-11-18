@@ -1,7 +1,6 @@
 package Adventure.ObjetsInventaire;
 
 
-
 public class PotionMana extends Potion {
 
 

@@ -29,7 +29,7 @@ public class RunnableMana implements Runnable {
             e.printStackTrace();
         }
 
-        while(potion > 0) {
+        while (potion > 0) {
             heros.setMana(1);
             heros.getWorld().repaint();
             potion -= 1;

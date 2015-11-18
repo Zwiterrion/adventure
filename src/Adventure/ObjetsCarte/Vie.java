@@ -4,7 +4,7 @@ import Adventure.Images;
 import Adventure.Interface.Fixe;
 import Adventure.Interface.Ramassable;
 
-public class Vie extends ObjetCarte implements Ramassable,Fixe {
+public class Vie extends ObjetCarte implements Ramassable, Fixe {
 
     @Override
     public void assignImage() {

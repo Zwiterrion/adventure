@@ -30,7 +30,7 @@ public class RunnableVie implements Runnable {
         }
 
 
-        while(potion > 0) {
+        while (potion > 0) {
             heros.setVie(1);
             heros.getWorld().repaint();
             potion -= 1;

@@ -4,7 +4,10 @@ import Adventure.Interface.Deplacable;
 import Adventure.Interface.Fixe;
 import Adventure.Interface.Piege;
 import Adventure.Interface.Ramassable;
-import Adventure.ObjetsCarte.*;
+import Adventure.ObjetsCarte.Herbe;
+import Adventure.ObjetsCarte.ObjetCarte;
+import Adventure.ObjetsCarte.Sortie;
+import Adventure.ObjetsCarte.Vide;
 import Adventure.Places.Futuroscope;
 import Adventure.Places.Place;
 import Adventure.Places.SP2MI;
@@ -16,10 +19,10 @@ import java.util.Hashtable;
 public class World extends JPanel {
 
     // Map
-    private Hashtable<Location, ObjetCarte> mapObjects;
-    private Hashtable<Location, ObjetCarte> mapSol;
+    private Hashtable<Position, ObjetCarte> mapObjects;
+    private Hashtable<Position, ObjetCarte> mapSol;
 
-    private Location locations[][];
+    private Position positions[][];
 
     private Heros heros;
 
@@ -48,6 +51,7 @@ public class World extends JPanel {
 
         initialisationNiveau(null);
     }
+
     @Override
     public void paint(Graphics g) {
 
@@ -63,10 +67,10 @@ public class World extends JPanel {
     public void dessineSol(Graphics g) {
 
         for (int i = 0; i < X_MAX; i++) {
-            for (int j = Y_MAX-1; j >= 0; j--) {
-                Location point = IsometricHelper.point2DToIso(new Location(j,i));
-                ObjetCarte object = mapSol.get(locations[i][j]);
-                if(! (object instanceof Vide))
+            for (int j = Y_MAX - 1; j >= 0; j--) {
+                Position point = IsometricHelper.point2DToIso(new Position(j, i));
+                ObjetCarte object = mapSol.get(positions[i][j]);
+                if (!(object instanceof Vide))
                     g.drawImage(object.getImage(), point.x, point.y, TILE_SIZE, TILE_SIZE * 2, this);
             }
         }
@@ -77,13 +81,13 @@ public class World extends JPanel {
 
         for (int i = 0; i < X_MAX; i++) {
             for (int j = Y_MAX - 1; j >= 0; j--) {
-                Location point = IsometricHelper.point2DToIso(new Location(j, i));
-                ObjetCarte object = mapObjects.get(locations[i][j]);
+                Position point = IsometricHelper.point2DToIso(new Position(j, i));
+                ObjetCarte object = mapObjects.get(positions[i][j]);
 
                 if (!(object instanceof Vide))
                     g.drawImage(object.getImage(), point.x, point.y, TILE_SIZE, TILE_SIZE * 2, this);
 
-                if( i == heros.getPos_in().x && j == heros.getPos_in().y)
+                if (i == heros.getPos_in().x && j == heros.getPos_in().y)
                     g.drawImage(heros.getImage(), point.x, point.y, TILE_SIZE, TILE_SIZE * 2, this);
             }
         }
@@ -93,56 +97,50 @@ public class World extends JPanel {
         ath.paint(g);
     }
 
-    public Boolean videOuPas(Location p, Direction dir, int x, int y) {
+    public Boolean videOuPas(Position p, Direction dir, int x, int y) {
 
-        ObjetCarte object = mapObjects.get(locations[p.x][p.y]);
-        ObjetCarte objectSol = mapSol.get(locations[p.x][p.y]);
+        ObjetCarte object = mapObjects.get(positions[p.x][p.y]);
+        ObjetCarte objectSol = mapSol.get(positions[p.x][p.y]);
 
-        if(objectSol instanceof Fixe) {
+        if (objectSol instanceof Fixe) {
 
-            if(objectSol instanceof Piege) {
+            if (objectSol instanceof Piege) {
                 heros.perdVie(((Piege) objectSol).degat());
                 return true;
-            }
-            else if (object instanceof Sortie) {
-                niveauSuivant(x, y, dir, (Sortie)object);
+            } else if (object instanceof Sortie) {
+                niveauSuivant(x, y, dir, (Sortie) object);
                 return false;
-            }
-            else if (object instanceof Ramassable) {
-                heros.ramasserObjet((Ramassable)object);
-                mapObjects.put(locations[p.x][p.y], new Vide());
+            } else if (object instanceof Ramassable) {
+                heros.ramasserObjet((Ramassable) object);
+                mapObjects.put(positions[p.x][p.y], new Vide());
                 return true;
-            }
-            else if (object instanceof Deplacable) {
+            } else if (object instanceof Deplacable) {
                 deplaceObjet(p, dir, x, y);
                 return false;
-            }
-            else
+            } else
                 return !(object instanceof Fixe);
-        }
-        else
+        } else
             return false;
     }
 
-    public void deplaceObjet(Location positionWall, Direction dir, int x, int y) {
+    public void deplaceObjet(Position positionWall, Direction dir, int x, int y) {
 
-        Location p = new Location(positionWall.x + x,positionWall.y + y);
+        Position p = new Position(positionWall.x + x, positionWall.y + y);
 
         if ((p.x >= 0 && p.x < X_MAX) && (p.y >= 0 && p.y < Y_MAX)) {
 
-            ObjetCarte object = mapObjects.get(locations[p.x][p.y]);
-            ObjetCarte objectSol = mapSol.get(locations[p.x][p.y]);
+            ObjetCarte object = mapObjects.get(positions[p.x][p.y]);
+            ObjetCarte objectSol = mapSol.get(positions[p.x][p.y]);
 
-            if(object instanceof Vide) {
+            if (object instanceof Vide) {
 
                 if (objectSol instanceof Fixe) {
-                    Deplacable w = (Deplacable) mapObjects.get(locations[positionWall.x][positionWall.y]);
-                    mapObjects.put(locations[p.x][p.y], (ObjetCarte)w);
-                }
-                else
-                    mapSol.put(locations[p.x][p.y], new Herbe(-1));
+                    Deplacable w = (Deplacable) mapObjects.get(positions[positionWall.x][positionWall.y]);
+                    mapObjects.put(positions[p.x][p.y], (ObjetCarte) w);
+                } else
+                    mapSol.put(positions[p.x][p.y], new Herbe(-1));
 
-                mapObjects.put(locations[positionWall.x][positionWall.y], new Vide());
+                mapObjects.put(positions[positionWall.x][positionWall.y], new Vide());
                 heros.setPos_in(positionWall);
                 heros.changeImage(dir);
                 repaint();
@@ -172,13 +170,13 @@ public class World extends JPanel {
     public void attente(int time) {
         try {
             Thread.sleep(time);
-        }catch ( InterruptedException e) {
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
 
     public void initialisationNiveau(Sortie s) {
-        if(s == null)
+        if (s == null)
             placeCourante = new Futuroscope(heros);
         else {
             placeCourante = placeCorrespondante(s.getDestination());
@@ -191,14 +189,14 @@ public class World extends JPanel {
         mapObjects = placeCourante.getMapObjects();
         mapSol = placeCourante.getMapSol();
 
-        locations = placeCourante.getLocations();
+        positions = placeCourante.getPositions();
 
         heros.setPos_in(placeCourante.getHeros().getPos_in());
     }
 
     public Place placeCorrespondante(String s) {
 
-        if(s.equals("SP2MI"))
+        if (s.equals("SP2MI"))
             return new SP2MI(heros);
         /*else if(s.equals("IFMI"))
             return new IFMI(heros);
@@ -212,17 +210,17 @@ public class World extends JPanel {
 
     public void deplacementHeros(int x, int y, Direction dir) {
 
-        Location nextPos = new Location(heros.getPos_in().x + x, heros.getPos_in().y + y);
+        Position nextPos = new Position(heros.getPos_in().x + x, heros.getPos_in().y + y);
 
         if ((nextPos.x >= 0 && nextPos.x < X_MAX) && (nextPos.y >= 0 && nextPos.y < Y_MAX))
             if (videOuPas(nextPos, dir, x, y))
-                deplacement(x,y,dir);
+                deplacement(x, y, dir);
     }
 
     public void deplacement(int x, int y, Direction dir) {
 
-        mapObjects.put(locations[heros.getPos_in().x][heros.getPos_in().y], new Vide());
-        heros.setPos_in(new Location(heros.getPos_in().x + x, heros.getPos_in().y + y));
+        mapObjects.put(positions[heros.getPos_in().x][heros.getPos_in().y], new Vide());
+        heros.setPos_in(new Position(heros.getPos_in().x + x, heros.getPos_in().y + y));
         heros.changeImage(dir);
         paint(getGraphics());
     }

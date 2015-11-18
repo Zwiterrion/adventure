@@ -4,7 +4,7 @@ import Adventure.Images;
 import Adventure.Interface.Fixe;
 import Adventure.Interface.Piege;
 
-public class Trap extends ObjetCarte implements Fixe,Piege {
+public class Trap extends ObjetCarte implements Fixe, Piege {
 
     @Override
     public void assignImage() {

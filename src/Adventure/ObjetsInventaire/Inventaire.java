@@ -19,7 +19,8 @@ public class Inventaire extends JPanel {
     private int nbPotionMana = 0;
     private int nbClefs = 0;
 
-    private Heros heros;;
+    private Heros heros;
+    ;
 
     public RunnableVie runnableVie;
     public RunnableMana runnableMana;
@@ -60,10 +61,10 @@ public class Inventaire extends JPanel {
         nbPotionVie = 0;
         nbClefs = 0;
 
-        for(Potion p : stock) {
-            if(p instanceof PotionMana)
+        for (Potion p : stock) {
+            if (p instanceof PotionMana)
                 nbPotionMana++;
-            else if(p instanceof PotionVie)
+            else if (p instanceof PotionVie)
                 nbPotionVie++;
             else
                 nbClefs++;
@@ -71,15 +72,15 @@ public class Inventaire extends JPanel {
     }
 
     public void ajouterElement(Potion p) {
-        if(nbClefs == 0 && p instanceof PotionClef)
+        if (nbClefs == 0 && p instanceof PotionClef)
             ajouter(p);
-        if(nbPotionMana < 3 && p instanceof PotionMana)
+        if (nbPotionMana < 3 && p instanceof PotionMana)
             ajouter(p);
-        if(nbPotionVie < 3 && p instanceof PotionVie)
+        if (nbPotionVie < 3 && p instanceof PotionVie)
             ajouter(p);
     }
 
-    public void ajouter(Potion p){
+    public void ajouter(Potion p) {
         this.stock.add(p);
         calculPotions();
         repaint();
@@ -87,36 +88,35 @@ public class Inventaire extends JPanel {
 
     public void utiliser(int i) {
 
-        if(i == 0) {
-            if(nbPotionVie > 0)
+        if (i == 0) {
+            if (nbPotionVie > 0)
                 supprimerElement(0);
-        }
-        else if(i == 1) {
-            if(nbPotionMana > 0)
+        } else if (i == 1) {
+            if (nbPotionMana > 0)
                 supprimerElement(1);
-        }
-        else {
-            if(nbClefs > 0)
+        } else {
+            if (nbClefs > 0)
                 supprimerElement(2);
         }
     }
+
     public void supprimerElement(int i) {
 
         int a = 0;
         boolean nonTrouve = true;
-        while(a < stock.size() && nonTrouve) {
+        while (a < stock.size() && nonTrouve) {
             Potion p = stock.get(a);
-            if(p instanceof PotionVie && i == 0) {
+            if (p instanceof PotionVie && i == 0) {
                 nextThread(true, p);
                 this.stock.remove(p);
                 nonTrouve = false;
             }
-            if(p instanceof PotionMana && i == 1 ) {
+            if (p instanceof PotionMana && i == 1) {
                 nextThread(false, p);
                 this.stock.remove(p);
                 nonTrouve = false;
             }
-            if(p instanceof PotionClef && i == 2) {
+            if (p instanceof PotionClef && i == 2) {
                 this.stock.remove(p);
                 nonTrouve = false;
             }
@@ -128,11 +128,10 @@ public class Inventaire extends JPanel {
     public void nextThread(boolean lequel, Potion p) {
 
         Thread t;
-        if(lequel) {
+        if (lequel) {
             runnableVie.setPotion(p.value);
             t = new Thread(runnableVie);
-        }
-        else {
+        } else {
             runnableMana.setPotion(p.value);
             t = new Thread(runnableMana);
         }
