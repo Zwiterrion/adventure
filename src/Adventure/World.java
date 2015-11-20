@@ -27,7 +27,9 @@ public class World extends JPanel {
     private Place placeCourante;
 
     public UIutilisateur ath;
-    public Annonce annonce;
+    private Annonce annonce;
+
+    private Personnage p;
 
     // Constantes
     public static int TILE_SIZE;
@@ -36,8 +38,8 @@ public class World extends JPanel {
     public static int Y_MAX;
 
     public World(int X_MAX, int Y_MAX, int screen_size) {
-        this.X_MAX = X_MAX;
-        this.Y_MAX = Y_MAX;
+        World.X_MAX = X_MAX;
+        World.Y_MAX = Y_MAX;
 
         SCREEN_SIZE = screen_size;
         TILE_SIZE = SCREEN_SIZE / X_MAX;
@@ -45,9 +47,12 @@ public class World extends JPanel {
         heros = new Heros(this);
         ath = new UIutilisateur(heros);
 
-        annonce = new Annonce(SCREEN_SIZE);
+        annonce = new Annonce(SCREEN_SIZE, 50);
 
         initialisationNiveau(null);
+
+        p = new Personnage(new Position(5,5), this);
+        p.active();
     }
 
     @Override
@@ -60,6 +65,8 @@ public class World extends JPanel {
         dessineSol(g);
         dessineObjetsMap(g);
         dessineATH(g);
+
+        p.paint(g);
     }
 
     public void dessineSol(Graphics g) {
@@ -222,4 +229,6 @@ public class World extends JPanel {
     public Heros getHeros() {
         return heros;
     }
+
+
 }

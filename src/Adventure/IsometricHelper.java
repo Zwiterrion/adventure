@@ -4,10 +4,12 @@ public class IsometricHelper {
 
     public static Position point2DToIso(Position p) {
 
-        p.x *= World.TILE_SIZE / 2;
-        p.y *= World.TILE_SIZE / 2;
+        Position e = new Position(p.x, p.y);
 
-        Position point = Position.mul(p, new Position(1, -1));
+        e.x *= World.TILE_SIZE / 2;
+        e.y *= World.TILE_SIZE / 2;
+
+        Position point = Position.mul(e, new Position(1, -1));
 
         point = new Position((point.x - point.y), ((point.x + point.y) / 2));
 

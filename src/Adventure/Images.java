@@ -2,6 +2,7 @@ package Adventure;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
@@ -51,8 +52,15 @@ public class Images {
     public static Image ETAGERE_ANGLE;
 
     public static Image TREE;
-
     public static Image BETON;
+
+    public static Image VOITURE_AVANT;
+    public static Image VOITURE_ARRIERE;
+
+    public static Image BUISSON_SUD;
+    public static Image BUISSON_EST;
+
+    public static Image SELECTION;
 
     public static void chargementImage() {
         try {
@@ -104,7 +112,15 @@ public class Images {
             ETAGERE_ANGLE = ImageIO.read(new FileInputStream("res/etagere_angle.png"));
 
             BETON = ImageIO.read(new FileInputStream("res/beton.png"));
-           // TREE = ImageIO.read(new FileInputStream("res/tree.png"));
+            TREE = ImageIO.read(new FileInputStream("res/tree.png"));
+
+            VOITURE_AVANT = ImageIO.read(new FileInputStream("res/voitureAvant.png"));
+            VOITURE_ARRIERE = ImageIO.read(new FileInputStream("res/voitureArriere.png"));
+
+            BUISSON_SUD = ImageIO.read(new FileInputStream("res/buisson_sud.png"));
+            BUISSON_EST = ImageIO.read(new FileInputStream("res/buisson_est.png"));
+
+            SELECTION = ImageIO.read(new FileInputStream("res/selection.png"));
 
         } catch (IOException e) {
             System.err.println("Impossible de charger tout le contenu : Images.chargementImage()");

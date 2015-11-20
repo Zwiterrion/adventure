@@ -28,4 +28,9 @@ public abstract class ObjetCarte {
     public Image getImage() {
         return image;
     }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName();
+    }
 }

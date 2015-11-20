@@ -5,7 +5,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 
-public class GameController extends MouseInputAdapter implements KeyListener {
+public class GameController implements KeyListener {
 
     private GameView gameView;
     private World gameModel;
@@ -15,10 +15,6 @@ public class GameController extends MouseInputAdapter implements KeyListener {
         this.gameModel = model;
     }
 
-    @Override
-    public void mouseClicked(MouseEvent e) {
-
-    }
 
     @Override
     public void keyPressed(KeyEvent e) {

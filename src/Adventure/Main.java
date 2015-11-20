@@ -15,8 +15,6 @@ public class Main {
                 GameView view = new GameView(gameModel, width, height);
                 view.getGameModel().requestFocus();
                 GameController controller = new GameController(view, gameModel);
-
-                view.getGameModel().addMouseListener(controller);
                 view.getGameModel().addKeyListener(controller);
             }
         });

@@ -12,17 +12,14 @@ public class Annonce extends Canvas {
     private int SCREEN_SIZE;
     private Font font;
 
-    public Annonce(int SCREEN_SIZE) {
+    public Annonce(int SCREEN_SIZE, int size) {
         this.SCREEN_SIZE = SCREEN_SIZE;
-
 
         try {
             InputStream myStream = new BufferedInputStream(new FileInputStream("res/font/RedZone.ttf"));
             font = Font.createFont(Font.TRUETYPE_FONT, myStream);
-            font = font.deriveFont(Font.PLAIN, 50);
-        } catch (FontFormatException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+            font = font.deriveFont(Font.PLAIN, size);
+        } catch (FontFormatException | IOException e) {
             e.printStackTrace();
         }
     }
@@ -39,6 +36,9 @@ public class Annonce extends Canvas {
 
         int stringLen = (int) g.getFontMetrics().getStringBounds(annonce, g).getWidth();
         g.setFont(font);
-        g.drawString(annonce, SCREEN_SIZE / 2 - stringLen * 4, SCREEN_SIZE / 2 - SCREEN_SIZE / 4);
+        if(g.getFont().getSize() == 50)
+            g.drawString(annonce, SCREEN_SIZE/2 - stringLen * 4, SCREEN_SIZE / 2 - SCREEN_SIZE / 4);
+        else
+            g.drawString(annonce, SCREEN_SIZE + SCREEN_SIZE/3 - stringLen * 4, SCREEN_SIZE/2);
     }
 }

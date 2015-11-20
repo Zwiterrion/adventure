@@ -149,7 +149,7 @@
     <cellule type="0" direction="AUCUNE"/>
     <cellule type="0" direction="AUCUNE"/>
     <cellule type="0" direction="AUCUNE"/>
-    <cellule type="6" direction="AUCUNE"/>
+    <cellule type="0" direction="AUCUNE"/>
 
     <!-- Ligne 3 -->
     <cellule type="0" direction="AUCUNE"/>
@@ -200,7 +200,7 @@
     <cellule type="0" direction="AUCUNE"/>
 
     <!-- Ligne 7 -->
-    <cellule type="6" direction="AUCUNE"/>
+    <cellule type="0" direction="AUCUNE"/>
     <cellule type="0" direction="AUCUNE"/>
     <cellule type="0" direction="AUCUNE"/>
     <cellule type="0" direction="AUCUNE"/>
@@ -224,16 +224,16 @@
     <cellule type="0" direction="AUCUNE"/>
 
     <!-- Ligne 9 -->
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="7" direction="AUCUNE"/>
     <cellule type="6" direction="AUCUNE"/>
-    <cellule type="0" direction="AUCUNE"/>
-    <cellule type="0" direction="AUCUNE"/>
-    <cellule type="0" direction="AUCUNE"/>
-    <cellule type="0" direction="AUCUNE"/>
-    <cellule type="0" direction="AUCUNE"/>
-    <cellule type="0" direction="AUCUNE"/>
-    <cellule type="0" direction="AUCUNE"/>
-    <cellule type="0" direction="AUCUNE"/>
-    <cellule type="0" direction="AUCUNE"/>
 
     <!-- Ligne 10 -->
     <cellule type="0" direction="AUCUNE"/>
@@ -241,10 +241,10 @@
     <cellule type="0" direction="AUCUNE"/>
     <cellule type="0" direction="AUCUNE"/>
     <cellule type="0" direction="AUCUNE"/>
-    <cellule type="7" direction="AUCUNE"/>
     <cellule type="0" direction="AUCUNE"/>
     <cellule type="0" direction="AUCUNE"/>
-    <cellule type="6" direction="AUCUNE"/>
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="0" direction="AUCUNE"/>
     <cellule type="0" direction="AUCUNE"/>
 
 

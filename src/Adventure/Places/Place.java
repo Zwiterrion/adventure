@@ -88,6 +88,8 @@ public abstract class Place {
             case 10: mapObjects.put(positions[i][j], new Etagere(num.dir)); break;
             case 11: mapObjects.put(positions[i][j], new Tree());break;
             case 12: mapObjects.put(positions[i][j], new Tableau());break;
+            case 13: mapObjects.put(positions[i][j], new Voiture(num.dir));break;
+            case 14: mapObjects.put(positions[i][j], new Buisson(num.dir));break;
             default: mapObjects.put(positions[i][j], new Vide());break;
 
         }

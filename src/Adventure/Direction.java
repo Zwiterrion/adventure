@@ -11,17 +11,17 @@ public enum Direction {
         else if(s.equals("SUD"))
             return Direction.SUD;
         else if(s.equals("OUEST"))
-            return Direction.SUD;
+            return Direction.OUEST;
         else if(s.equals("EST"))
-            return Direction.SUD;
+            return Direction.EST;
         else if(s.equals("NORD_EST"))
-            return Direction.SUD;
+            return Direction.NORD_EST;
         else if(s.equals("NORD_OUEST"))
-            return Direction.SUD;
+            return Direction.NORD_OUEST;
         else if(s.equals("SUD_EST"))
-            return Direction.SUD;
+            return Direction.SUD_EST;
         else if(s.equals("SUD_OUEST"))
-            return Direction.SUD;
+            return Direction.SUD_OUEST;
         else
             return dir;
     }

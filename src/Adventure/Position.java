@@ -66,5 +66,8 @@ public class Position {
         return new Position(point.x * scalar.x, point.y * scalar.y);
     }
 
-
+    @Override
+    public String toString() {
+        return x + " : " + y;
+    }
 }
