@@ -27,7 +27,6 @@ public class RunnableEstEnVie implements Runnable {
                     heros.setCouleurVie(Color.RED);
                 else
                     heros.setCouleurVie(Color.ORANGE);
-
             }
 
             heros.getWorld().repaint();

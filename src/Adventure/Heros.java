@@ -110,6 +110,12 @@ public class Heros {
             this.mana = 100;
     }
 
+    public void perdMana(int mana) {
+        this.mana -= mana;
+        if (this.mana <= 0)
+            this.mana = 0;
+    }
+
     public World getWorld() {
         return world;
     }

@@ -229,13 +229,13 @@ public class World extends JPanel {
 
         Position nextPos = new Position(heros.getPos_in().x + x, heros.getPos_in().y + y);
 
-        if ((nextPos.x >= 0 && nextPos.x < X_MAX) && (nextPos.y >= 0 && nextPos.y < Y_MAX))
+        if(positionInGrille(nextPos))
             if (videOuPas(nextPos, dir, x, y))
                 deplacement(x, y, dir);
     }
 
     public void deplacement(int x, int y, Direction dir) {
-        
+
         heros.setPos_in(new Position(heros.getPos_in().x + x, heros.getPos_in().y + y));
         heros.changeImage(dir);
         paint(getGraphics());
@@ -253,7 +253,7 @@ public class World extends JPanel {
     }
 
     public boolean estUnVide(Position nextPos) {
-        if ((nextPos.x >= 0 && nextPos.x < X_MAX) && (nextPos.y >= 0 && nextPos.y < Y_MAX)){
+        if(positionInGrille(nextPos)) {
             if(nextPos.x == heros.getPos_in().x && nextPos.y == heros.getPos_in().y) {
                 heros.perdVie(p.degat());
                 return false;
@@ -262,6 +262,65 @@ public class World extends JPanel {
                 return (mapObjects.get(positions[nextPos.x][nextPos.y]) instanceof Vide);
         }
         return false;
+    }
+
+    public boolean poseBombe() {
+
+        if(heros.getMana() >= 10 && heros.getInventaire().nbClefs > 0) {
+            heros.perdMana(10);
+            ObjetCarte c = mapObjects.get(positions[heros.getPos_in().x][heros.getPos_in().y]);
+            if(c instanceof SortieFermee) {
+                ((SortieFermee) c).enExplosion();
+                repaint();
+                attente(500);
+                lanceAnimationOuverture();
+                repaint();
+                attente(500);
+                ((SortieFermee) c).ouvre();
+            }
+            else
+                mapObjects.put(positions[heros.getPos_in().x][heros.getPos_in().y], new Clef());
+
+            repaint();
+            return true;
+        }else
+            return false;
+    }
+
+    public boolean positionInGrille(Position nextPos) {
+        return ((nextPos.x >= 0 && nextPos.x < X_MAX) && (nextPos.y >= 0 && nextPos.y < Y_MAX));
+    }
+
+    public boolean lanceAnimationOuverture() {
+
+        Position pHeros = new Position(heros.getPos_in().x, heros.getPos_in().y);
+
+        if(positionInGrille(new Position(pHeros.x+1, pHeros.y))) {
+            if(mapObjects.get(positions[pHeros.x+1][pHeros.y]) instanceof Vide) {
+                deplacement(1, 0, Direction.OUEST);
+                return true;
+            }
+
+        }
+        if(positionInGrille(new Position(pHeros.x-1, pHeros.y))) {
+            if(mapObjects.get(positions[pHeros.x-1][pHeros.y]) instanceof Vide) {
+                deplacement(-1, 0, Direction.EST);
+                return true;
+            }
+        }
+        if(positionInGrille(new Position(pHeros.x, pHeros.y+1))) {
+            if(mapObjects.get(positions[pHeros.x][pHeros.y+1]) instanceof Vide) {
+                deplacement(0, 1, Direction.NORD);
+                return true;
+            }
+        }
+        else {
+            deplacement(0,-1,Direction.SUD);
+            return true;
+        }
+
+        return true;
+
     }
 
 }

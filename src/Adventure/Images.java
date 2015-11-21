@@ -22,6 +22,7 @@ public class Images {
     public static Image VIE;
     public static Image MANA;
     public static Image CLEF;
+    public static Image CLEF_PORTE;
 
     public static Image TOURELLE;
 
@@ -103,6 +104,7 @@ public class Images {
             INVENTAIRE = ImageIO.read(new FileInputStream("res/inventaire.png"));
 
             CLEF = ImageIO.read(new FileInputStream("res/bombe.png"));
+            CLEF_PORTE = ImageIO.read(new FileInputStream("res/bombePorte.png"));
             CARRELAGE = ImageIO.read(new FileInputStream("res/interieur.png"));
 
             TRAP = ImageIO.read(new FileInputStream("res/piege.png"));

@@ -1,5 +1,6 @@
 package Adventure.ObjetsCarte;
 
+import Adventure.Direction;
 import Adventure.Images;
 import Adventure.Interface.Fixe;
 
@@ -12,7 +13,12 @@ public class SortieFermee extends Sortie implements Fixe {
 
     @Override
     public void assigneImage() {
-        image = Images.SORTIE_FERMEE;
+        if(dir == Direction.AUCUNE)
+            image = Images.SORTIE_FERMEE;
+        else if(dir == Direction.EST)
+            image = Images.SORTIE;
+        else
+            image = Images.CLEF_PORTE;
     }
 
     public String getNomPlace() {
@@ -32,7 +38,21 @@ public class SortieFermee extends Sortie implements Fixe {
         return ouverte;
     }
 
-    public void setOuverte(boolean ouverte) {
-        this.ouverte = ouverte;
+    public void ouvre() {
+        this.ouverte = true;
+        this.dir = Direction.EST;
+        assigneImage();
+    }
+
+    public void ferme() {
+        this.ouverte = false;
+        this.dir = Direction.AUCUNE;
+        assigneImage();
+    }
+
+    public void enExplosion() {
+        this.dir= Direction.OUEST;
+        assigneImage();
     }
 }
+

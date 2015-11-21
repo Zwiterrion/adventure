@@ -38,7 +38,8 @@ public class GameController implements KeyListener {
                 gameModel.getHeros().utiliserObjet(1);
                 break;
             case KeyEvent.VK_E:
-                gameModel.getHeros().utiliserObjet(2);
+                if(gameModel.poseBombe())
+                    gameModel.getHeros().utiliserObjet(2);
                 break;
         }
     }
