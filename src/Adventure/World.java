@@ -9,7 +9,8 @@ import Adventure.Places.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Hashtable;
+import java.util.*;
+import java.util.List;
 
 public class World extends JPanel {
 
@@ -20,13 +21,12 @@ public class World extends JPanel {
     private Position positions[][];
 
     private Heros heros;
+    private List<Personnage> personnages;
 
     private Place placeCourante;
 
     public UIutilisateur ath;
     private Annonce annonce;
-
-    private Personnage p;
 
     // Constantes
     public static int TILE_SIZE;
@@ -47,10 +47,6 @@ public class World extends JPanel {
         annonce = new Annonce(SCREEN_SIZE, 50);
 
         initialisationNiveau(null);
-
-        p = new Personnage(positions[5][5], this);
-        p.active();
-        mapObjects.put(positions[5][5], p);
     }
 
     @Override
@@ -161,6 +157,7 @@ public class World extends JPanel {
 
     public void niveauSuivant(int x, int y, Direction dir, Sortie s) {
 
+        personnages.forEach(Personnage::stop);
         deplacement(x, y, dir);
         attente(300);
 
@@ -205,10 +202,12 @@ public class World extends JPanel {
 
         mapObjects = placeCourante.getMapObjects();
         mapSol = placeCourante.getMapSol();
-
+        personnages = placeCourante.getPersonnages();
         positions = placeCourante.getPositions();
 
         heros.setPos_in(placeCourante.getHeros().getPos_in());
+
+        placeCourante.lancePersonnage();
     }
 
     public Place placeCorrespondante(String s) {
@@ -245,21 +244,22 @@ public class World extends JPanel {
         return heros;
     }
 
-    public void changePositionPersonnage(Position e, Position precedente) {
+    public void changePositionPersonnage(Position e, Position precedente, Personnage personnage) {
 
         mapObjects.put(positions[precedente.x][precedente.y], new Vide());
-        mapObjects.put(positions[e.x][e.y], p);
+        mapObjects.put(positions[e.x][e.y], personnage);
         paint(getGraphics());
     }
 
-    public boolean estUnVide(Position nextPos) {
+    public boolean estUnVide(Position nextPos, Personnage p) {
         if(positionInGrille(nextPos)) {
             if(nextPos.x == heros.getPos_in().x && nextPos.y == heros.getPos_in().y) {
                 heros.perdVie(p.degat());
                 return false;
             }
             else
-                return (mapObjects.get(positions[nextPos.x][nextPos.y]) instanceof Vide);
+                return (mapObjects.get(positions[nextPos.x][nextPos.y]) instanceof Vide &&
+                        !(mapSol.get(positions[nextPos.x][nextPos.y]) instanceof Vide));
         }
         return false;
     }
@@ -322,5 +322,4 @@ public class World extends JPanel {
         return true;
 
     }
-
 }

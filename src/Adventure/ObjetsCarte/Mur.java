@@ -32,7 +32,7 @@ public class Mur extends ObjetCarte implements Fixe {
                 image = Images.MUR_PALISSADE;
                 break;
             default:
-                image = Images.MUR_PALISSADE;
+                image = Images.MUR;
         }
     }
 }

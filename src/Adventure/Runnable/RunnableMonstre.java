@@ -1,31 +1,30 @@
 package Adventure.Runnable;
 
 import Adventure.*;
+import Adventure.ObjetsCarte.Personnage;
 
-import java.awt.*;
 import java.util.Random;
-import java.util.concurrent.Semaphore;
 
 public class RunnableMonstre implements Runnable {
 
     private Position p;
     private Position precedente;
-    private World w;
+    private Heros heros;
     private Personnage personnage;
 
-    public RunnableMonstre(Position p, World w, Personnage personnage) {
+    private boolean niveauFini = false;
+
+    public RunnableMonstre(Position p, Heros h, Personnage personnage) {
         this.precedente = p;
         this.p = p;
-        this.w = w;
+        this.heros = h;
         this.personnage = personnage;
     }
 
     @Override
     public void run() {
 
-        boolean nonFin = false;
-
-        while (!nonFin) {
+        while (!niveauFini) {
 
 
             nouvellePosition();
@@ -33,7 +32,7 @@ public class RunnableMonstre implements Runnable {
             animation();
 
             try {
-                Thread.sleep(1000);
+                Thread.sleep(500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -53,9 +52,9 @@ public class RunnableMonstre implements Runnable {
         int i = 0;
         while(i < 20) {
 
-            this.personnage.x += offset.x;
-            this.personnage.y += offset.y;
-            this.w.repaint();
+            personnage.x += offset.x;
+            personnage.y += offset.y;
+            heros.getWorld().repaint();
 
             try {
                 Thread.sleep(25);
@@ -68,7 +67,7 @@ public class RunnableMonstre implements Runnable {
 
         this.personnage.x = 0;
         this.personnage.y = 0;
-        w.changePositionPersonnage(p, precedente);
+        heros.getWorld().changePositionPersonnage(p, precedente, personnage);
 
     }
 
@@ -96,7 +95,7 @@ public class RunnableMonstre implements Runnable {
 
         Position nextPos = new Position(p.x + x, p.y + y);
         if ((nextPos.x >= 0 && nextPos.x < World.X_MAX) && (nextPos.y >= 0 && nextPos.y < World.Y_MAX)) {
-            if (!(w.estUnVide(nextPos)))
+            if (!(heros.getWorld().estUnVide(nextPos, personnage)))
                 nouvellePosition();
             else {
                 precedente = new Position(p.x, p.y);
@@ -117,4 +116,7 @@ public class RunnableMonstre implements Runnable {
             nouvellePosition();
     }
 
+    public void setNiveauFini(boolean niveauFini) {
+        this.niveauFini = niveauFini;
+    }
 }

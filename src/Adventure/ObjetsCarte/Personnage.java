@@ -1,8 +1,12 @@
-package Adventure;
+package Adventure.ObjetsCarte;
 
+import Adventure.Heros;
+import Adventure.Images;
 import Adventure.Interface.Piege;
 import Adventure.ObjetsCarte.ObjetCarte;
+import Adventure.Position;
 import Adventure.Runnable.RunnableMonstre;
+import Adventure.World;
 
 
 public class Personnage extends ObjetCarte implements Piege {
@@ -12,18 +16,20 @@ public class Personnage extends ObjetCarte implements Piege {
     public int x = 0;
     public int y = 0;
 
-    private World w;
     private Thread t;
+    private RunnableMonstre m;
 
-    public Personnage(Position p, World w) {
+    public Personnage(Position p, Heros h) {
         this.p = p;
-        this.w = w;
-        t = new Thread(new RunnableMonstre(p,w, this));
+        m = new RunnableMonstre(p,h, this);
+        t = new Thread(m);
     }
 
     public void active() {
         t.start();
     }
+
+    public void stop() { m.setNiveauFini(true);}
 
     public void assigneImage() {
         switch (dir) {

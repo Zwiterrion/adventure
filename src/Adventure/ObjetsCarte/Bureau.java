@@ -4,9 +4,6 @@ import Adventure.Direction;
 import Adventure.Images;
 import Adventure.Interface.Fixe;
 
-/**
- * Created by Etienne on 14/11/2015.
- */
 public class Bureau extends ObjetCarte implements Fixe {
 
     public Bureau(Direction d) {

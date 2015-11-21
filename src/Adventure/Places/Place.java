@@ -2,7 +2,6 @@ package Adventure.Places;
 
 import Adventure.*;
 import Adventure.ObjetsCarte.*;
-import javafx.util.Pair;
 
 import java.util.ArrayList;
 import java.util.Hashtable;
@@ -18,6 +17,9 @@ public abstract class Place {
     private Hashtable<Position, ObjetCarte> mapSol;
     protected List<Sortie> sorties;
 
+    private  List<Personnage> personnages;
+
+
     private String nom = "Place Basique";
 
     private Position positions[][];
@@ -29,11 +31,16 @@ public abstract class Place {
         mapSol = new Hashtable<Position, ObjetCarte>();
         positions = new Position[World.X_MAX][World.Y_MAX];
         sorties = new ArrayList<Sortie>();
+        personnages = new ArrayList<Personnage>();
     }
 
     public void initialisation() {
         initLocations();
         chargementNiveau();
+    }
+
+    public void lancePersonnage() {
+        personnages.forEach(Personnage::active);
     }
 
     public abstract void initSorties();
@@ -95,6 +102,11 @@ public abstract class Place {
                 mapObjects.put(positions[i][j], e);
                 sorties.add(e);
                 break;
+            case 16:
+                Personnage personnage = new Personnage(positions[i][j],heros);
+                mapObjects.put(positions[i][j], personnage);
+                personnages.add(personnage);
+                break;
             default: mapObjects.put(positions[i][j], new Vide());break;
 
         }
@@ -130,6 +142,10 @@ public abstract class Place {
 
     public void setLEVEL_OBJECTS(Tuple[][] LEVEL_OBJECTS) {
         this.LEVEL_OBJECTS = LEVEL_OBJECTS;
+    }
+
+    public List<Personnage> getPersonnages() {
+        return personnages;
     }
 }
 
