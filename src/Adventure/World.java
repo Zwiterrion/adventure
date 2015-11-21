@@ -51,8 +51,9 @@ public class World extends JPanel {
 
         initialisationNiveau(null);
 
-        p = new Personnage(new Position(5,5), this);
+        p = new Personnage(positions[5][5], this);
         p.active();
+        mapObjects.put(positions[5][5], p);
     }
 
     @Override
@@ -65,8 +66,6 @@ public class World extends JPanel {
         dessineSol(g);
         dessineObjetsMap(g);
         dessineATH(g);
-
-        p.paint(g);
     }
 
     public void dessineSol(Graphics g) {
@@ -223,11 +222,18 @@ public class World extends JPanel {
         mapObjects.put(positions[heros.getPos_in().x][heros.getPos_in().y], new Vide());
         heros.setPos_in(new Position(heros.getPos_in().x + x, heros.getPos_in().y + y));
         heros.changeImage(dir);
-        paint(getGraphics());
+        repaint();
     }
 
     public Heros getHeros() {
         return heros;
+    }
+
+    public void changePositionPersonnage(Position e, Position precedente) {
+
+        mapObjects.put(positions[precedente.x][precedente.y], new Vide());
+        mapObjects.put(positions[e.x][e.y], p);
+        repaint();
     }
 
 

@@ -62,6 +62,11 @@ public class Images {
 
     public static Image SELECTION;
 
+    public static Image LAPIN_SUD;
+    public static Image LAPIN_NORD;
+    public static Image LAPIN_OUEST;
+    public static Image LAPIN_EST;
+
     public static void chargementImage() {
         try {
 
@@ -121,6 +126,12 @@ public class Images {
             BUISSON_EST = ImageIO.read(new FileInputStream("res/buisson_est.png"));
 
             SELECTION = ImageIO.read(new FileInputStream("res/selection.png"));
+
+            LAPIN_SUD = ImageIO.read(new FileInputStream("res/lapinSud.png"));
+            LAPIN_NORD = ImageIO.read(new FileInputStream("res/lapinNord.png"));
+            LAPIN_EST = ImageIO.read(new FileInputStream("res/lapinEst.png"));
+            LAPIN_OUEST = ImageIO.read(new FileInputStream("res/lapinOuest.png"));
+
 
         } catch (IOException e) {
             System.err.println("Impossible de charger tout le contenu : Images.chargementImage()");

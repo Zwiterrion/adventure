@@ -5,19 +5,18 @@ import Adventure.*;
 import java.awt.*;
 import java.util.Random;
 
-/**
- * Created by Etienne on 13/11/2015.
- */
 public class RunnableMonstre implements Runnable {
 
     private Position p;
-    private Personnage pers;
+    private Position precedente;
     private World w;
+    private Personnage personnage;
 
-    public RunnableMonstre(Position p, Personnage pers, World w) {
+    public RunnableMonstre(Position p, World w, Personnage personnage) {
+        this.precedente = p;
         this.p = p;
-        this.pers = pers;
         this.w = w;
+        this.personnage = personnage;
     }
 
     @Override
@@ -28,8 +27,7 @@ public class RunnableMonstre implements Runnable {
         while (!nonFin) {
 
             nouvellePosition();
-
-            pers.repaint();
+            w.changePositionPersonnage(p, precedente);
 
             try {
                 Thread.sleep(1000);
@@ -62,13 +60,26 @@ public class RunnableMonstre implements Runnable {
         }
 
         Position nextPos = new Position(p.x + x, p.y + y);
-        if ((nextPos.x >= 0 && nextPos.x < World.X_MAX) && (nextPos.y >= 0 && nextPos.y < World.Y_MAX))
-            if(!(w.videOuPas(nextPos, Direction.AUCUNE,x,y)))
+        if ((nextPos.x >= 0 && nextPos.x < World.X_MAX) && (nextPos.y >= 0 && nextPos.y < World.Y_MAX)) {
+            if (!(w.videOuPas(nextPos, Direction.AUCUNE, x, y)))
                 nouvellePosition();
             else {
-                p.x = nextPos.x;
-                p.y = nextPos.y;
+                precedente = new Position(p.x, p.y);
+                if(x == 1)
+                    personnage.setDir(Direction.EST);
+                else if(x == -1)
+                    personnage.setDir(Direction.OUEST);
+                else if(y == 1)
+                    personnage.setDir(Direction.NORD);
+                else
+                    personnage.setDir(Direction.SUD);
+
+                personnage.assigneImage();
+                p = new Position(nextPos.x, nextPos.y);
             }
+        }
+        else
+            nouvellePosition();
     }
 
 }

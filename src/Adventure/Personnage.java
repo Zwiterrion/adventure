@@ -1,31 +1,45 @@
 package Adventure;
 
+import Adventure.ObjetsCarte.ObjetCarte;
 import Adventure.Runnable.RunnableMonstre;
 
-import java.awt.*;
 
-
-public class Personnage extends Canvas {
+public class Personnage extends ObjetCarte {
 
     private Position p;
+
     private World w;
     private Thread t;
-    private Image image = Images.TOURELLE;
 
     public Personnage(Position p, World w) {
         this.p = p;
         this.w = w;
-        t = new Thread(new RunnableMonstre(p,this,w));
+        t = new Thread(new RunnableMonstre(p,w, this));
     }
 
     public void active() {
         t.start();
     }
 
-    @Override
-    public void paint(Graphics g) {
-        Position pos = IsometricHelper.point2DToIso(new Position(p.y, p.x));
-        g.drawImage(image, pos.x, pos.y, World.TILE_SIZE, World.TILE_SIZE*2, this);
-        w.repaint();
+    public void assigneImage() {
+        switch (dir) {
+            case AUCUNE:
+                image = Images.LAPIN_EST;
+                break;
+            case SUD:
+                image = Images.LAPIN_SUD;
+                break;
+            case NORD:
+                image = Images.LAPIN_NORD;
+                break;
+            case EST:
+                image = Images.LAPIN_EST;
+                break;
+            case OUEST:
+                image = Images.LAPIN_OUEST;
+                break;
+            default:
+                image = Images.LAPIN_EST;
+        }
     }
 }
