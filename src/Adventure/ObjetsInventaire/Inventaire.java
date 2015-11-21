@@ -15,12 +15,12 @@ public class Inventaire extends JPanel {
     private Image image;
     private List<Potion> stock;
 
-    private int nbPotionVie = 0;
-    private int nbPotionMana = 0;
-    private int nbClefs = 0;
+    public int nbPotionVie = 0;
+    public int nbPotionMana = 0;
+    public int nbClefs = 0;
 
     private Heros heros;
-    ;
+
 
     public RunnableVie runnableVie;
     public RunnableMana runnableMana;

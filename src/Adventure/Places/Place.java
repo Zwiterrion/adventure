@@ -75,7 +75,7 @@ public abstract class Place {
             case 4: mapObjects.put(positions[i][j], new Mana()); break;
             case 5: mapObjects.put(positions[i][j], new Bureau(num.dir)); break;
             case 6:
-                Sortie s = new Sortie(num.dir);
+                Sortie s = new Sortie();
                 mapObjects.put(positions[i][j], s);
                 sorties.add(s);
                 break;
@@ -90,6 +90,11 @@ public abstract class Place {
             case 12: mapObjects.put(positions[i][j], new Tableau());break;
             case 13: mapObjects.put(positions[i][j], new Voiture(num.dir));break;
             case 14: mapObjects.put(positions[i][j], new Buisson(num.dir));break;
+            case 15:
+                SortieFermee e = new SortieFermee();
+                mapObjects.put(positions[i][j], e);
+                sorties.add(e);
+                break;
             default: mapObjects.put(positions[i][j], new Vide());break;
 
         }

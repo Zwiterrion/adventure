@@ -4,6 +4,7 @@ import Adventure.*;
 
 import java.awt.*;
 import java.util.Random;
+import java.util.concurrent.Semaphore;
 
 public class RunnableMonstre implements Runnable {
 
@@ -26,8 +27,10 @@ public class RunnableMonstre implements Runnable {
 
         while (!nonFin) {
 
+
             nouvellePosition();
-            w.changePositionPersonnage(p, precedente);
+
+            animation();
 
             try {
                 Thread.sleep(1000);
@@ -35,6 +38,38 @@ public class RunnableMonstre implements Runnable {
                 e.printStackTrace();
             }
         }
+    }
+
+    public void animation() {
+
+        Position before = IsometricHelper.point2DToIso(new Position(precedente.y, precedente.x));
+        Position after = IsometricHelper.point2DToIso(new Position(p.y, p.x));
+
+        Position offset = Position.diff(after, before);
+
+        offset.x /= 20;
+        offset.y /= 20;
+
+        int i = 0;
+        while(i < 20) {
+
+            this.personnage.x += offset.x;
+            this.personnage.y += offset.y;
+            this.w.repaint();
+
+            try {
+                Thread.sleep(25);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            i++;
+        }
+
+        this.personnage.x = 0;
+        this.personnage.y = 0;
+        w.changePositionPersonnage(p, precedente);
+
     }
 
     public void nouvellePosition() {
@@ -61,7 +96,7 @@ public class RunnableMonstre implements Runnable {
 
         Position nextPos = new Position(p.x + x, p.y + y);
         if ((nextPos.x >= 0 && nextPos.x < World.X_MAX) && (nextPos.y >= 0 && nextPos.y < World.Y_MAX)) {
-            if (!(w.videOuPas(nextPos, Direction.AUCUNE, x, y)))
+            if (!(w.estUnVide(nextPos)))
                 nouvellePosition();
             else {
                 precedente = new Position(p.x, p.y);

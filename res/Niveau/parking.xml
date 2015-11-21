@@ -144,8 +144,8 @@
     <cellule type="14" direction="SUD"/>
     <cellule type="11" direction="SUD"/>
     <cellule type="0" direction="AUCUNE"/>
-    <cellule type="0" direction="AUCUNE"/>
-    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="3" direction="AUCUNE"/>
+    <cellule type="4" direction="AUCUNE"/>
     <cellule type="0" direction="AUCUNE"/>
     <cellule type="0" direction="AUCUNE"/>
     <cellule type="0" direction="AUCUNE"/>
@@ -195,7 +195,7 @@
     <cellule type="0" direction="AUCUNE"/>
     <cellule type="0" direction="AUCUNE"/>
     <cellule type="0" direction="AUCUNE"/>
-    <cellule type="11" direction="SUD"/>
+    <cellule type="14" direction="SUD"/>
     <cellule type="14" direction="SUD"/>
     <cellule type="14" direction="SUD"/>
 
@@ -244,7 +244,7 @@
     <cellule type="7" direction="AUCUNE"/>
     <cellule type="0" direction="AUCUNE"/>
     <cellule type="0" direction="AUCUNE"/>
-    <cellule type="6" direction="AUCUNE"/>
+    <cellule type="15" direction="AUCUNE"/>
     <cellule type="0" direction="AUCUNE"/>
 
 

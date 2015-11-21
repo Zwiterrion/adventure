@@ -38,7 +38,7 @@ public class Images {
 
     public static Image TELEPORTATION;
     public static Image SORTIE;
-    public static Image SORTIE2;
+    public static Image SORTIE_FERMEE;
 
     public static Image BUREAU;
     public static Image BUREAU_BIS;
@@ -98,7 +98,7 @@ public class Images {
             TELEPORTATION = ImageIO.read(new FileInputStream("res/teleport.png"));
 
             SORTIE = ImageIO.read(new FileInputStream("res/sortie.png"));
-            SORTIE2 = ImageIO.read(new FileInputStream("res/sortie2.png"));
+            SORTIE_FERMEE = ImageIO.read(new FileInputStream("res/sortieFermee.png"));
 
             INVENTAIRE = ImageIO.read(new FileInputStream("res/inventaire.png"));
 

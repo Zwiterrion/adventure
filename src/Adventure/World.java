@@ -4,10 +4,7 @@ import Adventure.Interface.Deplacable;
 import Adventure.Interface.Fixe;
 import Adventure.Interface.Piege;
 import Adventure.Interface.Ramassable;
-import Adventure.ObjetsCarte.Herbe;
-import Adventure.ObjetsCarte.ObjetCarte;
-import Adventure.ObjetsCarte.Sortie;
-import Adventure.ObjetsCarte.Vide;
+import Adventure.ObjetsCarte.*;
 import Adventure.Places.*;
 
 import javax.swing.*;
@@ -42,7 +39,7 @@ public class World extends JPanel {
         World.Y_MAX = Y_MAX;
 
         SCREEN_SIZE = screen_size;
-        TILE_SIZE = SCREEN_SIZE / X_MAX;
+        TILE_SIZE = (SCREEN_SIZE / X_MAX );
 
         heros = new Heros(this);
         ath = new UIutilisateur(heros);
@@ -75,7 +72,7 @@ public class World extends JPanel {
                 Position point = IsometricHelper.point2DToIso(new Position(j, i));
                 ObjetCarte object = mapSol.get(positions[i][j]);
                 if (!(object instanceof Vide))
-                    g.drawImage(object.getImage(), point.x, point.y, TILE_SIZE, TILE_SIZE * 2, this);
+                    g.drawImage(object.getImage(), point.x, point.y, TILE_SIZE, (TILE_SIZE * 2), this);
             }
         }
 
@@ -88,11 +85,16 @@ public class World extends JPanel {
                 Position point = IsometricHelper.point2DToIso(new Position(j, i));
                 ObjetCarte object = mapObjects.get(positions[i][j]);
 
-                if (!(object instanceof Vide))
-                    g.drawImage(object.getImage(), point.x, point.y, TILE_SIZE, TILE_SIZE * 2, this);
+                if(object instanceof Personnage) {
+                    g.drawImage(object.getImage(),point.x + ((Personnage) object).x, point.y + ((Personnage) object).y, TILE_SIZE, TILE_SIZE*2, this);
+                }
+                else {
+                    if (!(object instanceof Vide))
+                        g.drawImage(object.getImage(), point.x, point.y, TILE_SIZE, TILE_SIZE * 2, this);
 
-                if (i == heros.getPos_in().x && j == heros.getPos_in().y)
-                    g.drawImage(heros.getImage(), point.x, point.y, TILE_SIZE, TILE_SIZE * 2, this);
+                    if (i == heros.getPos_in().x && j == heros.getPos_in().y)
+                        g.drawImage(heros.getImage(), point.x, point.y, TILE_SIZE, TILE_SIZE * 2, this);
+                }
             }
         }
     }
@@ -111,7 +113,12 @@ public class World extends JPanel {
             if (objectSol instanceof Piege) {
                 heros.perdVie(((Piege) objectSol).degat());
                 return true;
-            } else if (object instanceof Sortie) {
+            }
+            else if (object instanceof Piege) {
+                heros.perdVie(((Piege) object).degat());
+                return false;
+            }
+            else if (object instanceof Sortie) {
                 niveauSuivant(x, y, dir, (Sortie) object);
                 return false;
             } else if (object instanceof Ramassable) {
@@ -156,6 +163,16 @@ public class World extends JPanel {
 
         deplacement(x, y, dir);
         attente(300);
+
+        if(s instanceof SortieFermee) {
+            if(((SortieFermee) s).isOuverte())
+                teleportation(s);
+        }
+        else
+            teleportation(s);
+    }
+
+    public void teleportation(Sortie s) {
         initialisationNiveau(s);
         pageDeDescription();
         attente(1000);
@@ -218,11 +235,10 @@ public class World extends JPanel {
     }
 
     public void deplacement(int x, int y, Direction dir) {
-
-        mapObjects.put(positions[heros.getPos_in().x][heros.getPos_in().y], new Vide());
+        
         heros.setPos_in(new Position(heros.getPos_in().x + x, heros.getPos_in().y + y));
         heros.changeImage(dir);
-        repaint();
+        paint(getGraphics());
     }
 
     public Heros getHeros() {
@@ -233,8 +249,19 @@ public class World extends JPanel {
 
         mapObjects.put(positions[precedente.x][precedente.y], new Vide());
         mapObjects.put(positions[e.x][e.y], p);
-        repaint();
+        paint(getGraphics());
     }
 
+    public boolean estUnVide(Position nextPos) {
+        if ((nextPos.x >= 0 && nextPos.x < X_MAX) && (nextPos.y >= 0 && nextPos.y < Y_MAX)){
+            if(nextPos.x == heros.getPos_in().x && nextPos.y == heros.getPos_in().y) {
+                heros.perdVie(p.degat());
+                return false;
+            }
+            else
+                return (mapObjects.get(positions[nextPos.x][nextPos.y]) instanceof Vide);
+        }
+        return false;
+    }
 
 }
