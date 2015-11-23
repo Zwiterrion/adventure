@@ -62,7 +62,6 @@ public class LecteurNiveau {
                 }
             }
 
-
         }
         catch (final ParserConfigurationException | SAXException | IOException e) {
             e.printStackTrace();
