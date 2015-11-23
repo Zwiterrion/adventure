@@ -25,7 +25,7 @@ public class LecteurNiveau {
         try {
             DocumentBuilder builder = factory.newDocumentBuilder();
 
-            Document document= builder.parse(new File("res/niveau/" + file + ".xml"));
+            Document document= builder.parse(new File("res/Niveau/" + file + ".xml"));
 
             Element racine = document.getDocumentElement();
 
