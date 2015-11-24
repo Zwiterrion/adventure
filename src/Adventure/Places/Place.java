@@ -1,6 +1,7 @@
 package Adventure.Places;
 
 import Adventure.*;
+import Adventure.Interface.Animable;
 import Adventure.ObjetsCarte.*;
 
 import java.util.ArrayList;
@@ -17,8 +18,7 @@ public abstract class Place {
     private Hashtable<Position, ObjetCarte> mapSol;
     protected List<Sortie> sorties;
 
-    private  List<Personnage> personnages;
-
+    private  List<Animable> animables;
 
     private String nom = "Place Basique";
 
@@ -31,7 +31,7 @@ public abstract class Place {
         mapSol = new Hashtable<Position, ObjetCarte>();
         positions = new Position[World.X_MAX][World.Y_MAX];
         sorties = new ArrayList<Sortie>();
-        personnages = new ArrayList<Personnage>();
+        animables = new ArrayList<Animable>();
     }
 
     public void initialisation() {
@@ -40,7 +40,7 @@ public abstract class Place {
     }
 
     public void lancePersonnage() {
-        personnages.forEach(Personnage::active);
+        animables.forEach(Animable::active);
     }
 
     public abstract void initSorties();
@@ -105,7 +105,12 @@ public abstract class Place {
             case 16:
                 Personnage personnage = new Personnage(positions[i][j],heros);
                 mapObjects.put(positions[i][j], personnage);
-                personnages.add(personnage);
+                animables.add(personnage);
+                break;
+            case 17:
+                Piece p = new Piece(positions[i][j], heros);
+                mapObjects.put(positions[i][j], p);
+                animables.add(p);
                 break;
             default: mapObjects.put(positions[i][j], new Vide());break;
 
@@ -144,8 +149,8 @@ public abstract class Place {
         this.LEVEL_OBJECTS = LEVEL_OBJECTS;
     }
 
-    public List<Personnage> getPersonnages() {
-        return personnages;
+    public List<Animable> getAnimables() {
+        return animables;
     }
 }
 

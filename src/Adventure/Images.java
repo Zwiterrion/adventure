@@ -68,6 +68,8 @@ public class Images {
     public static Image LAPIN_OUEST;
     public static Image LAPIN_EST;
 
+    public static Image PIECE;
+
     public static void chargementImage() {
         try {
 
@@ -128,6 +130,8 @@ public class Images {
             BUISSON_EST = ImageIO.read(new FileInputStream("res/buisson_est.png"));
 
             SELECTION = ImageIO.read(new FileInputStream("res/selection.png"));
+
+            PIECE = ImageIO.read(new FileInputStream("res/piece.png"));
 
             LAPIN_SUD = ImageIO.read(new FileInputStream("res/lapinSud.png"));
             LAPIN_NORD = ImageIO.read(new FileInputStream("res/lapinNord.png"));

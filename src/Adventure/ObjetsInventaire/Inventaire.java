@@ -15,15 +15,15 @@ public class Inventaire extends JPanel {
     private Image image;
     private List<Potion> stock;
 
-    public int nbPotionVie = 0;
-    public int nbPotionMana = 0;
-    public int nbClefs = 0;
+    private int nbPotionVie = 0;
+    private int nbPotionMana = 0;
+    private int nbClefs = 0;
+    private int nbPieces = 0;
 
     private Heros heros;
 
-
-    public RunnableVie runnableVie;
-    public RunnableMana runnableMana;
+    private RunnableVie runnableVie;
+    private RunnableMana runnableMana;
 
     public Inventaire(Heros h) {
         image = Images.INVENTAIRE;
@@ -38,6 +38,9 @@ public class Inventaire extends JPanel {
     @Override
     public void paint(Graphics g) {
         super.paint(g);
+
+        g.setColor(new Color(9, 128, 1));
+        g.fillRect(230, 15, 65, ((nbPieces))*22);
 
         g.setColor(new Color(0, 0, 0));
         g.drawImage(image, 2, 8, this);
@@ -141,6 +144,21 @@ public class Inventaire extends JPanel {
 
     public void demarreAnimation(Thread t) {
         t.start();
+    }
+
+    public void remplirCompteurCle() {
+
+        nbPieces++;
+        if(nbPieces >= 4) {
+            nbPieces = 0;
+            ajouterElement(new PotionClef());
+        }
+
+        repaint();
+    }
+
+    public int getNbClefs() {
+        return nbClefs;
     }
 }
 

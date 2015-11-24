@@ -2,6 +2,7 @@ package Adventure.ObjetsCarte;
 
 import Adventure.Heros;
 import Adventure.Images;
+import Adventure.Interface.Animable;
 import Adventure.Interface.Piege;
 import Adventure.ObjetsCarte.ObjetCarte;
 import Adventure.Position;
@@ -9,7 +10,7 @@ import Adventure.Runnable.RunnableMonstre;
 import Adventure.World;
 
 
-public class Personnage extends ObjetCarte implements Piege {
+public class Personnage extends ObjetCarte implements Piege,Animable {
 
     public Position p;
 
@@ -25,11 +26,23 @@ public class Personnage extends ObjetCarte implements Piege {
         t = new Thread(m);
     }
 
+    @Override
     public void active() {
         t.start();
     }
 
+    @Override
     public void stop() { m.setNiveauFini(true);}
+
+    @Override
+    public int getX() {
+        return x;
+    }
+
+    @Override
+    public int getY() {
+        return y;
+    }
 
     public void assigneImage() {
         switch (dir) {

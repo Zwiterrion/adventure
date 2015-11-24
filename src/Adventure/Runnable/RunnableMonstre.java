@@ -26,7 +26,6 @@ public class RunnableMonstre implements Runnable {
 
         while (!niveauFini) {
 
-
             nouvellePosition();
 
             animation();

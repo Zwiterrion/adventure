@@ -39,6 +39,8 @@ public class Heros {
             inventaire.ajouterElement(new PotionMana(p.quantite()));
         else if (p instanceof Clef)
             inventaire.ajouterElement(new PotionClef());
+        else
+            inventaire.remplirCompteurCle();
     }
 
     public void utiliserObjet(int i) {

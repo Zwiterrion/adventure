@@ -1,9 +1,6 @@
 package Adventure;
 
-import Adventure.Interface.Deplacable;
-import Adventure.Interface.Fixe;
-import Adventure.Interface.Piege;
-import Adventure.Interface.Ramassable;
+import Adventure.Interface.*;
 import Adventure.ObjetsCarte.*;
 import Adventure.Places.*;
 
@@ -21,7 +18,7 @@ public class World extends JPanel {
     private Position positions[][];
 
     private Heros heros;
-    private List<Personnage> personnages;
+    private List<Animable> animables;
 
     private Place placeCourante;
 
@@ -81,8 +78,8 @@ public class World extends JPanel {
                 Position point = IsometricHelper.point2DToIso(new Position(j, i));
                 ObjetCarte object = mapObjects.get(positions[i][j]);
 
-                if(object instanceof Personnage) {
-                    g.drawImage(object.getImage(),point.x + ((Personnage) object).x, point.y + ((Personnage) object).y, TILE_SIZE, TILE_SIZE*2, this);
+                if(object instanceof Animable) {
+                    g.drawImage(object.getImage(),point.x + ((Animable) object).getX(), point.y + ((Animable) object).getY(), TILE_SIZE, TILE_SIZE*2, this);
                 }
                 else {
                     if (!(object instanceof Vide))
@@ -157,7 +154,7 @@ public class World extends JPanel {
 
     public void niveauSuivant(int x, int y, Direction dir, Sortie s) {
 
-        personnages.forEach(Personnage::stop);
+        animables.forEach(Animable::stop);
         deplacement(x, y, dir);
         attente(300);
 
@@ -202,7 +199,7 @@ public class World extends JPanel {
 
         mapObjects = placeCourante.getMapObjects();
         mapSol = placeCourante.getMapSol();
-        personnages = placeCourante.getPersonnages();
+        animables = placeCourante.getAnimables();
         positions = placeCourante.getPositions();
 
         heros.setPos_in(placeCourante.getHeros().getPos_in());
@@ -266,7 +263,7 @@ public class World extends JPanel {
 
     public boolean poseBombe() {
 
-        if(heros.getMana() >= 10 && heros.getInventaire().nbClefs > 0) {
+        if(heros.getMana() >= 10 && heros.getInventaire().getNbClefs() > 0) {
             heros.perdMana(10);
             ObjetCarte c = mapObjects.get(positions[heros.getPos_in().x][heros.getPos_in().y]);
             if(c instanceof SortieFermee) {
