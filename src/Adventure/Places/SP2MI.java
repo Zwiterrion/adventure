@@ -13,12 +13,6 @@ public class SP2MI extends Place {
 
     public SP2MI(Heros h) {
         super(h);
-        LecteurNiveau l = new LecteurNiveau("sp2mi");
-        setLEVEL_OBJECTS(l.getLEVEL_OBJETS());
-        setLEVEL_SOL(l.getLEVEL_SOL());
-        initialisation();
-        setNom("SP2MI");
-        initSorties();
     }
 
     @Override

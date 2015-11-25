@@ -20,7 +20,7 @@ public abstract class Place {
 
     private  List<Animable> animables;
 
-    private String nom = "Place Basique";
+    private String nom;
 
     private Position positions[][];
     private Heros heros;
@@ -32,11 +32,21 @@ public abstract class Place {
         positions = new Position[World.X_MAX][World.Y_MAX];
         sorties = new ArrayList<Sortie>();
         animables = new ArrayList<Animable>();
+
+        initialisation();
     }
 
+
     public void initialisation() {
+
+        this.nom = this.getClass().getSimpleName().toLowerCase();
+        LecteurNiveau l = new LecteurNiveau(this.nom);
+        setLEVEL_OBJECTS(l.getLEVEL_OBJETS());
+        setLEVEL_SOL(l.getLEVEL_SOL());
+
         initLocations();
         chargementNiveau();
+        initSorties();
     }
 
     public void lancePersonnage() {

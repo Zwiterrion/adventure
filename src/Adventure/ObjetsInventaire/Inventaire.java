@@ -20,15 +20,12 @@ public class Inventaire extends JPanel {
     private int nbClefs = 0;
     private int nbPieces = 0;
 
-    private Heros heros;
-
     private RunnableVie runnableVie;
     private RunnableMana runnableMana;
 
-    public Inventaire(Heros h) {
+    public Inventaire(Heros heros) {
         image = Images.INVENTAIRE;
         stock = new ArrayList<Potion>();
-        this.heros = h;
         calculPotions();
 
         runnableVie = new RunnableVie(heros);

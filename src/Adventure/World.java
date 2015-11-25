@@ -90,6 +90,7 @@ public class World extends JPanel {
                 }
             }
         }
+
     }
 
     public void dessineATH(Graphics g) {
@@ -213,10 +214,10 @@ public class World extends JPanel {
             return new SP2MI(heros);
         else if(s.equals("IFMI"))
             return new IFMI(heros);
-        else if(s.equals("SALLE TP"))
-            return new TP(heros);
+        else if(s.equals("SalleTp"))
+            return new SalleTp(heros);
         else if(s.equals("BIBLIOTHEQUE"))
-            return new BU(heros);
+            return new Bibliotheque(heros);
         else
             return new Parking(heros);
     }

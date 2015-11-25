@@ -9,12 +9,6 @@ public class Parking extends Place {
 
     public Parking(Heros h) {
         super(h);
-        LecteurNiveau l = new LecteurNiveau("parking");
-        setLEVEL_OBJECTS(l.getLEVEL_OBJETS());
-        setLEVEL_SOL(l.getLEVEL_SOL());
-        initialisation();
-        setNom("PARKING");
-        initSorties();
     }
 
     @Override
@@ -34,7 +28,7 @@ public class Parking extends Place {
                     s.initialisation(this.getNom(), "IFMI");
                     break;
                 case 3:
-                    s.initialisation(this.getNom(), "SALLE TP");
+                    s.initialisation(this.getNom(), "SALLE SalleTp");
                     break;
             }
             i++;

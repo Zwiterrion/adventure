@@ -1,23 +1,12 @@
 package Adventure.Places;
 
-import Adventure.Direction;
 import Adventure.Heros;
-import Adventure.LecteurNiveau;
 import Adventure.ObjetsCarte.Sortie;
-import Adventure.Tuple;
-import javafx.util.Pair;
 
+public class Bibliotheque extends Place {
 
-public class BU extends Place {
-
-    public BU(Heros h) {
+    public Bibliotheque(Heros h) {
         super(h);
-        LecteurNiveau l = new LecteurNiveau("bu");
-        setLEVEL_OBJECTS(l.getLEVEL_OBJETS());
-        setLEVEL_SOL(l.getLEVEL_SOL());
-        initialisation();
-        setNom("BIBLIOTHEQUE");
-        initSorties();
     }
 
     @Override
