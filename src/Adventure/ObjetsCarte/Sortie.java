@@ -9,6 +9,12 @@ public class Sortie extends ObjetCarte implements Fixe {
     private String courante;
     private String destination;
 
+    public Sortie(String destination, String courante) {
+        super();
+        this.destination = destination;
+        this.courante = courante;
+    }
+
     @Override
     public void assigneImage() {
         image = Images.SORTIE;
@@ -22,8 +28,4 @@ public class Sortie extends ObjetCarte implements Fixe {
         return destination;
     }
 
-    public void initialisation(String courante, String destination) {
-        this.courante = courante;
-        this.destination = destination;
-    }
 }

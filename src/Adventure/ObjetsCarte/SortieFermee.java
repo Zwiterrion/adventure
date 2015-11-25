@@ -11,6 +11,11 @@ public class SortieFermee extends Sortie implements Fixe {
     private String destination;
     private boolean ouverte = false;
 
+    public SortieFermee(String destination, String courante) {
+        super(destination, courante);
+    }
+
+
     @Override
     public void assigneImage() {
         if(dir == Direction.AUCUNE)

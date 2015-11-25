@@ -16,7 +16,6 @@ public abstract class Place {
 
     private Hashtable<Position, ObjetCarte> mapObjects;
     private Hashtable<Position, ObjetCarte> mapSol;
-    protected List<Sortie> sorties;
 
     private  List<Animable> animables;
 
@@ -30,7 +29,6 @@ public abstract class Place {
         mapObjects = new Hashtable<Position, ObjetCarte>();
         mapSol = new Hashtable<Position, ObjetCarte>();
         positions = new Position[World.X_MAX][World.Y_MAX];
-        sorties = new ArrayList<Sortie>();
         animables = new ArrayList<Animable>();
 
         initialisation();
@@ -91,11 +89,7 @@ public abstract class Place {
             case 3: mapObjects.put(positions[i][j], new Vie()); break;
             case 4: mapObjects.put(positions[i][j], new Mana()); break;
             case 5: mapObjects.put(positions[i][j], new Bureau(num.dir)); break;
-            case 6:
-                Sortie s = new Sortie();
-                mapObjects.put(positions[i][j], s);
-                sorties.add(s);
-                break;
+            case 6: mapObjects.put(positions[i][j], new Sortie(num.destination, this.getClass().getSimpleName())); break;
             case 7:
                 mapObjects.put(positions[i][j], new Vide());
                 heros.setPos_in(positions[i][j]);
@@ -107,11 +101,7 @@ public abstract class Place {
             case 12: mapObjects.put(positions[i][j], new Tableau());break;
             case 13: mapObjects.put(positions[i][j], new Voiture(num.dir));break;
             case 14: mapObjects.put(positions[i][j], new Buisson(num.dir));break;
-            case 15:
-                SortieFermee e = new SortieFermee();
-                mapObjects.put(positions[i][j], e);
-                sorties.add(e);
-                break;
+            case 15: mapObjects.put(positions[i][j], new SortieFermee(num.destination, this.getClass().getSimpleName())); break;
             case 16:
                 Personnage personnage = new Personnage(positions[i][j],heros);
                 mapObjects.put(positions[i][j], personnage);

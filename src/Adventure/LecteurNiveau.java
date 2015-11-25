@@ -43,9 +43,12 @@ public class LecteurNiveau {
                         final Element cellule = (Element) racineNoeuds.item(i);
 
                         int type = Integer.parseInt(cellule.getAttribute("type"));
+                        String destination = cellule.getAttribute("destination");
                         Direction direction = Direction.change(cellule.getAttribute("direction"));
 
-                        ajoutElement(x, y, sol, type, direction);
+                        if(destination != null)
+                            ajoutElement(x, y, sol, type, direction, destination);
+
 
                         if (y == 9 && x == 9) {
                             x = 0;
@@ -68,12 +71,12 @@ public class LecteurNiveau {
         }
     }
 
-    public void ajoutElement(int i, int j, boolean sol, int type, Direction dir) {
+    public void ajoutElement(int i, int j, boolean sol, int type, Direction dir, String destination) {
 
         if(sol)
-            LEVEL_SOL[i][j] = new Tuple(type, dir);
+            LEVEL_SOL[i][j] = new Tuple(type, dir, destination);
         else
-            LEVEL_OBJETS[i][j] = new Tuple(type, dir);
+            LEVEL_OBJETS[i][j] = new Tuple(type, dir, destination);
 
     }
 
