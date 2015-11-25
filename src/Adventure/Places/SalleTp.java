@@ -1,5 +1,6 @@
 package Adventure.Places;
 
+import Adventure.Direction;
 import Adventure.Heros;
 
 /**
@@ -9,6 +10,7 @@ public class SalleTp extends Place {
 
     public SalleTp(Heros h) {
         super(h,"salletp");
+        h.changeImage(Direction.SUD);
     }
 
 

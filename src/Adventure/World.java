@@ -251,10 +251,6 @@ public class World extends JPanel {
         paint(getGraphics());
     }
 
-    public Heros getHeros() {
-        return heros;
-    }
-
     public void changePositionPersonnage(Position e, Position precedente, Personnage personnage) {
 
         mapObjects.put(positions[precedente.x][precedente.y], new Vide());
@@ -332,6 +328,10 @@ public class World extends JPanel {
 
         return true;
 
+    }
+
+    public Heros getHeros() {
+        return heros;
     }
 }
 

@@ -232,7 +232,7 @@
     <cellule type="5" direction="SUD"/>
     <cellule type="0" direction="SUD"/>
     <cellule type="5" direction="SUD"/>
-    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="7" direction="AUCUNE"/>
     <cellule type="6" direction="AUCUNE"/>
 
     <!-- Ligne 10 -->

@@ -4,9 +4,6 @@ import Adventure.Heros;
 
 import java.awt.*;
 
-/**
- * Created by Etienne on 13/11/2015.
- */
 public class RunnableEstEnVie implements Runnable {
 
     private Heros heros;

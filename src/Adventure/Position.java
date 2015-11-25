@@ -9,8 +9,10 @@ public class Position {
     /**
      * Constructeur permettant de créer une Position (x,y)
      *
-     * @param x : coordonées en x
-     * @param y : coordonées en y
+     * @param x
+     *          Coordonées en x
+     * @param y
+     *          Coordonées en y
      */
     public Position(int x, int y) {
         this.x = x;
@@ -20,8 +22,10 @@ public class Position {
     /**
      * Renvoie si oui ou non la position, passée en argument, et égale à l'instance de cette classe
      *
-     * @param o : Deuxième Position passée en paramètre
+     * @param o
+     *          Deuxième Position passée en paramètre
      * @return
+     *      Un booléen si les positions sont equivalentes
      */
     @Override
     public boolean equals(Object o) {
@@ -36,9 +40,12 @@ public class Position {
     /**
      * Renvoie l'addition de deux positions passées en paramètre
      *
-     * @param a : position a
-     * @param b : position b
+     * @param a
+     *          Position a
+     * @param b
+     *          Position b
      * @return
+     *      L'addition de deux positions
      */
     public static Position add(Position a, Position b) {
         return new Position(a.x + b.x, a.y + b.y);
@@ -47,9 +54,12 @@ public class Position {
     /**
      * Renvoie la différence de deux positions passées en paramètre
      *
-     * @param a : position a
-     * @param b : position b
+     * @param a
+     *          Position a
+     * @param b
+     *          Position b
      * @return
+     *      La différence de deux positions
      */
     public static Position diff(Position a, Position b) {
         return new Position(a.x - b.x, a.y - b.y);
@@ -58,16 +68,15 @@ public class Position {
     /**
      * Renvoie la multiplication de deux positions
      *
-     * @param point  : Première position
-     * @param scalar : Deuxième position
+     * @param point
+     *              Première position
+     * @param scalar
+     *              Deuxième position
      * @return
+     *      La multiplication de deux positions
      */
     public static Position mul(Position point, Position scalar) {
         return new Position(point.x * scalar.x, point.y * scalar.y);
     }
 
-    @Override
-    public String toString() {
-        return x + " : " + y;
-    }
 }
