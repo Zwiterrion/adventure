@@ -7,14 +7,11 @@ import Adventure.Interface.Fixe;
 
 public class SortieFermee extends Sortie implements Fixe {
 
-    private String courante;
-    private String destination;
     private boolean ouverte = false;
 
     public SortieFermee(String destination, String courante) {
         super(destination, courante);
     }
-
 
     @Override
     public void assigneImage() {
@@ -24,19 +21,6 @@ public class SortieFermee extends Sortie implements Fixe {
             image = Images.SORTIE;
         else
             image = Images.CLEF_PORTE;
-    }
-
-    public String getNomPlace() {
-        return courante;
-    }
-
-    public String getDestination() {
-        return destination;
-    }
-
-    public void initialisation(String courante, String destination) {
-        this.courante = courante;
-        this.destination = destination;
     }
 
     public boolean isOuverte() {

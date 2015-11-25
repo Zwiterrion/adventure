@@ -12,21 +12,8 @@ import javafx.util.Pair;
 public class SalleTp extends Place {
 
     public SalleTp(Heros h) {
-        super(h);
+        super(h," salletp");
     }
 
-    @Override
-    public void initSorties() {
 
-        int i = 0;
-        for (Sortie s : this.sorties) {
-
-            switch (i) {
-                case 0:
-                    s.initialisation(this.getNom(), "FUTUROSCOPE");
-                    break;
-            }
-            i++;
-        }
-    }
 }

@@ -12,21 +12,8 @@ import javafx.util.Pair;
 public class SP2MI extends Place {
 
     public SP2MI(Heros h) {
-        super(h);
+        super(h, "sp2mi");
     }
 
-    @Override
-    public void initSorties() {
 
-        int i = 0;
-        for (Sortie s : this.sorties) {
-
-            switch (i) {
-                case 0:
-                    s.initialisation(this.getNom(), "FUTUROSCOPE");
-                    break;
-            }
-            i++;
-        }
-    }
 }

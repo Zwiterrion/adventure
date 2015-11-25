@@ -196,7 +196,7 @@ public class World extends JPanel {
         if (s == null)
             placeCourante = new Parking(heros);
         else
-            placeCourante = placeCorrespondante(s.getDestination());
+            placeCourante = placeCorrespondante(placeCourante.getNom(),s.getDestination());
 
         mapObjects = placeCourante.getMapObjects();
         mapSol = placeCourante.getMapSol();
@@ -208,15 +208,18 @@ public class World extends JPanel {
         placeCourante.lancePersonnage();
     }
 
-    public Place placeCorrespondante(String s) {
-
-        if (s.equals("SP2MI"))
+    public Place placeCorrespondante(String nomPlace, String dest) {
+        
+        if (dest.equalsIgnoreCase("SP2MI") && !(nomPlace.equalsIgnoreCase("COULOIR")))
+            return new CouloirPiege(heros, nomPlace, dest);
+        else if(dest.equalsIgnoreCase("SP2MI")){
             return new SP2MI(heros);
-        else if(s.equals("IFMI"))
+        }
+        else if(dest.equalsIgnoreCase("IFMI"))
             return new IFMI(heros);
-        else if(s.equals("SalleTp"))
+        else if(dest.equalsIgnoreCase("SALLETP"))
             return new SalleTp(heros);
-        else if(s.equals("BIBLIOTHEQUE"))
+        else if(dest.equalsIgnoreCase("BIBLIOTHEQUE"))
             return new Bibliotheque(heros);
         else
             return new Parking(heros);

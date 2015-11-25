@@ -10,30 +10,7 @@ import javafx.util.Pair;
 public class Couloir extends Place {
 
     public Couloir(Heros h) {
-        super(h);
-        LecteurNiveau l = new LecteurNiveau("couloir");
-        setLEVEL_OBJECTS(l.getLEVEL_OBJETS());
-        setLEVEL_SOL(l.getLEVEL_SOL());
-        initialisation();
-        setNom("COULOIR");
-        initSorties();
+        super(h, "couloir");
     }
 
-    @Override
-    public void initSorties() {
-
-        int i = 0;
-        for (Sortie s : this.sorties) {
-
-            switch (i) {
-                case 0:
-                    s.initialisation(this.getNom(), "FUTUROSCOPE");
-                    break;
-                case 1:
-                    s.initialisation(this.getNom(), "PARKING");
-                    break;
-            }
-            i++;
-        }
-    }
 }

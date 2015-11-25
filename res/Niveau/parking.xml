@@ -149,7 +149,7 @@
     <cellule type="0" direction="AUCUNE"/>
     <cellule type="0" direction="AUCUNE"/>
     <cellule type="0" direction="AUCUNE"/>
-    <cellule type="6" direction="AUCUNE"/>
+    <cellule type="6" direction="AUCUNE" destination="BIBLIOTHEQUE" />
 
     <!-- Ligne 3 -->
     <cellule type="13" direction="SUD"/>
@@ -200,7 +200,7 @@
     <cellule type="14" direction="SUD"/>
 
     <!-- Ligne 7 -->
-    <cellule type="6" direction="AUCUNE" />
+    <cellule type="6" direction="AUCUNE" destination="SP2MI" />
     <cellule type="0" direction="AUCUNE"/>
     <cellule type="0" direction="AUCUNE"/>
     <cellule type="0" direction="AUCUNE"/>
@@ -224,7 +224,7 @@
     <cellule type="13" direction="NORD"/>
 
     <!-- Ligne 9 -->
-    <cellule type="6" direction="AUCUNE"/>
+    <cellule type="6" direction="AUCUNE" destination="IFMI"/>
     <cellule type="0" direction="AUCUNE"/>
     <cellule type="0" direction="AUCUNE"/>
     <cellule type="0" direction="AUCUNE"/>
@@ -244,7 +244,7 @@
     <cellule type="7" direction="AUCUNE"/>
     <cellule type="0" direction="AUCUNE"/>
     <cellule type="0" direction="AUCUNE"/>
-    <cellule type="15" direction="AUCUNE"/>
+    <cellule type="15" direction="AUCUNE" destination="SALLETP"/>
     <cellule type="0" direction="AUCUNE"/>
 
 

@@ -24,34 +24,31 @@ public abstract class Place {
     private Position positions[][];
     private Heros heros;
 
-    public Place(Heros h) {
+    public Place(Heros h, String nom) {
         this.heros = h;
         mapObjects = new Hashtable<Position, ObjetCarte>();
         mapSol = new Hashtable<Position, ObjetCarte>();
         positions = new Position[World.X_MAX][World.Y_MAX];
         animables = new ArrayList<Animable>();
 
-        initialisation();
+        initialisation(nom);
     }
 
 
-    public void initialisation() {
+    public void initialisation(String nom) {
 
-        this.nom = this.getClass().getSimpleName().toLowerCase();
+        this.nom = nom;
         LecteurNiveau l = new LecteurNiveau(this.nom);
         setLEVEL_OBJECTS(l.getLEVEL_OBJETS());
         setLEVEL_SOL(l.getLEVEL_SOL());
 
         initLocations();
         chargementNiveau();
-        initSorties();
     }
 
     public void lancePersonnage() {
         animables.forEach(Animable::active);
     }
-
-    public abstract void initSorties();
 
     public void initLocations() {
         for (int i = 0; i < World.X_MAX; i++)
@@ -115,6 +112,14 @@ public abstract class Place {
             default: mapObjects.put(positions[i][j], new Vide());break;
 
         }
+    }
+
+    public void ajoutSol(int i, int j, ObjetCarte oc){
+        mapSol.put(positions[i][j], oc);
+    }
+
+    public ObjetCarte getObjet(int i, int j){
+        return mapObjects.get(positions[i][j]);
     }
 
     public Heros getHeros() {

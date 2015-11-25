@@ -28,4 +28,7 @@ public class Sortie extends ObjetCarte implements Fixe {
         return destination;
     }
 
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
 }

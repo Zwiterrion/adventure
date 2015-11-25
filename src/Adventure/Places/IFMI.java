@@ -9,21 +9,7 @@ import Adventure.ObjetsCarte.Sortie;
 public class IFMI extends Place {
 
     public IFMI(Heros h) {
-        super(h);
+        super(h, "IFMI");
     }
 
-    @Override
-    public void initSorties() {
-
-        int i = 0;
-        for (Sortie s : this.sorties) {
-
-            switch (i) {
-                case 0:
-                    s.initialisation(this.getNom(), "FUTUROSCOPE");
-                    break;
-            }
-            i++;
-        }
-    }
 }
