@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 
-
 public abstract class Place {
 
     private Tuple LEVEL_SOL[][];
@@ -18,7 +17,6 @@ public abstract class Place {
     private Hashtable<Position, ObjetCarte> mapSol;
 
     private  List<Animable> animables;
-
     private String nom;
 
     private Position positions[][];
@@ -68,50 +66,54 @@ public abstract class Place {
     public void creerSol(int i, int j, Tuple num) {
 
         switch (num.type) {
-            case 0: mapSol.put(positions[i][j], new Herbe(num.dir)); break;
-            case 1: mapSol.put(positions[i][j], new Vide()); break;
-            case 2: mapSol.put(positions[i][j], new Carrelage()); break;
-            case 3: mapSol.put(positions[i][j], new Trap()); break;
-            case 4: mapSol.put(positions[i][j], new Beton()); break;
-            default: mapSol.put(positions[i][j], new Beton());
+            case 0: ajoutSol(i,j,new Herbe(num.dir)); break;
+            case 1: ajoutSol(i,j,new Vide()); break;
+            case 2: ajoutSol(i,j,new Carrelage()); break;
+            case 3: ajoutSol(i,j,new Trap()); break;
+            case 4: ajoutSol(i,j,new Beton()); break;
+            default: ajoutSol(i,j,new Beton());
         }
     }
 
     public void creerObjet(int i, int j, Tuple num) {
 
         switch (num.type) {
-            case 0: mapObjects.put(positions[i][j], new Vide());break;
-            case 1: mapObjects.put(positions[i][j], new Mur(num.dir)); break;
-            case 2: mapObjects.put(positions[i][j], new MurDeplacable(num.dir)); break;
-            case 3: mapObjects.put(positions[i][j], new Vie()); break;
-            case 4: mapObjects.put(positions[i][j], new Mana()); break;
-            case 5: mapObjects.put(positions[i][j], new Bureau(num.dir)); break;
-            case 6: mapObjects.put(positions[i][j], new Sortie(num.destination, this.getClass().getSimpleName())); break;
+            case 0: ajoutObjet(i,j,new Vide());break;
+            case 1: ajoutObjet(i,j,new Mur(num.dir)); break;
+            case 2: ajoutObjet(i, j, new MurDeplacable(num.dir)); break;
+            case 3: ajoutObjet(i, j, new Vie()); break;
+            case 4: ajoutObjet(i,j,new Mana()); break;
+            case 5: ajoutObjet(i, j, new Bureau(num.dir)); break;
+            case 6: ajoutObjet(i, j, new Sortie(num.destination, this.getClass().getSimpleName())); break;
             case 7:
-                mapObjects.put(positions[i][j], new Vide());
+                ajoutObjet(i, j, new Vide());
                 heros.setPos_in(positions[i][j]);
                 break;
-            case 8: mapObjects.put(positions[i][j], new Clef()); break;
-            case 9: mapObjects.put(positions[i][j], new Maison()); break;
-            case 10: mapObjects.put(positions[i][j], new Etagere(num.dir)); break;
-            case 11: mapObjects.put(positions[i][j], new Tree());break;
-            case 12: mapObjects.put(positions[i][j], new Tableau());break;
-            case 13: mapObjects.put(positions[i][j], new Voiture(num.dir));break;
-            case 14: mapObjects.put(positions[i][j], new Buisson(num.dir));break;
-            case 15: mapObjects.put(positions[i][j], new SortieFermee(num.destination, this.getClass().getSimpleName())); break;
+            case 8: ajoutObjet(i,j,new Clef()); break;
+            case 9: ajoutObjet(i,j,new Maison()); break;
+            case 10: ajoutObjet(i,j,new Etagere(num.dir)); break;
+            case 11: ajoutObjet(i,j,new Tree());break;
+            case 12: ajoutObjet(i,j,new Tableau());break;
+            case 13: ajoutObjet(i,j,new Voiture(num.dir));break;
+            case 14: ajoutObjet(i,j,new Buisson(num.dir));break;
+            case 15: ajoutObjet(i,j,new SortieFermee(num.destination, this.getClass().getSimpleName())); break;
             case 16:
                 Personnage personnage = new Personnage(positions[i][j],heros);
-                mapObjects.put(positions[i][j], personnage);
+                ajoutObjet(i,j,personnage);
                 animables.add(personnage);
                 break;
             case 17:
                 Piece p = new Piece(positions[i][j], heros);
-                mapObjects.put(positions[i][j], p);
+                ajoutObjet(i,j,p);
                 animables.add(p);
                 break;
-            default: mapObjects.put(positions[i][j], new Vide());break;
+            default: ajoutObjet(i,j,new Vide());break;
 
         }
+    }
+
+    public void ajoutObjet(int i, int j, ObjetCarte oc) {
+        mapObjects.put(positions[i][j], oc);
     }
 
     public void ajoutSol(int i, int j, ObjetCarte oc){

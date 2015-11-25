@@ -1,7 +1,6 @@
 package Adventure.Places;
 
 import Adventure.Heros;
-import Adventure.ObjetsCarte.Sortie;
 
 /**
  * Created by Etienne on 10/11/2015.

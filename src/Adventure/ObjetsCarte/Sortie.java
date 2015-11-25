@@ -1,7 +1,9 @@
 package Adventure.ObjetsCarte;
 
+import Adventure.Heros;
 import Adventure.Images;
 import Adventure.Interface.Fixe;
+import Adventure.Places.Place;
 
 
 public class Sortie extends ObjetCarte implements Fixe {
@@ -30,5 +32,10 @@ public class Sortie extends ObjetCarte implements Fixe {
 
     public void setDestination(String destination) {
         this.destination = destination;
+    }
+
+    public boolean dansUnCouloir() {
+        String a = courante.toLowerCase();
+        return a.contains("couloir");
     }
 }

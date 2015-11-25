@@ -196,7 +196,7 @@ public class World extends JPanel {
         if (s == null)
             placeCourante = new Parking(heros);
         else
-            placeCourante = placeCorrespondante(placeCourante.getNom(),s.getDestination());
+            placeCourante = placeCorrespondante(s);
 
         mapObjects = placeCourante.getMapObjects();
         mapSol = placeCourante.getMapSol();
@@ -208,13 +208,24 @@ public class World extends JPanel {
         placeCourante.lancePersonnage();
     }
 
-    public Place placeCorrespondante(String nomPlace, String dest) {
-        
-        if (dest.equalsIgnoreCase("SP2MI") && !(nomPlace.equalsIgnoreCase("COULOIR")))
-            return new CouloirPiege(heros, nomPlace, dest);
-        else if(dest.equalsIgnoreCase("SP2MI")){
-            return new SP2MI(heros);
+    public Place placeCorrespondante(Sortie s) {
+
+        String dest = s.getDestination();
+
+        if(!s.dansUnCouloir()) {
+            return new CouloirPiege(heros, s.getNomPlace(), dest);
         }
+        else {
+            return placeSuivante(s);
+        }
+    }
+
+    public Place placeSuivante(Sortie s) {
+
+        String dest = s.getDestination();
+
+        if (dest.equalsIgnoreCase("SP2MI"))
+            return new SP2MI(heros);
         else if(dest.equalsIgnoreCase("IFMI"))
             return new IFMI(heros);
         else if(dest.equalsIgnoreCase("SALLETP"))

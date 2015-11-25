@@ -1,5 +1,6 @@
 package Adventure.Places;
 
+import Adventure.Direction;
 import Adventure.Heros;
 import Adventure.ObjetsCarte.Sortie;
 import Adventure.ObjetsCarte.Trap;
@@ -16,6 +17,7 @@ public class CouloirPiege extends Couloir {
         Sortie s2 = (Sortie)getObjet(4,9);
         s2.setDestination(destinationBis);
         posePiege();
+        h.changeImage(Direction.NORD);
     }
 
     public void posePiege(){
