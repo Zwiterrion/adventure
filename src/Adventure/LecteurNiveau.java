@@ -14,8 +14,8 @@ import java.io.IOException;
 
 public class LecteurNiveau {
 
-    private Tuple LEVEL_SOL[][] = new Tuple[10][10];
-    private Tuple LEVEL_OBJETS[][] = new Tuple[10][10];
+    private Triple LEVEL_SOL[][] = new Triple[10][10];
+    private Triple LEVEL_OBJETS[][] = new Triple[10][10];
 
     public LecteurNiveau(String file)  {
 
@@ -73,17 +73,17 @@ public class LecteurNiveau {
     public void ajoutElement(int i, int j, boolean sol, int type, Direction dir, String destination) {
 
         if(sol)
-            LEVEL_SOL[i][j] = new Tuple(type, dir, destination);
+            LEVEL_SOL[i][j] = new Triple(type, dir, destination);
         else
-            LEVEL_OBJETS[i][j] = new Tuple(type, dir, destination);
+            LEVEL_OBJETS[i][j] = new Triple(type, dir, destination);
 
     }
 
-    public Tuple[][] getLEVEL_SOL() {
+    public Triple[][] getLEVEL_SOL() {
         return LEVEL_SOL;
     }
 
-    public Tuple[][] getLEVEL_OBJETS() {
+    public Triple[][] getLEVEL_OBJETS() {
         return LEVEL_OBJETS;
     }
 }
