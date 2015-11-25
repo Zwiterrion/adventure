@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<racine>
+
+    <!--  OBJET SOL -->
+
+    <!-- Ligne 1 -->
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+
+    <!-- Ligne 2 -->
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+
+    <!-- Ligne 3 -->
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+
+    <!-- Ligne 4 -->
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+
+    <!-- Ligne 5 -->
+    <cellule type="0" direction="EST"/>
+    <cellule type="0" direction="EST"/>
+    <cellule type="0" direction="EST"/>
+    <cellule type="0" direction="EST"/>
+    <cellule type="0" direction="EST"/>
+    <cellule type="0" direction="EST"/>
+    <cellule type="0" direction="EST"/>
+    <cellule type="0" direction="EST"/>
+    <cellule type="0" direction="EST"/>
+    <cellule type="0" direction="EST"/>
+
+    <!-- Ligne 6 -->
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+
+    <!-- Ligne 7 -->
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+
+    <!-- Ligne 8 -->
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+
+    <!-- Ligne 9 -->
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+
+    <!-- Ligne 10 -->
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+    <cellule type="1" direction="AUCUNE"/>
+
+    <!--  FIN OBJET SOL -->
+
+    <!--  OBJET DU DESSUS -->
+
+    <!-- Ligne 1 -->
+    <cellule type="0" direction="NORD"/>
+    <cellule type="0" direction="NORD"/>
+    <cellule type="0" direction="NORD"/>
+    <cellule type="0" direction="NORD"/>
+    <cellule type="0" direction="NORD"/>
+    <cellule type="0" direction="NORD"/>
+    <cellule type="0" direction="NORD"/>
+    <cellule type="0" direction="NORD"/>
+    <cellule type="0" direction="NORD"/>
+    <cellule type="0" direction="NORD_EST"/>
+
+    <!-- Ligne 2 -->
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="0" direction="EST"/>
+
+    <!-- Ligne 3 -->
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="0" direction="SUD"/>
+    <cellule type="0" direction="SUD"/>
+    <cellule type="0" direction="SUD"/>
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="0" direction="SUD"/>
+    <cellule type="0" direction="SUD"/>
+    <cellule type="0" direction="SUD"/>
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="0" direction="EST"/>
+
+    <!-- Ligne 4 -->
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="0" direction="SUD"/>
+    <cellule type="0" direction="SUD"/>
+    <cellule type="0" direction="SUD"/>
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="0" direction="SUD"/>
+    <cellule type="0" direction="SUD"/>
+    <cellule type="0" direction="SUD"/>
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="0" direction="AUCUNE"/>
+
+    <!-- Ligne 5 -->
+    <cellule type="6" direction="AUCUNE"/>
+    <cellule type="0" direction="SUD"/>
+    <cellule type="0" direction="SUD"/>
+    <cellule type="0" direction="SUD"/>
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="0" direction="SUD"/>
+    <cellule type="0" direction="SUD"/>
+    <cellule type="0" direction="SUD"/>
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="6" direction="AUCUNE"/>
+
+    <!-- Ligne 6 -->
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="0" direction="SUD"/>
+    <cellule type="0" direction="SUD"/>
+    <cellule type="0" direction="SUD"/>
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="0" direction="SUD"/>
+    <cellule type="0" direction="SUD"/>
+    <cellule type="0" direction="SUD"/>
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="0" direction="AUCUNE"/>
+
+    <!-- Ligne 7 -->
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="0" direction="SUD"/>
+    <cellule type="0" direction="SUD"/>
+    <cellule type="0" direction="SUD"/>
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="0" direction="SUD"/>
+    <cellule type="0" direction="SUD"/>
+    <cellule type="0" direction="SUD"/>
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="0" direction="EST"/>
+
+    <!-- Ligne 8 -->
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="0" direction="SUD"/>
+    <cellule type="0" direction="SUD"/>
+    <cellule type="0" direction="SUD"/>
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="0" direction="SUD"/>
+    <cellule type="0" direction="SUD"/>
+    <cellule type="0" direction="SUD"/>
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="0" direction="EST"/>
+
+    <!-- Ligne 9 -->
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="0" direction="SUD"/>
+    <cellule type="0" direction="SUD"/>
+    <cellule type="0" direction="SUD"/>
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="0" direction="SUD"/>
+    <cellule type="0" direction="SUD"/>
+    <cellule type="0" direction="SUD"/>
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="0" direction="AUCUNE"/>
+
+    <!-- Ligne 10 -->
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="0" direction="EST"/>
+
+
+    <!--  FIN OBJET DU DESSUS -->
+</racine>

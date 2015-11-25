@@ -7,15 +7,15 @@ import Adventure.ObjetsCarte.Sortie;
 import javafx.util.Pair;
 
 
-public class TP extends Place {
+public class Couloir extends Place {
 
-    public TP(Heros h) {
+    public Couloir(Heros h) {
         super(h);
-        LecteurNiveau l = new LecteurNiveau("tp");
+        LecteurNiveau l = new LecteurNiveau("couloir");
         setLEVEL_OBJECTS(l.getLEVEL_OBJETS());
         setLEVEL_SOL(l.getLEVEL_SOL());
         initialisation();
-        setNom("SALLE TP");
+        setNom("COULOIR");
         initSorties();
     }
 
@@ -28,6 +28,9 @@ public class TP extends Place {
             switch (i) {
                 case 0:
                     s.initialisation(this.getNom(), "FUTUROSCOPE");
+                    break;
+                case 1:
+                    s.initialisation(this.getNom(), "PARKING");
                     break;
             }
             i++;
