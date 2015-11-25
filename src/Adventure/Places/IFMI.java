@@ -8,7 +8,7 @@ import Adventure.Heros;
 public class IFMI extends Place {
 
     public IFMI(Heros h) {
-        super(h, "IFMI");
+        super(h, "ifmi");
     }
 
 }

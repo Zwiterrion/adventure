@@ -1,6 +1,6 @@
 package Adventure.Runnable;
 
-import Adventure.*;
+import Adventure.Heros;
 import Adventure.ObjetsCarte.Piece;
 
 public class RunnablePiece implements Runnable {

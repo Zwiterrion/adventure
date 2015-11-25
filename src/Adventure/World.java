@@ -6,7 +6,7 @@ import Adventure.Places.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.*;
+import java.util.Hashtable;
 import java.util.List;
 
 public class World extends JPanel {
@@ -68,7 +68,6 @@ public class World extends JPanel {
                     g.drawImage(object.getImage(), point.x, point.y, TILE_SIZE, (TILE_SIZE * 2), this);
             }
         }
-
     }
 
     public void dessineObjetsMap(Graphics g) {

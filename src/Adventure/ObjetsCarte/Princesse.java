@@ -2,14 +2,14 @@ package Adventure.ObjetsCarte;
 
 import Adventure.Images;
 import Adventure.Interface.Fixe;
-import Adventure.Interface.Ramassable;
 
-
-public class Clef extends ObjetCarte implements Ramassable, Fixe {
+/**
+ * Created by Etienne on 25/11/2015.
+ */
+public class Princesse extends ObjetCarte implements Fixe {
 
     @Override
     public void assigneImage() {
-        image = Images.CLEF;
+        image = Images.PRINCESSE;
     }
-
 }

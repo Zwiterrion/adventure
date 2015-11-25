@@ -1,10 +1,7 @@
 package Adventure.ObjetsCarte;
 
-import Adventure.Heros;
 import Adventure.Images;
 import Adventure.Interface.Fixe;
-import Adventure.Places.Place;
-
 
 public class Sortie extends ObjetCarte implements Fixe {
 

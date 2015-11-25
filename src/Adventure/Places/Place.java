@@ -32,7 +32,6 @@ public abstract class Place {
         initialisation(nom);
     }
 
-
     public void initialisation(String nom) {
 
         this.nom = nom;
@@ -66,12 +65,12 @@ public abstract class Place {
     public void creerSol(int i, int j, Tuple num) {
 
         switch (num.type) {
-            case 0: ajoutSol(i,j,new Herbe(num.dir)); break;
-            case 1: ajoutSol(i,j,new Vide()); break;
-            case 2: ajoutSol(i,j,new Carrelage()); break;
-            case 3: ajoutSol(i,j,new Trap()); break;
-            case 4: ajoutSol(i,j,new Beton()); break;
-            default: ajoutSol(i,j,new Beton());
+            case 0: ajoutSol(i, j, new Herbe(num.dir)); break;
+            case 1: ajoutSol(i, j, new Vide()); break;
+            case 2: ajoutSol(i, j, new Carrelage()); break;
+            case 3: ajoutSol(i, j, new Trap()); break;
+            case 4: ajoutSol(i, j, new Beton()); break;
+            default: ajoutSol(i, j, new Beton());
         }
     }
 
@@ -89,25 +88,28 @@ public abstract class Place {
                 ajoutObjet(i, j, new Vide());
                 heros.setPos_in(positions[i][j]);
                 break;
-            case 8: ajoutObjet(i,j,new Clef()); break;
-            case 9: ajoutObjet(i,j,new Maison()); break;
-            case 10: ajoutObjet(i,j,new Etagere(num.dir)); break;
-            case 11: ajoutObjet(i,j,new Tree());break;
-            case 12: ajoutObjet(i,j,new Tableau());break;
-            case 13: ajoutObjet(i,j,new Voiture(num.dir));break;
-            case 14: ajoutObjet(i,j,new Buisson(num.dir));break;
-            case 15: ajoutObjet(i,j,new SortieFermee(num.destination, this.getClass().getSimpleName())); break;
+            case 8: ajoutObjet(i, j, new Clef()); break;
+            case 9: ajoutObjet(i, j, new Maison()); break;
+            case 10: ajoutObjet(i, j, new Etagere(num.dir)); break;
+            case 11: ajoutObjet(i, j, new Tree());break;
+            case 12: ajoutObjet(i, j, new Tableau());break;
+            case 13: ajoutObjet(i, j, new Voiture(num.dir));break;
+            case 14: ajoutObjet(i, j, new Buisson(num.dir));break;
+            case 15: ajoutObjet(i, j, new SortieFermee(num.destination, this.getClass().getSimpleName())); break;
             case 16:
                 Personnage personnage = new Personnage(positions[i][j],heros);
-                ajoutObjet(i,j,personnage);
+                ajoutObjet(i, j, personnage);
                 animables.add(personnage);
                 break;
             case 17:
                 Piece p = new Piece(positions[i][j], heros);
-                ajoutObjet(i,j,p);
+                ajoutObjet(i, j, p);
                 animables.add(p);
                 break;
-            default: ajoutObjet(i,j,new Vide());break;
+            case 18 : ajoutObjet(i,j, new Princesse()); break;
+            case 19 : ajoutObjet(i,j, new Prison(num.dir)); break;
+
+            default: ajoutObjet(i, j, new Vide());break;
 
         }
     }

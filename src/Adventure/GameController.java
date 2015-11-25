@@ -1,9 +1,7 @@
 package Adventure;
 
-import javax.swing.event.MouseInputAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
 
 public class GameController implements KeyListener {
 

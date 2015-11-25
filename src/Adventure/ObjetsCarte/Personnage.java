@@ -4,10 +4,8 @@ import Adventure.Heros;
 import Adventure.Images;
 import Adventure.Interface.Animable;
 import Adventure.Interface.Piege;
-import Adventure.ObjetsCarte.ObjetCarte;
 import Adventure.Position;
 import Adventure.Runnable.RunnableMonstre;
-import Adventure.World;
 
 
 public class Personnage extends ObjetCarte implements Piege,Animable {

@@ -2,7 +2,6 @@ package Adventure;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
@@ -69,6 +68,10 @@ public class Images {
     public static Image LAPIN_EST;
 
     public static Image PIECE;
+    public static Image PRINCESSE;
+
+    public static Image PRISON_EST;
+    public static Image PRISON_NORD;
 
     public static void chargementImage() {
         try {
@@ -138,6 +141,10 @@ public class Images {
             LAPIN_EST = ImageIO.read(new FileInputStream("res/lapinEst.png"));
             LAPIN_OUEST = ImageIO.read(new FileInputStream("res/lapinOuest.png"));
 
+            PRINCESSE = ImageIO.read(new FileInputStream("res/princesse.png"));
+
+            PRISON_EST = ImageIO.read(new FileInputStream("res/prison.png"));
+            PRISON_NORD = ImageIO.read(new FileInputStream("res/prisonNord.png"));
 
         } catch (IOException e) {
             System.err.println("Impossible de charger tout le contenu : Images.chargementImage()");

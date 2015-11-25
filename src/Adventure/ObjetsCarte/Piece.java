@@ -7,7 +7,6 @@ import Adventure.Interface.Fixe;
 import Adventure.Interface.Ramassable;
 import Adventure.IsometricHelper;
 import Adventure.Position;
-import Adventure.Runnable.RunnableMonstre;
 import Adventure.Runnable.RunnablePiece;
 
 public class Piece extends ObjetCarte implements Fixe, Ramassable, Animable {
