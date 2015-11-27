@@ -1,7 +1,19 @@
 package Adventure;
 
+
+/**
+ * IsometricHelper est une classe possedant une seule methode statique qui
+ *  calcule a partir d'un point en deux dimensions un point pour la vue isometrique.
+ */
 public class IsometricHelper {
 
+    /**
+     * Convertit un point 2D en point isometrique
+     * @param p
+     *      Position 2D de la carte
+     * @return
+     *      Position convertit pour la vue isometrique
+     */
     public static Position point2DToIso(Position p) {
 
         Position e = new Position(p.x, p.y);

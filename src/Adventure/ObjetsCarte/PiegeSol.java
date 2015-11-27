@@ -5,12 +5,12 @@ import Adventure.Interface.Fixe;
 import Adventure.Interface.Piege;
 
 /**
- * Crée une instance de Trap
+ * Crée une instance de PiegeSol
  */
-public class Trap extends ObjetCarte implements Fixe, Piege {
+public class PiegeSol extends ObjetCarte implements Fixe, Piege {
 
     /**
-     * Assigne l'image qui correspond au Trap
+     * Assigne l'image qui correspond au PiegeSol
      */
     @Override
     public void assigneImage() {

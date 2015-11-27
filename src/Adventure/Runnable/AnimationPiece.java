@@ -4,9 +4,9 @@ import Adventure.Heros;
 import Adventure.ObjetsCarte.Piece;
 
 /**
- * Crée une instance de RunnablePiece
+ * Crée une instance de AnimationPiece
  */
-public class RunnablePiece implements Runnable {
+public class AnimationPiece implements Runnable {
 
     private Heros heros;
     private Piece piece;
@@ -14,19 +14,20 @@ public class RunnablePiece implements Runnable {
     private boolean niveauFini = false;
 
     /**
-     * Construit RunnablePiece
+     * Construit AnimationPiece
      * @param piece
      *      Instance de Potion
      * @param h
      *      Instance du héros
      */
-    public RunnablePiece(Heros h, Piece piece) {
+    public AnimationPiece(Heros h, Piece piece) {
         this.heros = h;
         this.piece = piece;
     }
 
     /**
-     * Les pieces continue à bouger tant que le héros n'a pas changé de lieu
+     * La piece continue à bouger tant que le héros n'a pas changé de lieu
+     * ou qu'il ne l'a pas ramasse
      */
     @Override
     public void run() {
@@ -44,7 +45,7 @@ public class RunnablePiece implements Runnable {
     }
 
     /**
-     * Le processus déplace fait bouger les pieces dans le lieu
+     * Le processus fait bouger la piece de haut en bas dans le lieu
      */
     public void animation() {
 
@@ -84,7 +85,7 @@ public class RunnablePiece implements Runnable {
     /**
      * Change la situation de niveauFini
      * @param niveauFini
-     *          vaut vrai si le héros se déplace vers un autre lieu
+     *          Vaut vrai si le héros se déplace vers un autre lieu
      */
     public void setNiveauFini(boolean niveauFini) {
         this.niveauFini = niveauFini;

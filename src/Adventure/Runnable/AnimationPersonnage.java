@@ -6,9 +6,9 @@ import Adventure.ObjetsCarte.Personnage;
 import java.util.Random;
 
 /**
- * Crée une instance de RunnableMonstre
+ * Crée une instance de AnimationPersonnage
  */
-public class RunnableMonstre implements Runnable {
+public class AnimationPersonnage implements Runnable {
 
     private Position p;
     private Position precedente;
@@ -18,7 +18,7 @@ public class RunnableMonstre implements Runnable {
     private boolean niveauFini = false;
 
     /**
-     * Construit RunnableMonstre
+     * Construit AnimationPersonnage
      * @param p
      *      Instance de Potion
      * @param h
@@ -26,7 +26,7 @@ public class RunnableMonstre implements Runnable {
      * @param personnage
      *      Instance du Personnage(le mechant)
      */
-    public RunnableMonstre(Position p, Heros h, Personnage personnage) {
+    public AnimationPersonnage(Position p, Heros h, Personnage personnage) {
         this.precedente = p;
         this.p = p;
         this.heros = h;
@@ -54,7 +54,7 @@ public class RunnableMonstre implements Runnable {
     }
 
     /**
-     * Le processus déplace le personnage dans le lieu
+     * Le processus déplace le personnage au sein du lieu
      */
     public void animation() {
 
@@ -89,7 +89,7 @@ public class RunnableMonstre implements Runnable {
     }
 
     /**
-     * Le processus cherche une nouvelle position pour se déplacer
+     * Le processus cherche une nouvelle case pour se déplacer
      */
     public void nouvellePosition() {
 
@@ -139,7 +139,7 @@ public class RunnableMonstre implements Runnable {
     /**
      * Change la situation de niveauFini
      * @param niveauFini
-     *          vaut vrai si le héros se déplace vers un autre lieu
+     *          Vaut vrai si le héros se déplace vers un autre lieu
      */
     public void setNiveauFini(boolean niveauFini) {
         this.niveauFini = niveauFini;

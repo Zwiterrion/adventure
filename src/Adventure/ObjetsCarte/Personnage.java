@@ -5,7 +5,7 @@ import Adventure.Images;
 import Adventure.Interface.Animable;
 import Adventure.Interface.Piege;
 import Adventure.Position;
-import Adventure.Runnable.RunnableMonstre;
+import Adventure.Runnable.AnimationPersonnage;
 
 /**
  * Crée une instance de Personnage
@@ -18,7 +18,7 @@ public class Personnage extends ObjetCarte implements Piege,Animable {
     public int y = 0;
 
     private Thread t;
-    private RunnableMonstre m;
+    private AnimationPersonnage m;
 
     /**
      * Contruit le Personnage
@@ -29,7 +29,7 @@ public class Personnage extends ObjetCarte implements Piege,Animable {
      */
     public Personnage(Position p, Heros h) {
         this.p = p;
-        m = new RunnableMonstre(p,h, this);
+        m = new AnimationPersonnage(p,h, this);
         t = new Thread(m);
     }
 

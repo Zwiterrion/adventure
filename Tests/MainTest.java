@@ -1,3 +1,4 @@
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -6,7 +7,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
-@Suite.SuiteClasses({WorldIT.class, PositionIT.class, TripleIT.class})
+@Suite.SuiteClasses({WorldIT.class, PositionIT.class, TripleIT.class, HerosIT.class, TestsObjets.HerbeIT.class, TestsObjets.TrapIT.class})
 public class MainTest {
 
     @BeforeClass

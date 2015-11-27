@@ -5,9 +5,9 @@ import Adventure.Heros;
 import java.util.concurrent.Semaphore;
 
 /**
- * Crée une instance de RunnableVie
+ * Crée une instance de AnimationPotionVie
  */
-public class RunnableVie implements Runnable {
+public class AnimationPotionVie implements Runnable {
 
     private Heros heros;
 
@@ -17,16 +17,17 @@ public class RunnableVie implements Runnable {
     private int potion;
 
     /**
-     * Construit RunnableVie
+     * Construit AnimationPotionVie
      * @param h
      *      Instance du héros
      */
-    public RunnableVie(Heros h) {
+    public AnimationPotionVie(Heros h) {
         this.heros = h;
     }
 
     /**
-     * Le processus fait diminuer ou augmenter le nombre de vie du héros 'animation'
+     * Lance l'animation de la prise d'une potion de vie. Un mutex est placee sur la fonction
+     * pour eviter d'utiliser deux potions au meme moment.
      */
     @Override
     public void run() {
@@ -53,11 +54,11 @@ public class RunnableVie implements Runnable {
     }
 
     /**
-     * Change le nombre de potion
+     * Change la quantite de la potion de mana
      * @param potion
-     *          le nombre de potion
+     *          La quantite de la potion
      */
-    public void setPotion(int potion) {
+    public void setPotion(int potion) {if(potion > 100 && potion < 0)
         this.potion = potion;
     }
 }

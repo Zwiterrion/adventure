@@ -2,8 +2,8 @@ package Adventure.ObjetsInventaire;
 
 import Adventure.Heros;
 import Adventure.Images;
-import Adventure.Runnable.RunnableMana;
-import Adventure.Runnable.RunnableVie;
+import Adventure.Runnable.AnimationPotionMana;
+import Adventure.Runnable.AnimationPotionVie;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,8 +23,8 @@ public class Inventaire extends JPanel {
     private int nbClefs = 0;
     private int nbPieces = 0;
 
-    private RunnableVie runnableVie;
-    private RunnableMana runnableMana;
+    private AnimationPotionVie runnableVie;
+    private AnimationPotionMana runnableMana;
 
     /**
      * Crée une instance d'inventaire
@@ -36,8 +36,8 @@ public class Inventaire extends JPanel {
         stock = new ArrayList<Potion>();
         calculPotions();
 
-        runnableVie = new RunnableVie(heros);
-        runnableMana = new RunnableMana(heros);
+        runnableVie = new AnimationPotionVie(heros);
+        runnableMana = new AnimationPotionMana(heros);
     }
 
     /**

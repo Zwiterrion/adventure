@@ -7,7 +7,7 @@ import Adventure.Interface.Fixe;
 import Adventure.Interface.Ramassable;
 import Adventure.IsometricHelper;
 import Adventure.Position;
-import Adventure.Runnable.RunnablePiece;
+import Adventure.Runnable.AnimationPiece;
 
 /**
  * Crée une instance de Piece
@@ -20,7 +20,7 @@ public class Piece extends ObjetCarte implements Fixe, Ramassable, Animable {
     public int y = 0;
 
     private Thread t;
-    private RunnablePiece m;
+    private AnimationPiece m;
 
     /**
      * Contruit la Piece
@@ -31,7 +31,7 @@ public class Piece extends ObjetCarte implements Fixe, Ramassable, Animable {
      */
     public Piece(Position p, Heros h) {
         this.p = IsometricHelper.point2DToIso(p);
-        m = new RunnablePiece(h,this);
+        m = new AnimationPiece(h,this);
         t = new Thread(m);
     }
 

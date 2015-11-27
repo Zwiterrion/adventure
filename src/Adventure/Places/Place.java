@@ -101,7 +101,7 @@ public abstract class Place {
             case 0: ajoutSol(i, j, new Herbe(num.getDir())); break;
             case 1: ajoutSol(i, j, new Vide()); break;
             case 2: ajoutSol(i, j, new Carrelage()); break;
-            case 3: ajoutSol(i, j, new Trap()); break;
+            case 3: ajoutSol(i, j, new PiegeSol()); break;
             case 4: ajoutSol(i, j, new Beton()); break;
             default: ajoutSol(i, j, new Beton());
         }

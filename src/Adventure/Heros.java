@@ -15,20 +15,24 @@ import java.awt.*;
 public class Heros {
 
     private Image image;
-    public Direction dir = Direction.EST;
+    public Direction dir;
     private Position pos_in;
 
     private Inventaire inventaire;
     private World world;
 
-    private Color couleurVie = Color.GREEN;
-    private int vie = 100;
-    private int mana = 60;
+    private Color couleurVie;
+    private int vie;
+    private int mana;
 
     public Heros(World w) {
         image = Images.HEROS_E;
         inventaire = new Inventaire(this);
         this.world = w;
+        this.vie = 100;
+        this.mana = 100;
+        this.couleurVie = Color.GREEN;
+        this.dir = Direction.EST;
         demarreThread();
     }
 

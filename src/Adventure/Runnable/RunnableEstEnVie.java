@@ -21,7 +21,7 @@ public class RunnableEstEnVie implements Runnable {
     }
 
     /**
-     * Le processus test la situation des points de vie chez le héros, et change en faire et à mesure la couleur de la Potion
+     * Le processus test la situation des points de vie chez le héros, et change au fur et à mesure la couleur de la vie
      */
     @Override
     public void run() {
@@ -37,7 +37,8 @@ public class RunnableEstEnVie implements Runnable {
                     heros.setCouleurVie(Color.ORANGE);
             }
 
-            heros.getWorld().repaint();
+            if(heros.getWorld() != null)
+                heros.getWorld().repaint();
 
             try {
                 Thread.sleep(300);
