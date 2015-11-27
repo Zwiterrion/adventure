@@ -134,7 +134,7 @@
     <cellule type="0" direction="AUCUNE"/>
     <cellule type="0" direction="AUCUNE"/>
     <cellule type="0" direction="AUCUNE"/>
-    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="20" direction="NORD"/>
     <cellule type="11" direction="SUD"/>
     <cellule type="14" direction="SUD"/>
     <cellule type="14" direction="SUD"/>
@@ -188,8 +188,8 @@
     <cellule type="13" direction="NORD"/>
 
     <!-- Ligne 6 -->
-    <cellule type="13" direction="SUD"/>
-    <cellule type="13" direction="NORD"/>
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="0" direction="AUCUNE"/>
     <cellule type="0" direction="AUCUNE"/>
     <cellule type="0" direction="AUCUNE"/>
     <cellule type="17" direction="AUCUNE"/>
@@ -212,7 +212,7 @@
     <cellule type="13" direction="NORD"/>
 
     <!-- Ligne 8 -->
-    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="20" direction="SUD"/>
     <cellule type="0" direction="AUCUNE"/>
     <cellule type="0" direction="AUCUNE"/>
     <cellule type="0" direction="AUCUNE"/>
@@ -230,13 +230,13 @@
     <cellule type="0" direction="AUCUNE"/>
     <cellule type="0" direction="AUCUNE"/>
     <cellule type="0" direction="AUCUNE"/>
-    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="20" direction="NORD_EST"/>
     <cellule type="14" direction="SUD"/>
     <cellule type="14" direction="SUD"/>
     <cellule type="14" direction="SUD"/>
 
     <!-- Ligne 10 -->
-    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="20" direction="SUD_EST"/>
     <cellule type="0" direction="AUCUNE"/>
     <cellule type="0" direction="AUCUNE"/>
     <cellule type="0" direction="AUCUNE"/>

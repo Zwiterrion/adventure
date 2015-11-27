@@ -60,7 +60,7 @@ public class AnimationPotionMana implements Runnable {
      *         Nouvelle quantite
      */
     public void setPotion(int potion) {
-        if(potion > 100 && potion < 0)
+        if(potion < 100 && potion > 0)
             this.potion = potion;
     }
 }

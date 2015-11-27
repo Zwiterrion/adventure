@@ -58,7 +58,8 @@ public class AnimationPotionVie implements Runnable {
      * @param potion
      *          La quantite de la potion
      */
-    public void setPotion(int potion) {if(potion > 100 && potion < 0)
+    public void setPotion(int potion) {
+        if(potion < 100 && potion > 0)
         this.potion = potion;
     }
 }

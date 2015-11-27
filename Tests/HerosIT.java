@@ -2,7 +2,7 @@ import Adventure.Direction;
 import Adventure.Heros;
 
 import Adventure.Images;
-import Adventure.World;
+import Adventure.Monde;
 import org.junit.*;
 
 import java.awt.*;
@@ -22,7 +22,7 @@ public class HerosIT {
     @Test
     public void testHerosEtWorld() {
         assertNull(h.getWorld());
-        World w = new World(10,10,1024);
+        Monde w = new Monde(10,10,1024);
         h = new Heros(w);
         assertNotNull(h.getWorld());
     }

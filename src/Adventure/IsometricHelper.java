@@ -18,8 +18,8 @@ public class IsometricHelper {
 
         Position e = new Position(p.x, p.y);
 
-        e.x *= World.TILE_SIZE / 2;
-        e.y *= World.TILE_SIZE / 2;
+        e.x *= Monde.TILE_SIZE / 2;
+        e.y *= Monde.TILE_SIZE / 2;
 
         Position point = Position.mul(e, new Position(1, -1));
 

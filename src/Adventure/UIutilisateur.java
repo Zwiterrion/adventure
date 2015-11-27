@@ -23,12 +23,12 @@ public class UIutilisateur extends Canvas {
         Position point = calculPositionBarres();
 
         g.setColor(heros.getCouleurVie());
-        g.fillRect(point.x + 28, point.y + World.TILE_SIZE / 2 - 6, (int) (0.4 * heros.getVie()), 5);
+        g.fillRect(point.x + 28, point.y + Monde.TILE_SIZE / 2 - 6, (int) (0.4 * heros.getVie()), 5);
 
         g.setColor(new Color(16, 173, 255));
 
-        g.fillRect(point.x + 28, point.y + World.TILE_SIZE / 2, (int) (0.4 * heros.getMana()), 3);
-        g.drawRect(point.x + 26, point.y + World.TILE_SIZE / 2 - 8, 43, 12);
+        g.fillRect(point.x + 28, point.y + Monde.TILE_SIZE / 2, (int) (0.4 * heros.getMana()), 3);
+        g.drawRect(point.x + 26, point.y + Monde.TILE_SIZE / 2 - 8, 43, 12);
     }
 
     public Position calculPositionBarres() {

@@ -73,8 +73,18 @@ public class Images {
     public static Image PRISON_EST;
     public static Image PRISON_NORD;
 
+    public static Image PANNEAU_BU;
+    public static Image PANNEAU_TP;
+    public static Image PANNEAU_IFMI;
+    public static Image PANNEAU_SP2MI;
+
     public static void chargementImage() {
         try {
+
+            PANNEAU_BU = ImageIO.read(new FileInputStream(("res/bibliotheque.png")));
+            PANNEAU_TP = ImageIO.read(new FileInputStream(("res/salletp.png")));
+            PANNEAU_IFMI = ImageIO.read(new FileInputStream(("res/ifmi.png")));
+            PANNEAU_SP2MI = ImageIO.read(new FileInputStream(("res/sp2mi.png")));
 
             HERBE = ImageIO.read(new FileInputStream("res/herbe.png"));
             HERBE_SUD_NORD = ImageIO.read(new FileInputStream("res/herbeDroite.png"));

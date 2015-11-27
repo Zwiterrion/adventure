@@ -37,7 +37,7 @@ public abstract class Place {
         this.heros = h;
         mapObjects = new Hashtable<Position, ObjetCarte>();
         mapSol = new Hashtable<Position, ObjetCarte>();
-        positions = new Position[World.X_MAX][World.Y_MAX];
+        positions = new Position[Monde.X_MAX][Monde.Y_MAX];
         animables = new ArrayList<Animable>();
 
         initialisation(nom);
@@ -70,8 +70,8 @@ public abstract class Place {
      * Initialise les positions des deux matrices: Sol et Objets
      */
     public void initLocations() {
-        for (int i = 0; i < World.X_MAX; i++)
-            for (int j = 0; j < World.Y_MAX; j++)
+        for (int i = 0; i < Monde.X_MAX; i++)
+            for (int j = 0; j < Monde.Y_MAX; j++)
                 positions[i][j] = new Position(i, j);
     }
 
@@ -79,8 +79,8 @@ public abstract class Place {
      * Construit le niveau à partir des matrices Sol et Objets
      */
     public void constructionNiveau() {
-        for (int i = 0; i < World.X_MAX; i++)
-            for (int j = 0; j < World.Y_MAX; j++) {
+        for (int i = 0; i < Monde.X_MAX; i++)
+            for (int j = 0; j < Monde.Y_MAX; j++) {
                 creerSol(i, j, LEVEL_SOL[i][j]);
                 creerObjet(i, j, LEVEL_OBJECTS[i][j]);
             }
@@ -150,7 +150,7 @@ public abstract class Place {
                 break;
             case 18 : ajoutObjet(i,j, new Princesse()); break;
             case 19 : ajoutObjet(i,j, new Prison(num.getDir())); break;
-
+            case 20 : ajoutObjet(i,j, new Panneau(num.getDir())); break;
             default: ajoutObjet(i, j, new Vide());break;
 
         }

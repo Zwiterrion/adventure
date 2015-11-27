@@ -19,13 +19,13 @@ public class Heros {
     private Position pos_in;
 
     private Inventaire inventaire;
-    private World world;
+    private Monde world;
 
     private Color couleurVie;
     private int vie;
     private int mana;
 
-    public Heros(World w) {
+    public Heros(Monde w) {
         image = Images.HEROS_E;
         inventaire = new Inventaire(this);
         this.world = w;
@@ -122,7 +122,7 @@ public class Heros {
             this.mana = 0;
     }
 
-    public World getWorld() {
+    public Monde getWorld() {
         return world;
     }
 

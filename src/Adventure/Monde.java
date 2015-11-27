@@ -9,7 +9,7 @@ import java.awt.*;
 import java.util.Hashtable;
 import java.util.List;
 
-public class World extends JPanel {
+public class Monde extends JPanel {
 
     // Map
     private Hashtable<Position, ObjetCarte> mapObjects;
@@ -23,7 +23,9 @@ public class World extends JPanel {
     private Place placeCourante;
 
     public UIutilisateur ath;
+
     private Annonce annonce;
+    private Annonce description;
 
     // Constantes
     public static int TILE_SIZE;
@@ -31,9 +33,9 @@ public class World extends JPanel {
     public static int X_MAX;
     public static int Y_MAX;
 
-    public World(int X_MAX, int Y_MAX, int screen_size) {
-        World.X_MAX = X_MAX;
-        World.Y_MAX = Y_MAX;
+    public Monde(int X_MAX, int Y_MAX, int screen_size) {
+        Monde.X_MAX = X_MAX;
+        Monde.Y_MAX = Y_MAX;
 
         SCREEN_SIZE = screen_size;
         TILE_SIZE = (SCREEN_SIZE / X_MAX );
@@ -42,6 +44,7 @@ public class World extends JPanel {
         ath = new UIutilisateur(heros);
 
         annonce = new Annonce(SCREEN_SIZE, 50);
+        description = new Annonce(SCREEN_SIZE, 25);
 
         initialisationNiveau(null);
     }
@@ -56,6 +59,8 @@ public class World extends JPanel {
         dessineSol(g);
         dessineObjetsMap(g);
         dessineATH(g);
+
+        description.paint(g);
     }
 
     public void dessineSol(Graphics g) {
@@ -178,7 +183,7 @@ public class World extends JPanel {
         Graphics g = getGraphics();
         g.setColor(Color.BLACK);
         g.fillRect(0, 0, SCREEN_SIZE, SCREEN_SIZE);
-        annonce.setAnnonce(placeCourante.getNom());
+        annonce.setTexteAAfficher(placeCourante.getNom());
         annonce.paint(g);
     }
 
@@ -205,6 +210,7 @@ public class World extends JPanel {
         heros.setPos_in(placeCourante.getHeros().getPos_in());
 
         placeCourante.lancePersonnage();
+        description.setTexteAAfficher(placeCourante.getNom());
     }
 
     public Place placeCorrespondante(Sortie s) {

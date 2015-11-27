@@ -6,9 +6,9 @@ import java.awt.event.KeyListener;
 public class GameController implements KeyListener {
 
     private GameView gameView;
-    private World gameModel;
+    private Monde gameModel;
 
-    public GameController(GameView view, World model) {
+    public GameController(GameView view, Monde model) {
         this.gameView = view;
         this.gameModel = model;
     }

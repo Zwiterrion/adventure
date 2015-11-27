@@ -1,5 +1,5 @@
 import Adventure.Position;
-import Adventure.World;
+import Adventure.Monde;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -10,11 +10,11 @@ import static org.junit.Assert.*;
 
 public class WorldIT {
 
-    private static World w;
+    private static Monde w;
     
     @BeforeClass
     public static void setUpClass() {
-        w = new World(10,10,1024);
+        w = new Monde(10,10,1024);
     }
     
     @AfterClass
@@ -31,9 +31,9 @@ public class WorldIT {
 
     @Test
     public void testInitialisationWorld() {
-        assertEquals(World.X_MAX, 10);
-        assertEquals(World.Y_MAX, 10);
-        assertEquals(World.TILE_SIZE, 1024 / 10);
+        assertEquals(Monde.X_MAX, 10);
+        assertEquals(Monde.Y_MAX, 10);
+        assertEquals(Monde.TILE_SIZE, 1024 / 10);
     }
 
     @Test

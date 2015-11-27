@@ -114,7 +114,7 @@ public class AnimationPersonnage implements Runnable {
         }
 
         Position nextPos = new Position(p.x + x, p.y + y);
-        if ((nextPos.x >= 0 && nextPos.x < World.X_MAX) && (nextPos.y >= 0 && nextPos.y < World.Y_MAX)) {
+        if ((nextPos.x >= 0 && nextPos.x < Monde.X_MAX) && (nextPos.y >= 0 && nextPos.y < Monde.Y_MAX)) {
             if (!(heros.getWorld().estUnVide(nextPos, personnage)))
                 nouvellePosition();
             else {

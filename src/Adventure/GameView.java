@@ -5,9 +5,9 @@ import javax.swing.*;
 
 public class GameView {
 
-    private World gameModel;
+    private Monde gameModel;
 
-    public GameView(World gameModel, int w, int h) {
+    public GameView(Monde gameModel, int w, int h) {
 
         JFrame window = new JFrame("Adventure");
 
@@ -22,7 +22,7 @@ public class GameView {
     }
 
 
-    public World getGameModel() {
+    public Monde getGameModel() {
         return gameModel;
     }
 
