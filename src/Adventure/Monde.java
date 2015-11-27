@@ -197,10 +197,13 @@ public class Monde extends JPanel {
 
     public void initialisationNiveau(Sortie s) {
 
+        Position posPrecedente = heros.getPos_in();
+
         if (s == null)
             placeCourante = new Parking(heros);
         else
             placeCourante = placeCorrespondante(s);
+
 
         mapObjects = placeCourante.getMapObjects();
         mapSol = placeCourante.getMapSol();
@@ -211,6 +214,11 @@ public class Monde extends JPanel {
 
         placeCourante.lancePersonnage();
         description.setTexteAAfficher(placeCourante.getNom());
+
+        /*if(posPrecedente != null) {
+            if(posPrecedente.x < 5)
+                heros.setPos_in(positions[1]);
+        }*/
     }
 
     public Place placeCorrespondante(Sortie s) {
@@ -218,9 +226,9 @@ public class Monde extends JPanel {
         String dest = s.getDestination();
 
         if(!s.dansUnCouloir()) {
-            if(s.getNomPlace().equalsIgnoreCase("parking"))
+            if(s.getNomPlace().equalsIgnoreCase("parking") && !dest.equalsIgnoreCase("ifmi") && !dest.equalsIgnoreCase("sp2mi"))
                 return new CouloirPiege(heros, s.getNomPlace(), dest);
-            else
+            else 
                 return new CouloirPiege(heros, dest, s.getNomPlace());
         }
         else

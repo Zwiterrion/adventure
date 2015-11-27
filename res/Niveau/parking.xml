@@ -181,7 +181,7 @@
     <cellule type="11" direction="SUD"/>
     <cellule type="0" direction="TOUTES"/>
     <cellule type="0" direction="TOUTES"/>
-    <cellule type="0" direction="TOUTES"/>
+    <cellule type="7" direction="TOUTES"/>
     <cellule type="0" direction="TOUTES"/>
     <cellule type="0" direction="TOUTES"/>
     <cellule type="13" direction="SUD"/>
@@ -241,7 +241,7 @@
     <cellule type="0" direction="TOUTES"/>
     <cellule type="0" direction="TOUTES"/>
     <cellule type="0" direction="TOUTES"/>
-    <cellule type="7" direction="TOUTES"/>
+    <cellule type="0" direction="TOUTES"/>
     <cellule type="0" direction="TOUTES"/>
     <cellule type="0" direction="TOUTES"/>
     <cellule type="15" direction="TOUTES" destination="SALLETP"/>

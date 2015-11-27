@@ -200,16 +200,16 @@
     <cellule type="10" direction="EST"/>
 
     <!-- Ligne 7 -->
-    <cellule type="0" direction="AUCUNE"/>
-    <cellule type="0" direction="AUCUNE"/>
-    <cellule type="0" direction="AUCUNE"/>
-    <cellule type="0" direction="AUCUNE"/>
-    <cellule type="0" direction="AUCUNE"/>
-    <cellule type="0" direction="AUCUNE"/>
-    <cellule type="0" direction="AUCUNE"/>
-    <cellule type="0" direction="AUCUNE"/>
-    <cellule type="7" direction="AUCUNE"/>
     <cellule type="6" direction="AUCUNE"/>
+    <cellule type="7" direction="AUCUNE"/>
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="10" direction="EST"/>
 
     <!-- Ligne 8 -->
     <cellule type="0" direction="AUCUNE"/>

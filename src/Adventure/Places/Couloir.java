@@ -3,6 +3,7 @@ package Adventure.Places;
 import Adventure.Heros;
 import Adventure.ObjetsCarte.Panneau;
 import Adventure.ObjetsCarte.Sortie;
+import Adventure.Position;
 
 /**
  * Crée un nouveau lieu de type Place, le couloir contient deux sorties, par consequence deux destinations devant le héros
