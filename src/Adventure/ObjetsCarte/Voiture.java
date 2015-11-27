@@ -5,14 +5,22 @@ import Adventure.Images;
 import Adventure.Interface.Fixe;
 
 /**
- * Created by Etienne on 19/11/2015.
+ * Crée une instance de Voiture
  */
 public class Voiture extends ObjetCarte implements Fixe {
 
+    /**
+     * Construit la Voiture
+     * @param dir
+     *          La direction de l'image
+     */
     public Voiture(Direction dir) {
         super(dir);
     }
 
+    /**
+     * Appelle l'image qui corresponde a la Voiture
+     */
     @Override
     public void assigneImage() {
         if(dir == Direction.SUD)

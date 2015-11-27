@@ -10,6 +10,9 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Calcule et dessine l'inventaire(points de vie, clefs, bombe...)
+ */
 public class Inventaire extends JPanel {
 
     private Image image;
@@ -23,6 +26,11 @@ public class Inventaire extends JPanel {
     private RunnableVie runnableVie;
     private RunnableMana runnableMana;
 
+    /**
+     * Crée une instance d'inventaire
+     * @param heros
+     *          Instance du héros
+     */
     public Inventaire(Heros heros) {
         image = Images.INVENTAIRE;
         stock = new ArrayList<Potion>();
@@ -32,6 +40,11 @@ public class Inventaire extends JPanel {
         runnableMana = new RunnableMana(heros);
     }
 
+    /**
+     * Dessine l'inventaire
+     * @param g
+     *        Utilise les méthode de dessins propre à la classe abstraite Graphics
+     */
     @Override
     public void paint(Graphics g) {
         super.paint(g);
@@ -45,6 +58,11 @@ public class Inventaire extends JPanel {
         dessineIndices(g);
     }
 
+    /**
+     * Déssine les indices(les nombres) associés à chaque élément de l'inventaire(Vie,bombe,clef...)
+     * @param g
+     *        Utilise les méthode de dessins propre à la classe abstraite Graphics
+     */
     public void dessineIndices(Graphics g) {
 
         g.setColor(new Color(9, 128, 1));
@@ -56,6 +74,9 @@ public class Inventaire extends JPanel {
         g.drawString(String.valueOf(nbClefs), 245, 81);
     }
 
+    /**
+     * Calcule le nombre de points pour chaque élément de l'inventaire
+     */
     public void calculPotions() {
         nbPotionMana = 0;
         nbPotionVie = 0;
@@ -71,6 +92,11 @@ public class Inventaire extends JPanel {
         }
     }
 
+    /**
+     * Ajouts l'objet pris par le héros à sa liste d'inventaire
+     * @param p
+     *        Instance de Potion
+     */
     public void ajouterElement(Potion p) {
         if (nbClefs == 0 && p instanceof PotionClef)
             ajouter(p);
@@ -80,12 +106,23 @@ public class Inventaire extends JPanel {
             ajouter(p);
     }
 
+
+    /**
+     * Ajout la potion à la liste des potions de l'inventaire
+     * @param p
+     *        Instance de Potion
+     */
     public void ajouter(Potion p) {
         this.stock.add(p);
         calculPotions();
         repaint();
     }
 
+    /**
+     * Diminue le nombre de la potion utilisée par le héros
+     * @param i
+     *         Numéro associé à la potion(0->potionVie, 1->PotionMana, 2->Clefs)
+     */
     public void utiliser(int i) {
 
         if (i == 0) {
@@ -100,6 +137,11 @@ public class Inventaire extends JPanel {
         }
     }
 
+    /**
+     * Enlève la potion de la liste des potions du héros
+     * @param i
+     *      Numéro associé à la potion(0->potionVie, 1->PotionMana, 2->Clefs)
+     */
     public void supprimerElement(int i) {
 
         int a = 0;
@@ -125,6 +167,13 @@ public class Inventaire extends JPanel {
         calculPotions();
     }
 
+    /**
+     * Démarre l'animation de décrémentation de la potion
+     * @param lequel
+     *              détérmine la potion à enlever(false-> potionMana, true-> potionVie)
+     * @param p
+     *          Instance de la Potion en question
+     */
     public void nextThread(boolean lequel, Potion p) {
 
         Thread t;
@@ -139,10 +188,18 @@ public class Inventaire extends JPanel {
         demarreAnimation(t);
     }
 
+    /**
+     * Lance l'animation
+     * @param t
+     *      Instance de Thread
+     */
     public void demarreAnimation(Thread t) {
         t.start();
     }
 
+    /**
+     * Ajoute la clé à la liste des potions après la collection de 4 pièces
+     */
     public void remplirCompteurCle() {
 
         nbPieces++;
@@ -154,6 +211,11 @@ public class Inventaire extends JPanel {
         repaint();
     }
 
+    /**
+     *
+     * @return
+     *         retourne le nombre de clés
+     */
     public int getNbClefs() {
         return nbClefs;
     }

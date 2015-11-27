@@ -4,14 +4,25 @@ import Adventure.Heros;
 
 import java.awt.*;
 
+/**
+ * Crée une instance de RunnableEstEnVie
+ */
 public class RunnableEstEnVie implements Runnable {
 
     private Heros heros;
 
+    /**
+     * Construit RunnableEstEnVie
+     * @param h
+     *      Instance du héros
+     */
     public RunnableEstEnVie(Heros h) {
         this.heros = h;
     }
 
+    /**
+     * Le processus test la situation des points de vie chez le héros, et change en faire et à mesure la couleur de la Potion
+     */
     @Override
     public void run() {
 

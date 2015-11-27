@@ -5,12 +5,23 @@ import Adventure.Direction;
 import Adventure.Images;
 import Adventure.Interface.Fixe;
 
+/**
+ * Crée une instance du Prison
+ */
 public class Herbe extends ObjetCarte implements Fixe {
 
+    /**
+     * Construit le Prison
+     * @param d
+     *          La direction de l'image
+     */
     public Herbe(Direction d) {
         super(d);
     }
 
+    /**
+     * Appelle l'image qui corresponde au Prison, celon la direction à dessiner
+     */
     @Override
     public void assigneImage() {
         switch (dir) {

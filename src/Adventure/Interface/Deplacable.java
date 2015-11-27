@@ -1,7 +1,7 @@
 package Adventure.Interface;
 
 /**
- * Created by Etienne on 13/11/2015.
+ * Interface des objets deplaceables
  */
 public interface Deplacable {
 

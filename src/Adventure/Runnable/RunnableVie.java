@@ -5,7 +5,7 @@ import Adventure.Heros;
 import java.util.concurrent.Semaphore;
 
 /**
- * Created by Etienne on 13/11/2015.
+ * Crée une instance de RunnableVie
  */
 public class RunnableVie implements Runnable {
 
@@ -16,10 +16,18 @@ public class RunnableVie implements Runnable {
 
     private int potion;
 
+    /**
+     * Construit RunnableVie
+     * @param h
+     *      Instance du héros
+     */
     public RunnableVie(Heros h) {
         this.heros = h;
     }
 
+    /**
+     * Le processus fait diminuer ou augmenter le nombre de vie du héros 'animation'
+     */
     @Override
     public void run() {
 
@@ -44,6 +52,11 @@ public class RunnableVie implements Runnable {
         lock.release();
     }
 
+    /**
+     * Change le nombre de potion
+     * @param potion
+     *          le nombre de potion
+     */
     public void setPotion(int potion) {
         this.potion = potion;
     }

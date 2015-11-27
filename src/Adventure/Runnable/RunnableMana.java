@@ -5,7 +5,7 @@ import Adventure.Heros;
 import java.util.concurrent.Semaphore;
 
 /**
- * Created by Etienne on 13/11/2015.
+ * Crée une instance de RunnableMana
  */
 public class RunnableMana implements Runnable {
 
@@ -16,10 +16,18 @@ public class RunnableMana implements Runnable {
 
     private int potion;
 
+    /**
+     * Construit RunnableMana
+     * @param h
+     *      Instance du héros
+     */
     public RunnableMana(Heros h) {
         this.heros = h;
     }
 
+    /**
+     * Le processus test la situation des points de Mana chez le héros, et change en faire et à mesure la couleur de laPotion
+     */
     @Override
     public void run() {
 
@@ -45,6 +53,11 @@ public class RunnableMana implements Runnable {
         lock.release();
     }
 
+    /**
+     * Change la potion
+     * @param potion
+     *         Nombre de points de la potion
+     */
     public void setPotion(int potion) {
         this.potion = potion;
     }

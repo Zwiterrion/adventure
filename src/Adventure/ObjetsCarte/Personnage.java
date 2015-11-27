@@ -7,7 +7,9 @@ import Adventure.Interface.Piege;
 import Adventure.Position;
 import Adventure.Runnable.RunnableMonstre;
 
-
+/**
+ * Crée une instance de Personnage
+ */
 public class Personnage extends ObjetCarte implements Piege,Animable {
 
     public Position p;
@@ -18,6 +20,13 @@ public class Personnage extends ObjetCarte implements Piege,Animable {
     private Thread t;
     private RunnableMonstre m;
 
+    /**
+     * Contruit le Personnage
+     * @param p
+     *        La position dans la carte
+     * @param h
+     *        Instance du héros
+     */
     public Personnage(Position p, Heros h) {
         this.p = p;
         m = new RunnableMonstre(p,h, this);
@@ -32,16 +41,29 @@ public class Personnage extends ObjetCarte implements Piege,Animable {
     @Override
     public void stop() { m.setNiveauFini(true);}
 
+    /**
+     *
+     * @return
+     *      Retourne la Postion horizentale du Personnage dans la carte
+     */
     @Override
     public int getX() {
         return x;
     }
 
+    /**
+     *
+     * @return
+     *      Retourne la Postion verticale du Personnage dans la carte
+     */
     @Override
     public int getY() {
         return y;
     }
 
+    /**
+     * Appelle l'image qui corresponde au Herbe, celon la direction à dessiner
+     */
     public void assigneImage() {
         switch (dir) {
             case AUCUNE:

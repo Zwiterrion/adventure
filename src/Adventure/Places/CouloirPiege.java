@@ -5,9 +5,20 @@ import Adventure.Heros;
 import Adventure.ObjetsCarte.Sortie;
 import Adventure.ObjetsCarte.Trap;
 
-
+/**
+ * Crée un nouveau lieu de type Place
+ */
 public class CouloirPiege extends Couloir {
 
+    /**
+     * Crée un couloir avec un piège
+     * @param h
+     *          Instance du héros
+     * @param destination
+     *          La première déstination face au héros
+     * @param destinationBis
+     *          La deuxième déstination
+     */
     public CouloirPiege(Heros h, String destination, String destinationBis) {
         super(h);
 
@@ -20,6 +31,9 @@ public class CouloirPiege extends Couloir {
         h.changeImage(Direction.NORD);
     }
 
+    /**
+     * Ajoute le piège dans mapSol à la position (i,j)
+     */
     public void posePiege(){
         ajoutSol(4,4,new Trap());
     }

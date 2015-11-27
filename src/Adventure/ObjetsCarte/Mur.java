@@ -4,12 +4,23 @@ import Adventure.Direction;
 import Adventure.Images;
 import Adventure.Interface.Fixe;
 
+/**
+ * Crée une instance de Mur
+ */
 public class Mur extends ObjetCarte implements Fixe {
 
+    /**
+     * Construit le Mur
+     * @param d
+     *          La direction du Mur
+     */
     public Mur(Direction d) {
         super(d);
     }
 
+    /**
+     * Appelle l'image qui corresponde au Mur, celon la direction à dessiner
+     */
     @Override
     public void assigneImage() {
         switch (dir) {

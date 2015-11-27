@@ -2,10 +2,13 @@ package Adventure.ObjetsCarte;
 
 
 /**
- * Created by Etienne on 23/10/2015.
+ * Crée une instance du Vide
  */
 public class Vide extends ObjetCarte {
 
+    /**
+     * Appelle l'image qui corresponde au Vide
+     */
     @Override
     public void assigneImage() {
         image = null;
