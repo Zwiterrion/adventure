@@ -19,7 +19,7 @@ public class MurDeplacable extends Mur implements Deplacable {
     }
 
     /**
-     * Appelle l'image qui correspond a la Maison
+     * Assigne l'image qui correspond a la Maison
      */
     @Override
     public void assigneImage() {

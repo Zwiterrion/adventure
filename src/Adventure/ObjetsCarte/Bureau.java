@@ -19,7 +19,7 @@ public class Bureau extends ObjetCarte implements Fixe {
     }
 
     /**
-     * Appelle l'image qui correspond au Bureau
+     * Assigne l'image qui correspond au Bureau en fonction de la direction
      */
     @Override
     public void assigneImage() {

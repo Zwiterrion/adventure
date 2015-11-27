@@ -36,7 +36,7 @@ public class Piece extends ObjetCarte implements Fixe, Ramassable, Animable {
     }
 
     /**
-     * Appelle l'image qui correspond a la Piece
+     * Assigne l'image qui correspond a la Piece
      */
     @Override
     public void assigneImage() {
@@ -56,7 +56,7 @@ public class Piece extends ObjetCarte implements Fixe, Ramassable, Animable {
     /**
      *
      * @return
-     *      Retourne la Postion horizentale du Personnage dans la carte
+     *      Retourne le decalage horizontal du Personnage dans la carte
      */
     @Override
     public int getX() {
@@ -66,7 +66,7 @@ public class Piece extends ObjetCarte implements Fixe, Ramassable, Animable {
     /**
      *
      * @return
-     *      Retourne la Postion verticale du Personnage dans la carte
+     *      Retourne le decalage vertical du Personnage dans la carte
      */
     @Override
     public int getY() {

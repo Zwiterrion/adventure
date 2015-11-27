@@ -11,7 +11,7 @@ import Adventure.Interface.Fixe;
 public class Herbe extends ObjetCarte implements Fixe {
 
     /**
-     * Construit le Prison
+     * Construit la Prison
      * @param d
      *          La direction de l'image
      */
@@ -20,7 +20,7 @@ public class Herbe extends ObjetCarte implements Fixe {
     }
 
     /**
-     * Appelle l'image qui corresponde au Prison, celon la direction à dessiner
+     * Assigne l'image qui corresponde au Herbe, selon la direction a dessiner
      */
     @Override
     public void assigneImage() {

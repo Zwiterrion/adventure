@@ -43,7 +43,7 @@ public class Inventaire extends JPanel {
     /**
      * Dessine l'inventaire
      * @param g
-     *        Utilise les méthode de dessins propre à la classe abstraite Graphics
+     *        Utilise les methodes de dessins propre à la classe abstraite Graphics
      */
     @Override
     public void paint(Graphics g) {
@@ -59,9 +59,9 @@ public class Inventaire extends JPanel {
     }
 
     /**
-     * Déssine les indices(les nombres) associés à chaque élément de l'inventaire(Vie,bombe,clef...)
+     * Dessine les indices(les nombres) associés à chaque élément de l'inventaire(Vie,bombe,clef...)
      * @param g
-     *        Utilise les méthode de dessins propre à la classe abstraite Graphics
+     *        Utilise les methodes de dessins propre à la classe abstraite Graphics
      */
     public void dessineIndices(Graphics g) {
 
@@ -93,7 +93,7 @@ public class Inventaire extends JPanel {
     }
 
     /**
-     * Ajouts l'objet pris par le héros à sa liste d'inventaire
+     * Ajoute l'objet pris par le héros à sa liste d'inventaire
      * @param p
      *        Instance de Potion
      */

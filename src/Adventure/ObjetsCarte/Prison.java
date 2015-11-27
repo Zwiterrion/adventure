@@ -20,7 +20,7 @@ public class Prison extends ObjetCarte implements Fixe {
     }
 
     /**
-     * Appelle l'image qui correspond a la Maison
+     * Assigne l'image qui correspond a la Maison, en fonction de la direction
      */
     @Override
     public void assigneImage() {

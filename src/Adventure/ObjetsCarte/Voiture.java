@@ -19,7 +19,7 @@ public class Voiture extends ObjetCarte implements Fixe {
     }
 
     /**
-     * Appelle l'image qui corresponde a la Voiture
+     * Assigne l'image qui corresponde a la Voiture
      */
     @Override
     public void assigneImage() {

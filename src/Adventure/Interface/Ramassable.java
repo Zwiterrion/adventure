@@ -8,7 +8,7 @@ public interface Ramassable {
     /**
      *
      * @return
-     *      le nombre par defaut des points de vie est de 30
+     *      Le nombre par defaut d'un objet ramassable est de 30
      */
     public default int quantite() {
         return 30;

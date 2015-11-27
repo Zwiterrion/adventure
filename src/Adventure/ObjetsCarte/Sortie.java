@@ -25,7 +25,7 @@ public class Sortie extends ObjetCarte implements Fixe {
     }
 
     /**
-     * Appelle l'image qui correspond a la Sortie
+     * Assigne l'image qui correspond a la Sortie
      */
     @Override
     public void assigneImage() {

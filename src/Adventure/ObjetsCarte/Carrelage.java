@@ -10,7 +10,7 @@ import Adventure.Interface.Fixe;
 public class Carrelage extends ObjetCarte implements Fixe {
 
     /**
-     * Appelle l'image qui correspond au Carrelage
+     * Assigne l'image qui correspond au Carrelage en fonction de la direction
      */
     @Override
     public void assigneImage() {

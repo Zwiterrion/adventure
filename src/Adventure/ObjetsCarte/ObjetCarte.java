@@ -40,7 +40,7 @@ public abstract class ObjetCarte {
     }
 
     /**
-     * Appelle l'image correspandonte a chaque objet
+     * Assigne l'image correspondante a chaque objet
      */
     public abstract void assigneImage();
 
@@ -56,7 +56,7 @@ public abstract class ObjetCarte {
     /**
      *
      * @return
-     *      Retoune le nom de l'objet
+     *      Retoune le nom de la classe
      */
     @Override
     public String toString() {

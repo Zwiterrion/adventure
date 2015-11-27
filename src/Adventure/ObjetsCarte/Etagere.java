@@ -5,12 +5,12 @@ import Adventure.Images;
 import Adventure.Interface.Fixe;
 
 /**
- * Crée une instance d 'Etagere
+ * Crée une instance d'Etagere
  */
 public class Etagere extends ObjetCarte implements Fixe {
 
     /**
-     * Construit le Herbe
+     * Construit l'Herbe
      * @param d
      *          La direction de l'image
      */
@@ -19,7 +19,7 @@ public class Etagere extends ObjetCarte implements Fixe {
     }
 
     /**
-     * Appelle l'image qui correspond au Etagere
+     * Assigne l'image qui correspond au Etagere en fonction de la direction
      */
     @Override
     public void assigneImage() {

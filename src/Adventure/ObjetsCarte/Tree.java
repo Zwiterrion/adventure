@@ -9,7 +9,7 @@ import Adventure.Interface.Fixe;
 public class Tree extends ObjetCarte implements Fixe {
 
     /**
-     * Appelle l'image qui correspond au Tree
+     * Assigne l'image qui correspond au Tree
      */
     @Override
     public void assigneImage() {

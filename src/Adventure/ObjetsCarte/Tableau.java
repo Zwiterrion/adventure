@@ -9,7 +9,7 @@ import Adventure.Interface.Fixe;
 public class Tableau extends ObjetCarte implements Fixe {
 
     /**
-     * Appelle l'image qui correspond au Tableau
+     * Assigne l'image qui correspond au Tableau
      */
     @Override
     public void assigneImage() {

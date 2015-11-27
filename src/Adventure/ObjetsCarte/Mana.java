@@ -10,7 +10,7 @@ import Adventure.Interface.Ramassable;
 public class Mana extends ObjetCarte implements Ramassable, Fixe {
 
     /**
-     * Appelle l'image qui correspond a la Mana
+     * Assigne l'image qui correspond a la Mana
      */
     @Override
     public void assigneImage() {

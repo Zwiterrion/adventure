@@ -20,7 +20,7 @@ public class Buisson extends ObjetCarte implements Fixe {
     }
 
     /**
-     * Appelle l'image qui correspond au Buisson, celon la direction à dessiner
+     * Assigne l'image qui correspond au Buisson, en fonction de la direction
      */
     @Override
     public void assigneImage() {

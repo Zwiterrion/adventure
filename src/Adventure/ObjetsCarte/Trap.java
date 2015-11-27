@@ -10,7 +10,7 @@ import Adventure.Interface.Piege;
 public class Trap extends ObjetCarte implements Fixe, Piege {
 
     /**
-     * Appelle l'image qui correspond au Trap
+     * Assigne l'image qui correspond au Trap
      */
     @Override
     public void assigneImage() {
@@ -20,7 +20,7 @@ public class Trap extends ObjetCarte implements Fixe, Piege {
     /**
      *
      * @return
-     *      Retourne le nombre de points à diminuer
+     *      Retourne le nombre de points a infliger
      */
     @Override
     public int degat() {

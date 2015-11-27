@@ -44,7 +44,7 @@ public class Personnage extends ObjetCarte implements Piege,Animable {
     /**
      *
      * @return
-     *      Retourne la Postion horizentale du Personnage dans la carte
+     *      Retourne le decalage horizontal du Personnage dans la carte
      */
     @Override
     public int getX() {
@@ -54,7 +54,7 @@ public class Personnage extends ObjetCarte implements Piege,Animable {
     /**
      *
      * @return
-     *      Retourne la Postion verticale du Personnage dans la carte
+     *      Retourne le decalage vertical du Personnage dans la carte
      */
     @Override
     public int getY() {
@@ -62,7 +62,7 @@ public class Personnage extends ObjetCarte implements Piege,Animable {
     }
 
     /**
-     * Appelle l'image qui corresponde au Herbe, celon la direction à dessiner
+     * Assigne l'image qui corresponde au Herbe, selon la direction à dessiner
      */
     public void assigneImage() {
         switch (dir) {

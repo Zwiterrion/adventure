@@ -9,7 +9,7 @@ import Adventure.Interface.Fixe;
 public class Beton extends ObjetCarte implements Fixe {
 
     /**
-     * Appelle l'image qui correspond au Beton
+     * Assigne l'image qui correspond au Beton
      */
     @Override
     public void assigneImage() {

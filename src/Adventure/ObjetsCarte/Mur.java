@@ -19,7 +19,7 @@ public class Mur extends ObjetCarte implements Fixe {
     }
 
     /**
-     * Appelle l'image qui corresponde au Mur, celon la direction à dessiner
+     * Assigne l'image qui corresponde au Mur, en fonction de la direction
      */
     @Override
     public void assigneImage() {

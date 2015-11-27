@@ -10,7 +10,7 @@ import Adventure.Interface.Ramassable;
 public class Clef extends ObjetCarte implements Ramassable, Fixe {
 
     /**
-     * Appelle l'image qui correspond au Clef
+     * Assigne l'image qui correspond au Clef en fonction de la direction
      */
     @Override
     public void assigneImage() {

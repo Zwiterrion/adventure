@@ -9,7 +9,7 @@ public interface Piege {
     /**
      *
      * @return
-     *      le nombre par defaut des degats est de 5
+     *      Le nombre par defaut des degats est de 5
      */
     default int degat() {
         return 5;

@@ -18,14 +18,14 @@ public interface Animable {
     /**
      *
      * @return
-     *      La position horizentale sur la carte
+     *      Decalage de l'image horizontalement pour l'animation entre deux cases
      */
     int getX();
 
     /**
      *
      * @return
-     *      La position verticale sur la carte
+     *      Decalage de l'image verticalement pour l'animation entre deux cases
      */
     int getY();
 }

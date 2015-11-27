@@ -23,7 +23,7 @@ public class SortieFermee extends Sortie implements Fixe {
     }
 
     /**
-     * Appelle l'image qui corresponde a la sortie
+     * Assigne l'image qui correspond a la sortie
      */
     @Override
     public void assigneImage() {
@@ -45,7 +45,7 @@ public class SortieFermee extends Sortie implements Fixe {
     }
 
     /**
-     * Ouvre la sortie s'elle est fermee
+     * Ouvre la sortie si elle est fermee
      */
     public void ouvre() {
         this.ouverte = true;
@@ -54,7 +54,7 @@ public class SortieFermee extends Sortie implements Fixe {
     }
 
     /**
-     * Ferme la sortie s'elle est ouverte
+     * Ferme la sortie si elle est ouverte
      */
     public void ferme() {
         this.ouverte = false;
@@ -63,7 +63,7 @@ public class SortieFermee extends Sortie implements Fixe {
     }
 
     /**
-     * Change la direction de l'image
+     * Change l'image pendant l'explosion de la porte
      */
     public void enExplosion() {
         this.dir= Direction.OUEST;

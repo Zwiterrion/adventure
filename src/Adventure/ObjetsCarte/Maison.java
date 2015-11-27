@@ -10,7 +10,7 @@ import Adventure.Interface.Fixe;
 public class Maison extends ObjetCarte implements Fixe {
 
     /**
-     * Appelle l'image qui correspond a la Maison
+     * Assigne l'image qui correspond a la Maison
      */
     @Override
     public void assigneImage() {

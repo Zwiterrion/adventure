@@ -10,7 +10,7 @@ import Adventure.Interface.Ramassable;
 public class Vie extends ObjetCarte implements Ramassable, Fixe {
 
     /**
-     * Appelle l'image qui corresponde a la Vie
+     * Assigne l'image qui corresponde a la Vie
      */
     @Override
     public void assigneImage() {
@@ -20,7 +20,7 @@ public class Vie extends ObjetCarte implements Ramassable, Fixe {
     /**
      *
      * @return
-     *      le nombre de points a incrementer
+     *      Le nombre de points a ajouter au heros
      */
     @Override
     public int quantite() {
