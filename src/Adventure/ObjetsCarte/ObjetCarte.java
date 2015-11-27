@@ -10,7 +10,7 @@ import java.awt.*;
 public abstract class ObjetCarte {
 
     protected Image image;
-    protected Direction dir = Direction.AUCUNE;
+    protected Direction dir = Direction.TOUTES;
 
     /**
      * Construit l'objet

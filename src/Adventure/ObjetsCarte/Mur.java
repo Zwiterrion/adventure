@@ -39,7 +39,7 @@ public class Mur extends ObjetCarte implements Fixe {
             case NORD_EST:
                 image = Images.MUR_ANGLE;
                 break;
-            case AUCUNE:
+            case TOUTES:
                 image = Images.MUR_PALISSADE;
                 break;
             default:

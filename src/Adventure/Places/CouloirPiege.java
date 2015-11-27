@@ -20,13 +20,7 @@ public class CouloirPiege extends Couloir {
      *          La deuxième destination
      */
     public CouloirPiege(Heros h, String destination, String destinationBis) {
-        super(h);
-
-        Sortie s = (Sortie)getObjet(4,0);
-        s.setDestination(destination);
-
-        Sortie s2 = (Sortie)getObjet(4,9);
-        s2.setDestination(destinationBis);
+        super(h, destination, destinationBis);
         posePiege();
         h.changeImage(Direction.NORD);
     }

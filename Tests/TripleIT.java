@@ -1,5 +1,4 @@
 import Adventure.Direction;
-import Adventure.Position;
 import Adventure.Triple;
 import org.junit.Test;
 
@@ -9,7 +8,7 @@ public class TripleIT {
 
     @Test
     public void testX() {
-        Triple t = new Triple(10, Direction.AUCUNE, "PARKING");
+        Triple t = new Triple(10, Direction.TOUTES, "PARKING");
         assertEquals(t.getType(), 10);
     }
 

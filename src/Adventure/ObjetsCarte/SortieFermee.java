@@ -27,7 +27,7 @@ public class SortieFermee extends Sortie implements Fixe {
      */
     @Override
     public void assigneImage() {
-        if(dir == Direction.AUCUNE)
+        if(dir == Direction.TOUTES)
             image = Images.SORTIE_FERMEE;
         else if(dir == Direction.EST)
             image = Images.SORTIE;
@@ -58,7 +58,7 @@ public class SortieFermee extends Sortie implements Fixe {
      */
     public void ferme() {
         this.ouverte = false;
-        this.dir = Direction.AUCUNE;
+        this.dir = Direction.TOUTES;
         assigneImage();
     }
 

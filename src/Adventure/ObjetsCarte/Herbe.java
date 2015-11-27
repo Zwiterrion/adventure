@@ -25,7 +25,7 @@ public class Herbe extends ObjetCarte implements Fixe {
     @Override
     public void assigneImage() {
         switch (dir) {
-            case AUCUNE:
+            case TOUTES:
                 image = Images.HERBE;
                 break;
             case SUD:

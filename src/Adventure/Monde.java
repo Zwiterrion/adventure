@@ -147,7 +147,7 @@ public class Monde extends JPanel {
                     Deplacable w = (Deplacable) mapObjects.get(positions[positionWall.x][positionWall.y]);
                     mapObjects.put(positions[p.x][p.y], (ObjetCarte) w);
                 } else
-                    mapSol.put(positions[p.x][p.y], new Herbe(Direction.AUCUNE));
+                    mapSol.put(positions[p.x][p.y], new Herbe(Direction.TOUTES));
 
                 mapObjects.put(positions[positionWall.x][positionWall.y], new Vide());
                 heros.setPos_in(positionWall);
@@ -218,11 +218,14 @@ public class Monde extends JPanel {
         String dest = s.getDestination();
 
         if(!s.dansUnCouloir()) {
-            return new CouloirPiege(heros, s.getNomPlace(), dest);
+            if(s.getNomPlace().equalsIgnoreCase("parking"))
+                return new CouloirPiege(heros, s.getNomPlace(), dest);
+            else
+                return new CouloirPiege(heros, dest, s.getNomPlace());
         }
-        else {
+        else
             return placeSuivante(s);
-        }
+
     }
 
     public Place placeSuivante(Sortie s) {

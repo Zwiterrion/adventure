@@ -25,7 +25,7 @@ public class Buisson extends ObjetCarte implements Fixe {
     @Override
     public void assigneImage() {
         switch (dir) {
-            case AUCUNE:
+            case TOUTES:
                 image = Images.BUISSON_SUD;
                 break;
             case SUD:

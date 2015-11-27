@@ -66,7 +66,7 @@ public class Personnage extends ObjetCarte implements Piege,Animable {
      */
     public void assigneImage() {
         switch (dir) {
-            case AUCUNE:
+            case TOUTES:
                 image = Images.LAPIN_EST;
                 break;
             case SUD:

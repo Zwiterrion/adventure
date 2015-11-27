@@ -1,11 +1,11 @@
 package Adventure;
 
 public enum Direction {
-    NORD, EST, SUD, OUEST, NORD_EST, NORD_OUEST, SUD_EST, SUD_OUEST, AUCUNE;
+    NORD, EST, SUD, OUEST, NORD_EST, NORD_OUEST, SUD_EST, SUD_OUEST, TOUTES;
 
 
     public static Direction change(String s) {
-        Direction dir = Direction.AUCUNE;
+        Direction dir = Direction.TOUTES;
         if(s.equals("NORD"))
              return Direction.NORD;
         else if(s.equals("SUD"))

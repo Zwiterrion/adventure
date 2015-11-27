@@ -10,13 +10,13 @@ public class HerbeIT {
 
     @Test
     public void testCreationHerbe() {
-        Herbe herbe = new Herbe(Direction.AUCUNE);
+        Herbe herbe = new Herbe(Direction.TOUTES);
         assertEquals(herbe.toString(), "Herbe");
     }
 
     @Test
     public void testImage() {
-        Herbe herbe = new Herbe(Direction.AUCUNE);
+        Herbe herbe = new Herbe(Direction.TOUTES);
         assertEquals(herbe.getImage(), Images.HERBE);
         herbe.setDir(Direction.SUD);
         assertEquals(herbe.getImage(), Images.HERBE_SUD_NORD);
