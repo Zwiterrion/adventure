@@ -224,16 +224,16 @@
     <cellule type="1" direction="EST"/>
 
     <!-- Ligne 9 -->
-    <cellule type="0" direction="TOUTES"/>
-    <cellule type="5" direction="EST"/>
+    <cellule type="6" direction="TOUTES" destination="PARKING"/>
+    <cellule type="7" direction="EST"/>
     <cellule type="5" direction="EST"/>
     <cellule type="0" direction="EST"/>
     <cellule type="5" direction="TOUTES"/>
     <cellule type="5" direction="EST"/>
     <cellule type="0" direction="EST"/>
     <cellule type="5" direction="EST"/>
-    <cellule type="7" direction="TOUTES"/>
-    <cellule type="6" direction="TOUTES"/>
+    <cellule type="0" direction="TOUTES"/>
+    <cellule type="1" direction="EST" />
 
     <!-- Ligne 10 -->
     <cellule type="0" direction="TOUTES"/>

@@ -19,7 +19,7 @@ public class Couloir extends Place {
      * @param destinationBis
      *          La deuxième destination
      */
-    public Couloir(Heros h, String destination, String destinationBis) {
+    public Couloir(Heros h, String destination, String destinationBis, boolean inverser) {
         super(h, "couloir");
 
         Sortie s = (Sortie)getObjet(4,0);
@@ -29,9 +29,9 @@ public class Couloir extends Place {
         s2.setDestination(destinationBis);
 
         Panneau p1 = (Panneau)getObjet(6,1);
-        p1.assigneImageAvecDestination(destination, true);
+        p1.assigneImageAvecDestination(destination, inverser);
 
         Panneau p2 = (Panneau)getObjet(2,7);
-        p2.assigneImageAvecDestination(destinationBis, true);
+        p2.assigneImageAvecDestination(destinationBis, inverser);
     }
 }

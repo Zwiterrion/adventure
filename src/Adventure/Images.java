@@ -76,10 +76,9 @@ public class Images {
     public static Image PANNEAU_BU;
     public static Image PANNEAU_TP;
     public static Image PANNEAU_IFMI;
-    public static Image PANNEAU_IFMI_NORD;
     public static Image PANNEAU_SP2MI;
-    public static Image PANNEAU_SP2MI_NORD;
     public static Image PARKING;
+    public static Image PARKING_NORD;
 
     public static void chargementImage() {
         try {
@@ -89,9 +88,7 @@ public class Images {
             PANNEAU_IFMI = ImageIO.read(new FileInputStream(("res/ifmi.png")));
             PANNEAU_SP2MI = ImageIO.read(new FileInputStream(("res/sp2mi.png")));
             PARKING = ImageIO.read(new FileInputStream(("res/parking.png")));
-
-            PANNEAU_SP2MI_NORD = ImageIO.read(new FileInputStream(("res/sp2miNord.png")));
-            PANNEAU_IFMI_NORD = ImageIO.read(new FileInputStream(("res/ifmiNord.png")));
+            PARKING_NORD = ImageIO.read(new FileInputStream(("res/parkingNord.png")));
 
             HERBE = ImageIO.read(new FileInputStream("res/herbe.png"));
             HERBE_SUD_NORD = ImageIO.read(new FileInputStream("res/herbeDroite.png"));

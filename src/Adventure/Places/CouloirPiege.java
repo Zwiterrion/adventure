@@ -19,8 +19,8 @@ public class CouloirPiege extends Couloir {
      * @param destinationBis
      *          La deuxième destination
      */
-    public CouloirPiege(Heros h, String destination, String destinationBis) {
-        super(h, destination, destinationBis);
+    public CouloirPiege(Heros h, String destination, String destinationBis, boolean inverser) {
+        super(h, destination, destinationBis, inverser);
         posePiege();
         h.changeImage(Direction.NORD);
     }

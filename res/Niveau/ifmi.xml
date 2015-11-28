@@ -233,7 +233,7 @@
     <cellule type="0" direction="SUD"/>
     <cellule type="5" direction="SUD"/>
     <cellule type="7" direction="TOUTES"/>
-    <cellule type="6" direction="TOUTES"/>
+    <cellule type="6" direction="TOUTES" destination="PARKING"/>
 
     <!-- Ligne 10 -->
     <cellule type="0" direction="TOUTES"/>

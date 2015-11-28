@@ -28,30 +28,26 @@ public class Panneau extends ObjetCarte implements Fixe{
             image = Images.PANNEAU_IFMI;
         else if (dir == Direction.NORD_EST)
             image = Images.PANNEAU_TP;
-        else if (dir == Direction.NORD_OUEST)
-            image = Images.PANNEAU_SP2MI_NORD;
-        else if (dir == Direction.SUD_OUEST)
-            image = Images.PANNEAU_IFMI_NORD;
+        else if (dir == Direction.TOUTES)
+            image = Images.PARKING_NORD;
         else
             image = Images.PARKING;
     }
 
-    public void assigneImageAvecDestination(String s, boolean couloir) {
+    public void assigneImageAvecDestination(String s, boolean inverser) {
 
-        if(s.equalsIgnoreCase("bibliotheque"))
+        if(s.equalsIgnoreCase("parking") && inverser)
+            setDir(Direction.TOUTES);
+        else if(s.equalsIgnoreCase("bibliotheque"))
             setDir(Direction.NORD);
-        else if(s.equalsIgnoreCase("ifmi") && !couloir)
-            setDir(Direction.SUD_EST);
         else if(s.equalsIgnoreCase("ifmi"))
-            setDir(Direction.SUD_OUEST);
-        else if(s.equalsIgnoreCase("sp2mi") && !couloir)
-            setDir(Direction.SUD);
+            setDir(Direction.SUD_EST);
         else if(s.equalsIgnoreCase("sp2mi"))
-            setDir(Direction.NORD_OUEST);
+            setDir(Direction.SUD);
         else if(s.equalsIgnoreCase("salletp"))
             setDir(Direction.NORD_EST);
         else
-            setDir(Direction.TOUTES);
+            setDir(Direction.EST);
 
         assigneImage();
     }

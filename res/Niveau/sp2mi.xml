@@ -149,7 +149,7 @@
     <cellule type="0" direction="TOUTES"/>
     <cellule type="0" direction="TOUTES"/>
     <cellule type="7" direction="TOUTES"/>
-    <cellule type="6" direction="TOUTES"/>
+    <cellule type="6" direction="TOUTES" destination="PARKING"/>
 
     <!-- Ligne 3 -->
     <cellule type="0" direction="TOUTES"/>
