@@ -9,7 +9,10 @@ import java.awt.*;
 import java.util.Hashtable;
 import java.util.List;
 
-public class Monde extends JPanel {
+/**
+ * Cree une instance de la classe Monde : instance unique dans le jeu
+ */
+public final class Monde extends JPanel {
 
     // Map
     private Hashtable<Position, ObjetCarte> mapObjects;
@@ -33,6 +36,16 @@ public class Monde extends JPanel {
     public static int X_MAX;
     public static int Y_MAX;
 
+    /**
+     * Construit le monde avec une taille fixe de case (par defaut: 100 cases) et une taille pour chaque case
+     *
+     * @param X_MAX
+     *      Nombre de colonnes
+     * @param Y_MAX
+     *      Nombre de lignes
+     * @param screen_size
+     *      Taille de la scene
+     */
     public Monde(int X_MAX, int Y_MAX, int screen_size) {
         Monde.X_MAX = X_MAX;
         Monde.Y_MAX = Y_MAX;
@@ -49,6 +62,13 @@ public class Monde extends JPanel {
         initialisationNiveau(null);
     }
 
+    /**
+     * Fonction de dessin du monde
+     * La fonction est coupee en plusieurs parties : le dessin se fait du plus eloigne en Z au plus proche
+     * On dessine tout d'abord le fond (sol), les objets de la carte puis ensuite l'interface utilisateur (inventaire)
+     * @param g
+     *      Graphics instance
+     */
     @Override
     public void paint(Graphics g) {
 
@@ -63,6 +83,11 @@ public class Monde extends JPanel {
         description.paint(g);
     }
 
+    /**
+     * Fonction de dessin du sol : dessine le sol en appelant la fonction getImage de chaque objet du sol
+     * @param g
+     *      Graphics instance
+     */
     public void dessineSol(Graphics g) {
 
         for (int i = 0; i < X_MAX; i++) {
@@ -75,6 +100,11 @@ public class Monde extends JPanel {
         }
     }
 
+    /**
+     * Dessine les objets du dessus, les objets animables ainsi que le heros
+     * @param g
+     *      Graphics instance
+     */
     public void dessineObjetsMap(Graphics g) {
 
         for (int i = 0; i < X_MAX; i++) {
@@ -97,10 +127,29 @@ public class Monde extends JPanel {
 
     }
 
+    /**
+     * Appelle la fonction de dessin de l'interface utilisateur
+     * @param g
+     *          Graphics instance
+     */
     public void dessineATH(Graphics g) {
         ath.paint(g);
     }
 
+    /**
+     * Permet de tester la nature de la prochaine case : la fonciton verifie l'ojet du sol et l'objet du dessus
+     * afin de savoir ce que le heros doit faire.
+     * @param p
+     *      Position de la case a verifier
+     * @param dir
+     *      Direction du heros
+     * @param x
+     *      Ligne i de la case
+     * @param y
+     *      Colonne j de la case
+     * @return
+     *      Vrai si le heros peut avancer sur la case, faux dans le case contraire
+     */
     public Boolean videOuPas(Position p, Direction dir, int x, int y) {
 
         ObjetCarte object = mapObjects.get(positions[p.x][p.y]);
@@ -132,9 +181,21 @@ public class Monde extends JPanel {
             return false;
     }
 
-    public void deplaceObjet(Position positionWall, Direction dir, int x, int y) {
+    /**
+     * Fonction qui deplace un objet deplaçable. Elle vérifie egalement l'objet au sol car s'il c'est un vide
+     * le heros pousse l'objet du dessus dans le vide et peut ainsi monter dessus.
+     * @param positionObjet
+     *        Position de l'objet à déplacer
+     * @param dir
+     *        Direction dans laquelle le heros doit se trouver apres le deplacement
+     * @param x
+     *      Ligne i de la case
+     * @param y
+     *      Colonne j de la case
+     */
+    public void deplaceObjet(Position positionObjet, Direction dir, int x, int y) {
 
-        Position p = new Position(positionWall.x + x, positionWall.y + y);
+        Position p = new Position(positionObjet.x + x, positionObjet.y + y);
 
         if ((p.x >= 0 && p.x < X_MAX) && (p.y >= 0 && p.y < Y_MAX)) {
 
@@ -144,19 +205,34 @@ public class Monde extends JPanel {
             if (object instanceof Vide) {
 
                 if (objectSol instanceof Fixe) {
-                    Deplacable w = (Deplacable) mapObjects.get(positions[positionWall.x][positionWall.y]);
+                    Deplacable w = (Deplacable) mapObjects.get(positions[positionObjet.x][positionObjet.y]);
                     mapObjects.put(positions[p.x][p.y], (ObjetCarte) w);
                 } else
                     mapSol.put(positions[p.x][p.y], new Herbe(Direction.TOUTES));
 
-                mapObjects.put(positions[positionWall.x][positionWall.y], new Vide());
-                heros.setPos_in(positionWall);
+                mapObjects.put(positions[positionObjet.x][positionObjet.y], new Vide());
+                heros.setPos_in(positionObjet);
                 heros.changeImage(dir);
                 repaint();
             }
         }
     }
 
+    /**
+     * Arrete tous les objets animables de la carte.
+     * Deplace le heros sur la sortie choisie.
+     * Si la porte est ouverte alors le heros change de monde.
+     * Sinon il ne se passe rien.
+     *
+     * @param x
+     *      Ligne i
+     * @param y
+     *      Colonne j
+     * @param dir
+     *      Direction suivante du heros
+     * @param s
+     *      Sortie à passer
+     */
     public void niveauSuivant(int x, int y, Direction dir, Sortie s) {
 
         animables.forEach(Animable::stop);
@@ -171,6 +247,12 @@ public class Monde extends JPanel {
             teleportation(s);
     }
 
+    /**
+     * Fait la transition entre deux lieux et marque une pause pour afficher la description du nouveau lieu
+     *
+     * @param s
+     *      Sortie à franchir
+     */
     public void teleportation(Sortie s) {
         initialisationNiveau(s);
         pageDeDescription();
@@ -178,6 +260,9 @@ public class Monde extends JPanel {
         repaint();
     }
 
+    /**
+     * Affiche la page noire de transition entre deux lieux
+     */
     public void pageDeDescription() {
 
         Graphics g = getGraphics();
@@ -187,31 +272,16 @@ public class Monde extends JPanel {
         annonce.paint(g);
     }
 
+    /**
+     * Fait patienter le thread principal
+     * @param time
+     */
     public void attente(int time) {
         try {
             Thread.sleep(time);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-    }
-
-    public void initialisationNiveau(Sortie s) {
-
-        if (s == null)
-            placeCourante = new Parking(heros);
-        else
-            placeCourante = placeCorrespondante(s);
-
-
-        mapObjects = placeCourante.getMapObjects();
-        mapSol = placeCourante.getMapSol();
-        animables = placeCourante.getAnimables();
-        positions = placeCourante.getPositions();
-
-        heros.setPos_in(placeCourante.getHeros().getPos_in());
-
-        placeCourante.lancePersonnage();
-        description.setTexteAAfficher(placeCourante.getNom());
     }
 
     public Place placeCorrespondante(Sortie s) {
@@ -237,6 +307,30 @@ public class Monde extends JPanel {
         else
             return placeSuivante(s);
 
+    }
+
+    /**
+     * Initialise le prochain niveau et lance les objets animables
+     * @param s
+     *      Sortie qui vient d'être franchie
+     */
+    public void initialisationNiveau(Sortie s) {
+
+        if (s == null)
+            placeCourante = new Parking(heros);
+        else
+            placeCourante = placeCorrespondante(s);
+
+
+        mapObjects = placeCourante.getMapObjects();
+        mapSol = placeCourante.getMapSol();
+        animables = placeCourante.getAnimables();
+        positions = placeCourante.getPositions();
+
+        heros.setPos_in(placeCourante.getHeros().getPos_in());
+
+        placeCourante.lancePersonnage();
+        description.setTexteAAfficher(placeCourante.getNom());
     }
 
     public Place placeSuivante(Sortie s) {
