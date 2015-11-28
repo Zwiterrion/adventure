@@ -1,9 +1,11 @@
 package Adventure;
 
+import javax.swing.event.MouseInputAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
 
-public class GameController implements KeyListener {
+public class GameController extends MouseInputAdapter implements KeyListener {
 
     private GameView gameView;
     private Monde gameModel;
@@ -12,7 +14,6 @@ public class GameController implements KeyListener {
         this.gameView = view;
         this.gameModel = model;
     }
-
 
     @Override
     public void keyPressed(KeyEvent e) {
@@ -50,4 +51,24 @@ public class GameController implements KeyListener {
     public void keyReleased(KeyEvent e) {
     }
 
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        super.mouseClicked(e);
+
+        if((e.getX() > 840 && e.getX() < 1040) && (e.getY() > 10 && e.getY() < 60)) {
+            gameModel.relance();
+        }
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent e) {
+        super.mouseMoved(e);
+
+        if((e.getX() > 840 && e.getX() < 1040) && (e.getY() > 10 && e.getY() < 60))
+            gameModel.setMouse(true);
+        else
+            gameModel.setMouse(false);
+
+    }
 }

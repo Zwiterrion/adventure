@@ -34,6 +34,13 @@ public class Panneau extends ObjetCarte implements Fixe{
             image = Images.PARKING;
     }
 
+    /**
+     * Assigne la bonne direction en fonction de la destination du heros
+     * @param s
+     *      Nom du lieu
+     * @param inverser
+     *      Booleen pour savoir si le panneau PARKING doit etre vers le nord ou le sud
+     */
     public void assigneImageAvecDestination(String s, boolean inverser) {
 
         if(s.equalsIgnoreCase("parking") && inverser)

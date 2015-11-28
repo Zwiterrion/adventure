@@ -23,6 +23,8 @@ public class Inventaire extends JPanel {
     private int nbClefs = 0;
     private int nbPieces = 0;
 
+    private boolean mouse = false;
+
     private AnimationPotionVie runnableVie;
     private AnimationPotionMana runnableMana;
 
@@ -55,7 +57,15 @@ public class Inventaire extends JPanel {
         g.setColor(new Color(0, 0, 0));
         g.drawImage(image, 2, 8, this);
 
+        dessineBoutons(g);
         dessineIndices(g);
+    }
+
+    public void dessineBoutons(Graphics g) {
+        if(mouse)
+            g.drawImage(Images.RESET, 840, 10, 200, 50, this);
+        else
+            g.drawImage(Images.RESET_APPUYE, 840, 10, 200, 50, this);
     }
 
     /**
@@ -214,10 +224,15 @@ public class Inventaire extends JPanel {
     /**
      *
      * @return
-     *         retourne le nombre de clés
+     *         Le nombre de clés
      */
     public int getNbClefs() {
         return nbClefs;
+    }
+
+
+    public void setMouse(boolean mouse) {
+        this.mouse = mouse;
     }
 }
 

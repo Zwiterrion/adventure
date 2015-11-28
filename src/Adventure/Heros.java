@@ -36,6 +36,16 @@ public class Heros {
         demarreThread();
     }
 
+    public void recommenceNiveau() {
+        this.vie = 100;
+        this.mana = 100;
+        image = Images.HEROS_E;
+        this.vie = 100;
+        this.mana = 100;
+        this.couleurVie = Color.GREEN;
+        this.dir = Direction.EST;
+    }
+
     public void ramasserObjet(Ramassable p) {
         if (p instanceof Vie)
             inventaire.ajouterElement(new PotionVie(p.quantite()));

@@ -20,6 +20,8 @@ public class Main {
 
             view.getGameModel().requestFocus();
             view.getGameModel().addKeyListener(controller);
+            view.getGameModel().addMouseListener(controller);
+            view.getGameModel().addMouseMotionListener(controller);
         });
 
     }

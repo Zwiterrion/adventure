@@ -80,6 +80,9 @@ public class Images {
     public static Image PARKING;
     public static Image PARKING_NORD;
 
+    public static Image RESET;
+    public static Image RESET_APPUYE;
+
     public static void chargementImage() {
         try {
 
@@ -89,6 +92,9 @@ public class Images {
             PANNEAU_SP2MI = ImageIO.read(new FileInputStream(("res/sp2mi.png")));
             PARKING = ImageIO.read(new FileInputStream(("res/parking.png")));
             PARKING_NORD = ImageIO.read(new FileInputStream(("res/parkingNord.png")));
+
+            RESET = ImageIO.read(new FileInputStream(("res/reset.png")));
+            RESET_APPUYE = ImageIO.read(new FileInputStream(("res/resetAppuye.png")));
 
             HERBE = ImageIO.read(new FileInputStream("res/herbe.png"));
             HERBE_SUD_NORD = ImageIO.read(new FileInputStream("res/herbeDroite.png"));

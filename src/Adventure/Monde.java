@@ -353,5 +353,15 @@ public class Monde extends JPanel {
     public Heros getHeros() {
         return heros;
     }
+
+    public void relance() {
+        initialisationNiveau(null);
+        heros.recommenceNiveau();
+        repaint();
+    }
+
+    public void setMouse(boolean mouse) {
+        heros.getInventaire().setMouse(mouse);
+    }
 }
 

@@ -25,6 +25,8 @@ public abstract class Place {
     private Position positions[][];
     private Heros heros;
 
+    private LecteurNiveau l;
+
     /**
      * Construit un nouveau lieu
      *
@@ -51,7 +53,7 @@ public abstract class Place {
     public void initialisation(String nom) {
 
         this.nom = nom;
-        LecteurNiveau l = new LecteurNiveau(this.nom);
+        l = new LecteurNiveau(this.nom);
         setLEVEL_OBJECTS(l.getLEVEL_OBJETS());
         setLEVEL_SOL(l.getLEVEL_SOL());
 
