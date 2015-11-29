@@ -5,16 +5,31 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 
+/**
+ * Crée une instance du Controlleur: GameController
+ */
 public class GameController extends MouseInputAdapter implements KeyListener {
 
     private GameView gameView;
     private Monde gameModel;
 
+    /**
+     * Construit le GameController
+     * @param view
+     *      Instance de la vue: la fenetre du jeu
+     * @param model
+     *      Instance du Monde: la carte du jeu
+     */
     public GameController(GameView view, Monde model) {
         this.gameView = view;
         this.gameModel = model;
     }
 
+    /**
+     * Recupere les frapes de clavier et les traites
+     * @param e
+     *      Instance de l'evenement clavier
+     */
     @Override
     public void keyPressed(KeyEvent e) {
         switch (e.getKeyCode()) {
@@ -51,7 +66,11 @@ public class GameController extends MouseInputAdapter implements KeyListener {
     public void keyReleased(KeyEvent e) {
     }
 
-
+    /**
+     * Recupere les touches de souris et les traites
+     * @param e
+     *      Instance de l'evenement souris
+     */
     @Override
     public void mouseClicked(MouseEvent e) {
         super.mouseClicked(e);
@@ -61,6 +80,11 @@ public class GameController extends MouseInputAdapter implements KeyListener {
         }
     }
 
+    /**
+     * Recupere les mouvements de la souris et les traites
+     * @param e
+     *      Instance de l'evenement souris
+     */
     @Override
     public void mouseMoved(MouseEvent e) {
         super.mouseMoved(e);

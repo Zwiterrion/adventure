@@ -12,6 +12,9 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Instance lie les fichiers xml pour afficher la carte du jeu
+ */
 public class LecteurNiveau {
 
     private Triple LEVEL_SOL[][] = new Triple[10][10];
@@ -70,6 +73,21 @@ public class LecteurNiveau {
         }
     }
 
+    /**
+     * Ajout un nouveau element dans un fichier xml
+     * @param i
+     *        Nombre de ligne
+     * @param j
+     *        Nombre de colonne
+     * @param sol
+     *          Vrai si l'element a ajouter est un objet du sol
+     * @param type
+     *          Numero associe a l'objet a ajouter
+     * @param dir
+     *          Direction de l'image
+     * @param destination
+     *          Nom du fichier xml
+     */
     public void ajoutElement(int i, int j, boolean sol, int type, Direction dir, String destination) {
 
         if(sol)

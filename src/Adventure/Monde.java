@@ -44,7 +44,7 @@ public final class Monde extends JPanel {
      * @param Y_MAX
      *      Nombre de lignes
      * @param screen_size
-     *      Taille de la scene
+     *      Taille de la fenetre
      */
     public Monde(int X_MAX, int Y_MAX, int screen_size) {
         Monde.X_MAX = X_MAX;

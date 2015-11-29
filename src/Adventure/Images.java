@@ -5,6 +5,9 @@ import java.awt.*;
 import java.io.FileInputStream;
 import java.io.IOException;
 
+/**
+ * Charge toutes les images du jeu
+ */
 public class Images {
 
     public static Image CARRELAGE;
@@ -83,6 +86,9 @@ public class Images {
     public static Image RESET;
     public static Image RESET_APPUYE;
 
+    /**
+     * Charge les images depuis leur repertoire res/, si une image n'est pas charge, le jeu est bloque et une exception est levee
+     */
     public static void chargementImage() {
         try {
 

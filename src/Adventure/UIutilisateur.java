@@ -3,6 +3,9 @@ package Adventure;
 
 import java.awt.*;
 
+/**
+ * Instance de l'Itilisateur
+ */
 public class UIutilisateur extends Canvas {
 
     private Heros heros;
@@ -11,14 +14,21 @@ public class UIutilisateur extends Canvas {
         this.heros = r;
     }
 
+    /**
+     * Dessine le héros avec sa barre d'inventaire
+     * @param g
+     */
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-
         heros.getInventaire().paint(g);
         dessineBarres(g);
     }
 
+    /**
+     * Dessine la barre d'inventaire du heros
+     * @param g
+     */
     public void dessineBarres(Graphics g) {
         Position point = calculPositionBarres();
 
@@ -31,6 +41,11 @@ public class UIutilisateur extends Canvas {
         g.drawRect(point.x + 26, point.y + Monde.TILE_SIZE / 2 - 8, 43, 12);
     }
 
+    /**
+     *
+     * @return
+     *      La position de la barre
+     */
     public Position calculPositionBarres() {
         return IsometricHelper.point2DToIso(new Position(heros.getPos_in().y, heros.getPos_in().x));
     }

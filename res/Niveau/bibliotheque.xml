@@ -237,13 +237,13 @@
 
     <!-- Ligne 10 -->
     <cellule type="0" direction="AUCUNE"/>
-    <cellule type="5" direction="EST"/>
+    <cellule type="5" direction="SUD"/>
     <cellule type="0" direction="AUCUNE"/>
-    <cellule type="5" direction="EST"/>
+    <cellule type="5" direction="SUD"/>
     <cellule type="0" direction="AUCUNE"/>
-    <cellule type="5" direction="EST"/>
+    <cellule type="5" direction="SUD"/>
     <cellule type="0" direction="AUCUNE"/>
-    <cellule type="5" direction="EST"/>
+    <cellule type="5" direction="SUD"/>
     <cellule type="0" direction="AUCUNE"/>
     <cellule type="10" direction="EST"/>
 
