@@ -176,9 +176,9 @@
     <cellule type="1" direction="TOUTES"/>
 
     <!-- Ligne 5 -->
+    <cellule type="6" direction="TOUTES" destination="PARKING"/>
     <cellule type="0" direction="TOUTES"/>
-    <cellule type="5" direction="EST"/>
-    <cellule type="5" direction="EST"/>
+    <cellule type="0" direction="TOUTES"/>
     <cellule type="0" direction="EST"/>
     <cellule type="5" direction="TOUTES"/>
     <cellule type="5" direction="EST"/>
@@ -224,7 +224,7 @@
     <cellule type="1" direction="EST"/>
 
     <!-- Ligne 9 -->
-    <cellule type="6" direction="TOUTES" destination="PARKING"/>
+    <cellule type="0" direction="EST"/>
     <cellule type="0" direction="EST"/>
     <cellule type="5" direction="EST"/>
     <cellule type="0" direction="EST"/>

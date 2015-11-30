@@ -163,14 +163,17 @@ public final class Monde extends JPanel {
             else if (object instanceof Sortie) {
                 niveauSuivant(x, y, dir, (Sortie) object);
                 return false;
-            } else if (object instanceof Ramassable) {
+            }
+            else if (object instanceof Ramassable) {
                 heros.ramasserObjet((Ramassable) object);
                 place.mapObjects.put(place.positions[p.x][p.y], new Vide());
                 return true;
-            } else if (object instanceof Deplacable) {
+            }
+            else if (object instanceof Deplacable) {
                 deplaceObjet(p, dir, x, y);
                 return false;
-            } else
+            }
+            else
                 return !(object instanceof Fixe);
         } else
             return false;
@@ -294,8 +297,6 @@ public final class Monde extends JPanel {
             place = placeCorrespondante(s);
         }
 
-        heros.setPos_in(place.heros.getPos_in());
-
         place.lancePersonnage();
         description.setTexteAAfficher(place.nom);
     }
@@ -303,24 +304,49 @@ public final class Monde extends JPanel {
     public Place placeCorrespondante(Sortie s) {
 
         String dest = s.getDestination();
-        String place = s.getNomPlace();
+        String placeCourante = s.getNomPlace();
 
         if(!s.dansUnCouloir()) {
-            if(place.equalsIgnoreCase("parking")) {
-                if(dest.equalsIgnoreCase("ifmi") || dest.equalsIgnoreCase("sp2mi"))
-                    return new CouloirPiege(heros, dest, place, true);
-                else
-                    return new CouloirPiege(heros, place, dest, false);
+            if(placeCourante.equalsIgnoreCase("parking")) {
+                if(dest.equalsIgnoreCase("ifmi") || dest.equalsIgnoreCase("sp2mi")) {
+                    heros.setPos_in(place.positions[4][8]);
+                    return new CouloirPiege(heros, dest, placeCourante, true);
+                }
+                else {
+                    heros.setPos_in(place.positions[4][1]);
+                    return new CouloirPiege(heros, placeCourante, dest, false);
+                }
             }
             else {
-                if(place.equalsIgnoreCase("ifmi") || place.equalsIgnoreCase("sp2mi"))
-                    return new CouloirPiege(heros, place, dest, true);
-                else
-                    return new CouloirPiege(heros, dest, place, false);
+                if(placeCourante.equalsIgnoreCase("ifmi") || placeCourante.equalsIgnoreCase("sp2mi")) {
+                    heros.setPos_in(place.positions[4][1]);
+                    return new CouloirPiege(heros, placeCourante, dest, true);
+                }
+                else {
+                    heros.setPos_in(place.positions[4][8]);
+                    return new CouloirPiege(heros, dest, placeCourante, false);
+                }
             }
         }
-        else
+        else {
+            if(dest.equalsIgnoreCase("parking")){
+                if(placeCourante.equalsIgnoreCase("bibliotheque"))
+                    heros.setPos_in(place.positions[1][8]);
+                else if(placeCourante.equalsIgnoreCase("salletp"))
+                    heros.setPos_in(place.positions[9][7]);
+                else if(placeCourante.equalsIgnoreCase("ifmi"))
+                    heros.setPos_in(place.positions[8][1]);
+                else
+                    heros.setPos_in(place.positions[6][1]);
+            }
+            else {
+                int y = 8-heros.getPos_in().y;
+                if(y == -1)
+                    y = 1;
+                heros.setPos_in(place.positions[heros.getPos_in().x][y]);
+            }
             return niveaux.niveauSuivant(s.getDestination());
+        }
 
     }
 
@@ -424,6 +450,7 @@ public final class Monde extends JPanel {
     }
 
     public void relance() {
+        niveaux = new Niveaux(heros);
         initialisationNiveau(null);
         heros.recommenceNiveau();
         heros.getInventaire().recommencer();

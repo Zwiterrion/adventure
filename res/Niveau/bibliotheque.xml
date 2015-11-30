@@ -176,8 +176,8 @@
     <cellule type="10" direction="EST"/>
 
     <!-- Ligne 5 -->
+    <cellule type="6" direction="AUCUNE" destination="PARKING"/>
     <cellule type="0" direction="AUCUNE"/>
-    <cellule type="10" direction="NORD"/>
     <cellule type="10" direction="NORD"/>
     <cellule type="10" direction="NORD"/>
     <cellule type="10" direction="NORD"/>
@@ -200,8 +200,8 @@
     <cellule type="10" direction="EST"/>
 
     <!-- Ligne 7 -->
-    <cellule type="6" direction="AUCUNE" destination="PARKING"/>
-    <cellule type="7" direction="AUCUNE"/>
+    <cellule type="0" direction="AUCUNE"/>
+    <cellule type="0" direction="AUCUNE"/>
     <cellule type="0" direction="AUCUNE"/>
     <cellule type="0" direction="AUCUNE"/>
     <cellule type="0" direction="AUCUNE"/>

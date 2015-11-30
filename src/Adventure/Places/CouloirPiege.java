@@ -22,7 +22,6 @@ public class CouloirPiege extends Couloir {
     public CouloirPiege(Heros h, String destination, String destinationBis, boolean inverser) {
         super(h, destination, destinationBis, inverser);
         posePiege();
-        h.changeImage(Direction.NORD);
     }
 
     /**

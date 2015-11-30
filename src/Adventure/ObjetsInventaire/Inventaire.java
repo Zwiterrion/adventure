@@ -60,7 +60,7 @@ public class Inventaire extends JPanel {
         super.paint(g);
 
         g.setColor(new Color(9, 128, 1));
-        g.fillRect(230, 15, 65, ((nbPieces))*22);
+        g.fillRect(230, 15, 65, ((nbPieces))*20);
 
         g.setColor(new Color(0, 0, 0));
         g.drawImage(image, 2, 8, this);

@@ -23,6 +23,6 @@ public class Main {
             view.getGameModel().addMouseListener(controller);
             view.getGameModel().addMouseMotionListener(controller);
         });
-
     }
 }
+

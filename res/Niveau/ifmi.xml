@@ -173,7 +173,7 @@
     <cellule type="0" direction="SUD"/>
     <cellule type="5" direction="SUD"/>
     <cellule type="0" direction="TOUTES"/>
-    <cellule type="1" direction="TOUTES"/>
+    <cellule type="1" direction="EST"/>
 
     <!-- Ligne 5 -->
     <cellule type="0" direction="TOUTES"/>
@@ -185,7 +185,7 @@
     <cellule type="0" direction="SUD"/>
     <cellule type="5" direction="SUD"/>
     <cellule type="0" direction="TOUTES"/>
-    <cellule type="12" direction="TOUTES"/>
+    <cellule type="6" direction="TOUTES" destination="PARKING"/>
 
     <!-- Ligne 6 -->
     <cellule type="0" direction="TOUTES"/>
@@ -209,7 +209,7 @@
     <cellule type="0" direction="SUD"/>
     <cellule type="5" direction="SUD"/>
     <cellule type="0" direction="TOUTES"/>
-    <cellule type="1" direction="EST"/>
+    <cellule type="12" direction="TOUTES"/>
 
     <!-- Ligne 8 -->
     <cellule type="0" direction="TOUTES"/>
@@ -221,7 +221,7 @@
     <cellule type="0" direction="SUD"/>
     <cellule type="5" direction="SUD"/>
     <cellule type="0" direction="TOUTES"/>
-    <cellule type="1" direction="EST"/>
+    <cellule type="1" direction="TOUTES"/>
 
     <!-- Ligne 9 -->
     <cellule type="0" direction="TOUTES"/>
@@ -233,7 +233,8 @@
     <cellule type="0" direction="SUD"/>
     <cellule type="5" direction="SUD"/>
     <cellule type="7" direction="TOUTES"/>
-    <cellule type="6" direction="TOUTES" destination="PARKING"/>
+    <cellule type="1" direction="EST"/>
+
 
     <!-- Ligne 10 -->
     <cellule type="0" direction="TOUTES"/>
