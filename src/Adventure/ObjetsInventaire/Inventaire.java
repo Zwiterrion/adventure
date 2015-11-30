@@ -18,10 +18,10 @@ public class Inventaire extends JPanel {
     private Image image;
     private List<Potion> stock;
 
-    private int nbPotionVie = 0;
-    private int nbPotionMana = 0;
-    private int nbClefs = 0;
-    private int nbPieces = 0;
+    private int nbPotionVie;
+    private int nbPotionMana;
+    private int nbClefs;
+    private int nbPieces;
 
     private boolean mouse = false;
 
@@ -36,10 +36,18 @@ public class Inventaire extends JPanel {
     public Inventaire(Heros heros) {
         image = Images.INVENTAIRE;
         stock = new ArrayList<Potion>();
+        recommencer();
         calculPotions();
 
         runnableVie = new AnimationPotionVie(heros);
         runnableMana = new AnimationPotionMana(heros);
+    }
+
+    public void recommencer() {
+        this.nbPotionVie = 0;
+        this.nbPieces = 0;
+        this.nbClefs = 0;
+        this.nbPotionMana = 0;
     }
 
     /**

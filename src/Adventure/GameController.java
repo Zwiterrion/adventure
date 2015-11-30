@@ -10,18 +10,14 @@ import java.awt.event.MouseEvent;
  */
 public class GameController extends MouseInputAdapter implements KeyListener {
 
-    private GameView gameView;
     private Monde gameModel;
 
     /**
      * Construit le GameController
-     * @param view
-     *      Instance de la vue: la fenetre du jeu
      * @param model
      *      Instance du Monde: la carte du jeu
      */
-    public GameController(GameView view, Monde model) {
-        this.gameView = view;
+    public GameController(Monde model) {
         this.gameModel = model;
     }
 

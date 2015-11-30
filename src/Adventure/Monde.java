@@ -6,24 +6,16 @@ import Adventure.Places.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Hashtable;
-import java.util.List;
 
 /**
  * Cree une instance de la classe Monde : instance unique dans le jeu
  */
 public final class Monde extends JPanel {
 
-    // Map
-    private Hashtable<Position, ObjetCarte> mapObjects;
-    private Hashtable<Position, ObjetCarte> mapSol;
-
-    private Position positions[][];
-
     private Heros heros;
-    private List<Animable> animables;
 
-    private Place placeCourante;
+    private Place place;
+    private Niveaux niveaux;
 
     public UIutilisateur ath;
 
@@ -59,6 +51,8 @@ public final class Monde extends JPanel {
         annonce = new Annonce(SCREEN_SIZE, 50);
         description = new Annonce(SCREEN_SIZE, 25);
 
+        niveaux = new Niveaux(heros);
+
         initialisationNiveau(null);
     }
 
@@ -93,7 +87,7 @@ public final class Monde extends JPanel {
         for (int i = 0; i < X_MAX; i++) {
             for (int j = Y_MAX - 1; j >= 0; j--) {
                 Position point = IsometricHelper.point2DToIso(new Position(j, i));
-                ObjetCarte object = mapSol.get(positions[i][j]);
+                ObjetCarte object = place.mapSol.get(place.positions[i][j]);
                 if (!(object instanceof Vide))
                     g.drawImage(object.getImage(), point.x, point.y, TILE_SIZE, (TILE_SIZE * 2), this);
             }
@@ -110,10 +104,11 @@ public final class Monde extends JPanel {
         for (int i = 0; i < X_MAX; i++) {
             for (int j = Y_MAX - 1; j >= 0; j--) {
                 Position point = IsometricHelper.point2DToIso(new Position(j, i));
-                ObjetCarte object = mapObjects.get(positions[i][j]);
+                ObjetCarte object = place.mapObjects.get(place.positions[i][j]);
 
                 if(object instanceof Animable) {
-                    g.drawImage(object.getImage(),point.x + ((Animable) object).getX(), point.y + ((Animable) object).getY(), TILE_SIZE, TILE_SIZE*2, this);
+                    g.drawImage(object.getImage(),point.x + ((Animable) object).getX(),
+                                                  point.y + ((Animable) object).getY(), TILE_SIZE, TILE_SIZE*2, this);
                 }
                 else {
                     if (!(object instanceof Vide))
@@ -152,8 +147,8 @@ public final class Monde extends JPanel {
      */
     public Boolean videOuPas(Position p, Direction dir, int x, int y) {
 
-        ObjetCarte object = mapObjects.get(positions[p.x][p.y]);
-        ObjetCarte objectSol = mapSol.get(positions[p.x][p.y]);
+        ObjetCarte object = place.mapObjects.get(place.positions[p.x][p.y]);
+        ObjetCarte objectSol = place.mapSol.get(place.positions[p.x][p.y]);
 
         if (objectSol instanceof Fixe) {
 
@@ -170,7 +165,7 @@ public final class Monde extends JPanel {
                 return false;
             } else if (object instanceof Ramassable) {
                 heros.ramasserObjet((Ramassable) object);
-                mapObjects.put(positions[p.x][p.y], new Vide());
+                place.mapObjects.put(place.positions[p.x][p.y], new Vide());
                 return true;
             } else if (object instanceof Deplacable) {
                 deplaceObjet(p, dir, x, y);
@@ -199,18 +194,18 @@ public final class Monde extends JPanel {
 
         if ((p.x >= 0 && p.x < X_MAX) && (p.y >= 0 && p.y < Y_MAX)) {
 
-            ObjetCarte object = mapObjects.get(positions[p.x][p.y]);
-            ObjetCarte objectSol = mapSol.get(positions[p.x][p.y]);
+            ObjetCarte object = place.mapObjects.get(place.positions[p.x][p.y]);
+            ObjetCarte objectSol = place.mapSol.get(place.positions[p.x][p.y]);
 
             if (object instanceof Vide) {
 
                 if (objectSol instanceof Fixe) {
-                    Deplacable w = (Deplacable) mapObjects.get(positions[positionObjet.x][positionObjet.y]);
-                    mapObjects.put(positions[p.x][p.y], (ObjetCarte) w);
+                    Deplacable w = (Deplacable) place.mapObjects.get(place.positions[positionObjet.x][positionObjet.y]);
+                    place.mapObjects.put(place.positions[p.x][p.y], (ObjetCarte) w);
                 } else
-                    mapSol.put(positions[p.x][p.y], new Herbe(Direction.TOUTES));
+                    place.mapSol.put(place.positions[p.x][p.y], new Herbe(Direction.TOUTES));
 
-                mapObjects.put(positions[positionObjet.x][positionObjet.y], new Vide());
+                place.mapObjects.put(place.positions[positionObjet.x][positionObjet.y], new Vide());
                 heros.setPos_in(positionObjet);
                 heros.changeImage(dir);
                 repaint();
@@ -235,7 +230,7 @@ public final class Monde extends JPanel {
      */
     public void niveauSuivant(int x, int y, Direction dir, Sortie s) {
 
-        animables.forEach(Animable::stop);
+        place.animables.forEach(Animable::stop);
         deplacement(x, y, dir);
         attente(300);
 
@@ -268,7 +263,7 @@ public final class Monde extends JPanel {
         Graphics g = getGraphics();
         g.setColor(Color.BLACK);
         g.fillRect(0, 0, SCREEN_SIZE, SCREEN_SIZE);
-        annonce.setTexteAAfficher(placeCourante.getNom());
+        annonce.setTexteAAfficher(place.nom);
         annonce.paint(g);
     }
 
@@ -282,6 +277,27 @@ public final class Monde extends JPanel {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+
+    /**
+     * Initialise le prochain niveau et lance les objets animables
+     * @param s
+     *      Sortie qui vient d'être franchie
+     */
+    public void initialisationNiveau(Sortie s) {
+
+        if (s == null)
+            place = new Parking(heros);
+        else {
+            niveaux.sauvegarde(place);
+            place = placeCorrespondante(s);
+        }
+
+        heros.setPos_in(place.heros.getPos_in());
+
+        place.lancePersonnage();
+        description.setTexteAAfficher(place.nom);
     }
 
     public Place placeCorrespondante(Sortie s) {
@@ -301,52 +317,11 @@ public final class Monde extends JPanel {
                     return new CouloirPiege(heros, place, dest, true);
                 else
                     return new CouloirPiege(heros, dest, place, false);
-
             }
         }
         else
-            return placeSuivante(s);
+            return niveaux.niveauSuivant(s.getDestination());
 
-    }
-
-    /**
-     * Initialise le prochain niveau et lance les objets animables
-     * @param s
-     *      Sortie qui vient d'être franchie
-     */
-    public void initialisationNiveau(Sortie s) {
-
-        if (s == null)
-            placeCourante = new Parking(heros);
-        else
-            placeCourante = placeCorrespondante(s);
-
-
-        mapObjects = placeCourante.getMapObjects();
-        mapSol = placeCourante.getMapSol();
-        animables = placeCourante.getAnimables();
-        positions = placeCourante.getPositions();
-
-        heros.setPos_in(placeCourante.getHeros().getPos_in());
-
-        placeCourante.lancePersonnage();
-        description.setTexteAAfficher(placeCourante.getNom());
-    }
-
-    public Place placeSuivante(Sortie s) {
-
-        String dest = s.getDestination();
-
-        if (dest.equalsIgnoreCase("SP2MI"))
-            return new SP2MI(heros);
-        else if(dest.equalsIgnoreCase("IFMI"))
-            return new IFMI(heros);
-        else if(dest.equalsIgnoreCase("SALLETP"))
-            return new SalleTp(heros);
-        else if(dest.equalsIgnoreCase("BIBLIOTHEQUE"))
-            return new Bibliotheque(heros);
-        else
-            return new Parking(heros);
     }
 
     public void deplacementHeros(int x, int y, Direction dir) {
@@ -367,8 +342,8 @@ public final class Monde extends JPanel {
 
     public void changePositionPersonnage(Position e, Position precedente, Personnage personnage) {
 
-        mapObjects.put(positions[precedente.x][precedente.y], new Vide());
-        mapObjects.put(positions[e.x][e.y], personnage);
+        place.mapObjects.put(place.positions[precedente.x][precedente.y], new Vide());
+        place.mapObjects.put(place.positions[e.x][e.y], personnage);
         paint(getGraphics());
     }
 
@@ -379,8 +354,8 @@ public final class Monde extends JPanel {
                 return false;
             }
             else
-                return (mapObjects.get(positions[nextPos.x][nextPos.y]) instanceof Vide &&
-                        !(mapSol.get(positions[nextPos.x][nextPos.y]) instanceof Vide));
+                return (place.mapObjects.get(place.positions[nextPos.x][nextPos.y]) instanceof Vide &&
+                        !(place.mapSol.get(place.positions[nextPos.x][nextPos.y]) instanceof Vide));
         }
         return false;
     }
@@ -389,7 +364,7 @@ public final class Monde extends JPanel {
 
         if(heros.getMana() >= 10 && heros.getInventaire().getNbClefs() > 0) {
             heros.perdMana(10);
-            ObjetCarte c = mapObjects.get(positions[heros.getPos_in().x][heros.getPos_in().y]);
+            ObjetCarte c = place.mapObjects.get(place.positions[heros.getPos_in().x][heros.getPos_in().y]);
             if(c instanceof SortieFermee) {
                 ((SortieFermee) c).enExplosion();
                 repaint();
@@ -400,7 +375,7 @@ public final class Monde extends JPanel {
                 ((SortieFermee) c).ouvre();
             }
             else
-                mapObjects.put(positions[heros.getPos_in().x][heros.getPos_in().y], new Clef());
+                place.mapObjects.put(place.positions[heros.getPos_in().x][heros.getPos_in().y], new Clef());
 
             repaint();
             return true;
@@ -417,20 +392,20 @@ public final class Monde extends JPanel {
         Position pHeros = new Position(heros.getPos_in().x, heros.getPos_in().y);
 
         if(positionInGrille(new Position(pHeros.x+1, pHeros.y))) {
-            if(mapObjects.get(positions[pHeros.x+1][pHeros.y]) instanceof Vide) {
+            if(place.mapObjects.get(place.positions[pHeros.x+1][pHeros.y]) instanceof Vide) {
                 deplacement(1, 0, Direction.OUEST);
                 return true;
             }
 
         }
         if(positionInGrille(new Position(pHeros.x-1, pHeros.y))) {
-            if(mapObjects.get(positions[pHeros.x-1][pHeros.y]) instanceof Vide) {
+            if(place.mapObjects.get(place.positions[pHeros.x-1][pHeros.y]) instanceof Vide) {
                 deplacement(-1, 0, Direction.EST);
                 return true;
             }
         }
         if(positionInGrille(new Position(pHeros.x, pHeros.y+1))) {
-            if(mapObjects.get(positions[pHeros.x][pHeros.y+1]) instanceof Vide) {
+            if(place.mapObjects.get(place.positions[pHeros.x][pHeros.y+1]) instanceof Vide) {
                 deplacement(0, 1, Direction.NORD);
                 return true;
             }
@@ -451,6 +426,7 @@ public final class Monde extends JPanel {
     public void relance() {
         initialisationNiveau(null);
         heros.recommenceNiveau();
+        heros.getInventaire().recommencer();
         repaint();
     }
 

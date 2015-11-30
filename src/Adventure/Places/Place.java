@@ -11,19 +11,19 @@ import java.util.List;
 /**
  * Place est une classe permetant de créer un lieu
  */
-public abstract class Place {
+public abstract class Place implements Cloneable{
 
-    private Triple LEVEL_SOL[][];
-    private Triple LEVEL_OBJECTS[][];
+    public Triple LEVEL_SOL[][];
+    public Triple LEVEL_OBJECTS[][];
 
-    private Hashtable<Position, ObjetCarte> mapObjects;
-    private Hashtable<Position, ObjetCarte> mapSol;
+    public Hashtable<Position, ObjetCarte> mapObjects;
+    public Hashtable<Position, ObjetCarte> mapSol;
 
-    private  List<Animable> animables;
-    private String nom;
+    public List<Animable> animables;
+    public String nom;
 
-    private Position positions[][];
-    private Heros heros;
+    public Position positions[][];
+    public Heros heros;
 
     private LecteurNiveau l;
 
@@ -54,8 +54,8 @@ public abstract class Place {
 
         this.nom = nom;
         l = new LecteurNiveau(this.nom);
-        setLEVEL_OBJECTS(l.getLEVEL_OBJETS());
-        setLEVEL_SOL(l.getLEVEL_SOL());
+        LEVEL_OBJECTS = l.getLEVEL_OBJETS();
+        LEVEL_SOL = l.getLEVEL_SOL();
 
         initLocations();
         constructionNiveau();
@@ -196,58 +196,16 @@ public abstract class Place {
         return mapObjects.get(positions[i][j]);
     }
 
-    /**
-     * @return
-     *        Instance du héro
-     */
-    public Heros getHeros() {
-        return heros;
-    }
 
-    /**
-     * @return
-     *          La matrice des positions
-     */
-    public Position[][] getPositions() {
-        return positions;
-    }
-
-    /**
-     * @return
-     *          Les Objets du Sol
-     */
-    public Hashtable<Position, ObjetCarte> getMapSol() {
-        return mapSol;
-    }
-
-    /**
-     *
-     * @return
-     *          Les objets au dessus du sol
-     */
-    public Hashtable<Position, ObjetCarte> getMapObjects() {
-        return mapObjects;
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public void setLEVEL_SOL(Triple[][] LEVEL_SOL) {
-        this.LEVEL_SOL = LEVEL_SOL;
-    }
-
-    public void setLEVEL_OBJECTS(Triple[][] LEVEL_OBJECTS) {
-        this.LEVEL_OBJECTS = LEVEL_OBJECTS;
-    }
-
-    public List<Animable> getAnimables() {
-        return animables;
+    @Override
+    public Object clone() {
+        Object o = null;
+        try {
+            o =  super.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        return o;
     }
 }
 

@@ -45,7 +45,9 @@ public class Piece extends ObjetCarte implements Fixe, Ramassable, Animable {
 
     @Override
     public void active() {
-        t.start();
+        m.setNiveauFini(false);
+        if(t.getState() == Thread.State.NEW)
+            t.start();
     }
 
     @Override

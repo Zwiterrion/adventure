@@ -12,6 +12,7 @@ public class AnimationPiece implements Runnable {
     private Piece piece;
 
     private boolean niveauFini = false;
+    private boolean end = false;
 
     /**
      * Construit AnimationPiece
@@ -32,9 +33,10 @@ public class AnimationPiece implements Runnable {
     @Override
     public void run() {
 
-        while (!niveauFini) {
+        while (!end) {
 
-            animation();
+            if(!niveauFini)
+                animation();
 
             try {
                 Thread.sleep(1);

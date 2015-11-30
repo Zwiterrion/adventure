@@ -16,7 +16,7 @@ public class Main {
 
             Monde gameModel = new Monde(10, 10, width);
             GameView view = new GameView(gameModel, width, height);
-            GameController controller = new GameController(view, gameModel);
+            GameController controller = new GameController(gameModel);
 
             view.getGameModel().requestFocus();
             view.getGameModel().addKeyListener(controller);
