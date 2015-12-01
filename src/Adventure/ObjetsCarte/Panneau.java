@@ -3,7 +3,6 @@ package Adventure.ObjetsCarte;
 import Adventure.Direction;
 import Adventure.Images;
 import Adventure.Interface.Fixe;
-import Adventure.Places.Couloir;
 
 /**
  * Crée une instance de la classe Panneau

@@ -193,19 +193,19 @@
     <cellule type="0" direction="TOUTES"/>
     <cellule type="0" direction="TOUTES"/>
     <cellule type="17" direction="TOUTES"/>
-    <cellule type="17" direction="TOUTES"/>
+    <cellule type="0" direction="TOUTES"/>
     <cellule type="0" direction="TOUTES"/>
     <cellule type="14" direction="SUD"/>
     <cellule type="14" direction="SUD"/>
     <cellule type="14" direction="SUD"/>
 
     <!-- Ligne 7 -->
-    <cellule type="6" direction="TOUTES" destination="SP2MI" />
+    <cellule type="15" direction="TOUTES" destination="SP2MI" />
     <cellule type="0" direction="TOUTES"/>
     <cellule type="0" direction="TOUTES"/>
     <cellule type="0" direction="TOUTES"/>
-    <cellule type="17" direction="TOUTES"/>
-    <cellule type="17" direction="TOUTES"/>
+    <cellule type="0" direction="TOUTES"/>
+    <cellule type="0" direction="TOUTES"/>
     <cellule type="0" direction="TOUTES"/>
     <cellule type="0" direction="TOUTES"/>
     <cellule type="13" direction="SUD"/>
@@ -244,7 +244,7 @@
     <cellule type="0" direction="TOUTES"/>
     <cellule type="0" direction="TOUTES"/>
     <cellule type="0" direction="TOUTES"/>
-    <cellule type="15" direction="TOUTES" destination="SALLETP"/>
+    <cellule type="6" direction="TOUTES" destination="salletp"/>
     <cellule type="0" direction="TOUTES"/>
 
 

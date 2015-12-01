@@ -12,6 +12,6 @@ public interface Piege {
      *      Le nombre par defaut des degats est de 5
      */
     default int degat() {
-        return 5;
+        return 25;
     }
 }
