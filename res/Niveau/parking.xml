@@ -200,7 +200,8 @@
     <cellule type="14" direction="SUD"/>
 
     <!-- Ligne 7 -->
-    <cellule type="15" direction="TOUTES" destination="SP2MI" />
+    <!--<cellule type="15" direction="TOUTES" destination="SP2MI" />-->
+    <cellule type="6" direction="TOUTES" destination="SP2MI" />
     <cellule type="0" direction="TOUTES"/>
     <cellule type="0" direction="TOUTES"/>
     <cellule type="0" direction="TOUTES"/>

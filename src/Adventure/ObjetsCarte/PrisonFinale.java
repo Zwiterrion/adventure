@@ -1,31 +1,25 @@
 package Adventure.ObjetsCarte;
 
+import Adventure.Direction;
 import Adventure.Heros;
 import Adventure.Images;
 import Adventure.Interface.Animable;
 import Adventure.Interface.Fixe;
 import Adventure.Runnable.RunnableCheckFin;
+import Adventure.Runnable.RunnableCheckPrison;
 
 /**
  * Crée une instance de Princesse
  */
-public class Princesse extends ObjetCarte implements Fixe, Animable {
+public class PrisonFinale extends Prison implements Fixe, Animable {
 
     private Thread t;
-    private RunnableCheckFin m;
+    private RunnableCheckPrison m;
 
-    public Princesse(Heros h) {
-        super();
-        m = new RunnableCheckFin(h);
+    public PrisonFinale(Direction d, Heros h) {
+        super(d);
+        m = new RunnableCheckPrison(h);
         t = new Thread(m);
-    }
-
-    /**
-     * Assigne l'image qui correspond a la Maison
-     */
-    @Override
-    public void assigneImage() {
-        image = Images.PRINCESSE;
     }
 
 

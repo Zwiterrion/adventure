@@ -33,6 +33,7 @@ public class GameController extends MouseInputAdapter implements KeyListener {
      */
     @Override
     public void keyPressed(KeyEvent e) {
+
         switch (e.getKeyCode()) {
             case KeyEvent.VK_RIGHT:
                 gameModel.deplacementHeros(1, 0, Direction.EST);
@@ -53,7 +54,7 @@ public class GameController extends MouseInputAdapter implements KeyListener {
                 gameModel.getHeros().utiliserObjet(1);
                 break;
             case KeyEvent.VK_E:
-                if(gameModel.poseBombe())
+                if (gameModel.poseBombe())
                     gameModel.getHeros().utiliserObjet(2);
                 break;
             case KeyEvent.VK_R:

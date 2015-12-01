@@ -65,11 +65,6 @@ public class Images {
 
     public static Image SELECTION;
 
-    public static Image LAPIN_SUD;
-    public static Image LAPIN_NORD;
-    public static Image LAPIN_OUEST;
-    public static Image LAPIN_EST;
-
     public static Image PIECE;
     public static Image PRINCESSE;
 
@@ -163,11 +158,6 @@ public class Images {
             SELECTION = ImageIO.read(new FileInputStream("res/selection.png"));
 
             PIECE = ImageIO.read(new FileInputStream("res/piece.png"));
-
-            LAPIN_SUD = ImageIO.read(new FileInputStream("res/lapinSud.png"));
-            LAPIN_NORD = ImageIO.read(new FileInputStream("res/lapinNord.png"));
-            LAPIN_EST = ImageIO.read(new FileInputStream("res/lapinEst.png"));
-            LAPIN_OUEST = ImageIO.read(new FileInputStream("res/lapinOuest.png"));
 
             PRINCESSE = ImageIO.read(new FileInputStream("res/princesse.png"));
 

@@ -2,6 +2,7 @@ package Adventure.ObjetsInventaire;
 
 import Adventure.Heros;
 import Adventure.Images;
+import Adventure.ObjetsCarte.Bombe;
 import Adventure.Runnable.AnimationPotionMana;
 import Adventure.Runnable.AnimationPotionVie;
 
@@ -49,6 +50,7 @@ public class Inventaire extends JPanel {
         this.nbPieces = 0;
         this.nbBombes = 0;
         this.nbPotionMana = 0;
+        stock.clear();
     }
 
     /**
@@ -97,7 +99,10 @@ public class Inventaire extends JPanel {
      * Calcule le nombre de points pour chaque élément de l'inventaire
      */
     public void calculPotions() {
-        recommencer();
+        this.nbPotionVie = 0;
+        this.nbPieces = 0;
+        this.nbBombes = 0;
+        this.nbPotionMana = 0;
 
         for (Potion p : stock) {
             if (p instanceof PotionMana)
@@ -117,7 +122,8 @@ public class Inventaire extends JPanel {
      *        Instance de Potion
      */
     public void ajouterElement(Potion p) {
-        if (nbBombes == 0 && p instanceof PotionBombe)
+
+        if(nbBombes == 0 && p instanceof PotionBombe)
             ajouter(p);
         else if (nbPotionMana < 3 && p instanceof PotionMana)
             ajouter(p);
@@ -244,6 +250,10 @@ public class Inventaire extends JPanel {
 
     public void setMouse(boolean mouse) {
         this.mouse = mouse;
+    }
+
+    public int getNbClefs() {
+        return nbClefs;
     }
 }
 

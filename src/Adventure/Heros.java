@@ -173,6 +173,8 @@ public class Heros {
         return couleurVie;
     }
 
+
+
     public void setCouleurVie(Color couleurVie) {
         this.couleurVie = couleurVie;
     }

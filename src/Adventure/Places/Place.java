@@ -140,23 +140,20 @@ public abstract class Place implements Cloneable {
             case 13: ajoutObjet(i, j, new Voiture(num.getDir()));break;
             case 14: ajoutObjet(i, j, new Buisson(num.getDir()));break;
             case 15: ajoutObjet(i, j, new SortieFermee(num.getDestination(), this.getClass().getSimpleName())); break;
-            case 16:
-                Personnage personnage = new Personnage(positions[i][j],heros);
-                ajoutObjet(i, j, personnage);
-                animables.add(personnage);
-                break;
-            case 17:
-                Piece p = new Piece(positions[i][j], heros);
-                ajoutObjet(i, j, p);
-                animables.add(p);
-                break;
-            case 18 : ajoutObjet(i,j, new Princesse()); break;
+            case 17: ajoutAnimable(new Piece(positions[i][j], heros), i, j); break;
+            case 18 : ajoutAnimable(new Princesse(heros), i, j); break;
             case 19 : ajoutObjet(i,j, new Prison(num.getDir())); break;
             case 20 : ajoutObjet(i,j, new Panneau(num.getDir())); break;
             case 21 : ajoutObjet(i,j, new Clef()); break;
+            case 22 : ajoutAnimable(new PrisonFinale(num.getDir(),heros), i, j); break;
             default: ajoutObjet(i, j, new Vide());break;
 
         }
+    }
+
+    public void ajoutAnimable(Animable m, int i, int j) {
+        ajoutObjet(i,j, (ObjetCarte) m);
+        animables.add(m);
     }
 
     /**

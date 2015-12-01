@@ -156,6 +156,10 @@ public final class Monde extends JPanel {
                 heros.perdVie(((Piege) objectSol).degat());
                 return true;
             }
+            else if (object instanceof Deplacable) {
+                deplaceObjet(p, dir, x, y);
+                return false;
+            }
             else if (object instanceof Piege) {
                 heros.perdVie(((Piege) object).degat());
                 return false;
@@ -169,10 +173,6 @@ public final class Monde extends JPanel {
                 afficheClefTrouve((Ramassable)object);
                 place.mapObjects.put(place.positions[p.x][p.y], new Vide());
                 return true;
-            }
-            else if (object instanceof Deplacable) {
-                deplaceObjet(p, dir, x, y);
-                return false;
             }
             else
                 return !(object instanceof Fixe);
@@ -360,26 +360,6 @@ public final class Monde extends JPanel {
         paint(getGraphics());
     }
 
-    public void changePositionPersonnage(Position e, Position precedente, Personnage personnage) {
-
-        place.mapObjects.put(place.positions[precedente.x][precedente.y], new Vide());
-        place.mapObjects.put(place.positions[e.x][e.y], personnage);
-        paint(getGraphics());
-    }
-
-    public boolean estUnVide(Position nextPos, Personnage p) {
-        if(positionInGrille(nextPos)) {
-            if(nextPos.x == heros.getPos_in().x && nextPos.y == heros.getPos_in().y) {
-                heros.perdVie(p.degat());
-                return false;
-            }
-            else
-                return (place.mapObjects.get(place.positions[nextPos.x][nextPos.y]) instanceof Vide &&
-                        !(place.mapSol.get(place.positions[nextPos.x][nextPos.y]) instanceof Vide));
-        }
-        return false;
-    }
-
     public boolean poseBombe() {
 
         if(heros.getMana() >= 10 && heros.getInventaire().getNbBombes() > 0) {
@@ -461,7 +441,24 @@ public final class Monde extends JPanel {
             attente(1200);
             repaint();
         }
+    }
 
+    public void gagne() {
+        pageDeDescription("Therese est libere!");
+        attente(2000);
+        paint(this.getGraphics());
+    }
+
+    public void perdu() {
+        pageDeDescription("Plus de vie !");
+        attente(2000);
+        paint(this.getGraphics());
+
+        relance();
+    }
+
+    public Place getPlace() {
+        return place;
     }
 }
 
