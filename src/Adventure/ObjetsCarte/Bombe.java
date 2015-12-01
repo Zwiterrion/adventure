@@ -7,14 +7,14 @@ import Adventure.Interface.Ramassable;
 /**
  * Crée une instance de Bombe
  */
-public class Clef extends ObjetCarte implements Ramassable, Fixe {
+public class Bombe extends ObjetCarte implements Ramassable, Fixe {
 
     /**
      * Assigne l'image qui correspond au Bombe en fonction de la direction
      */
     @Override
     public void assigneImage() {
-        image = Images.CLEF_FIN;
+        image = Images.CLEF;
     }
 
 }

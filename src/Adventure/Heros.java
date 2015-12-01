@@ -1,13 +1,11 @@
 package Adventure;
 
 import Adventure.Interface.Ramassable;
+import Adventure.ObjetsCarte.Bombe;
 import Adventure.ObjetsCarte.Clef;
 import Adventure.ObjetsCarte.Mana;
 import Adventure.ObjetsCarte.Vie;
-import Adventure.ObjetsInventaire.Inventaire;
-import Adventure.ObjetsInventaire.PotionClef;
-import Adventure.ObjetsInventaire.PotionMana;
-import Adventure.ObjetsInventaire.PotionVie;
+import Adventure.ObjetsInventaire.*;
 import Adventure.Runnable.RunnableEstEnVie;
 
 import java.awt.*;
@@ -67,6 +65,8 @@ public class Heros {
             inventaire.ajouterElement(new PotionVie(p.quantite()));
         else if (p instanceof Mana)
             inventaire.ajouterElement(new PotionMana(p.quantite()));
+        else if (p instanceof Bombe)
+            inventaire.ajouterElement(new PotionBombe());
         else if (p instanceof Clef)
             inventaire.ajouterElement(new PotionClef());
         else

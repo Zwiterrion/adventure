@@ -1,9 +1,14 @@
 package Adventure;
 
+import javax.imageio.ImageIO;
 import javax.swing.event.MouseInputAdapter;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 /**
  * Crée une instance du Controlleur: GameController
@@ -51,6 +56,19 @@ public class GameController extends MouseInputAdapter implements KeyListener {
                 if(gameModel.poseBombe())
                     gameModel.getHeros().utiliserObjet(2);
                 break;
+            case KeyEvent.VK_R:
+                capture();
+                break;
+        }
+    }
+
+    public void capture() {
+        try {
+            Robot robot = new Robot();
+            BufferedImage bi = robot.createScreenCapture(new Rectangle(1040, 650));
+            ImageIO.write(bi, "jpg", new File("/Users/Etienne/Desktop/screenshot.jpg"));
+        } catch (AWTException | IOException e) {
+            e.printStackTrace();
         }
     }
 

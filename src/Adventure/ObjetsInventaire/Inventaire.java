@@ -20,8 +20,9 @@ public class Inventaire extends JPanel {
 
     private int nbPotionVie;
     private int nbPotionMana;
-    private int nbClefs;
+    private int nbBombes;
     private int nbPieces;
+    private int nbClefs;
 
     private boolean mouse = false;
 
@@ -46,7 +47,7 @@ public class Inventaire extends JPanel {
     public void recommencer() {
         this.nbPotionVie = 0;
         this.nbPieces = 0;
-        this.nbClefs = 0;
+        this.nbBombes = 0;
         this.nbPotionMana = 0;
     }
 
@@ -89,22 +90,22 @@ public class Inventaire extends JPanel {
         g.setColor(new Color(44, 148, 204));
         g.drawString(String.valueOf(nbPotionMana), 175, 80);
         g.setColor(new Color(0, 0, 0));
-        g.drawString(String.valueOf(nbClefs), 245, 81);
+        g.drawString(String.valueOf(nbBombes), 245, 81);
     }
 
     /**
      * Calcule le nombre de points pour chaque élément de l'inventaire
      */
     public void calculPotions() {
-        nbPotionMana = 0;
-        nbPotionVie = 0;
-        nbClefs = 0;
+        recommencer();
 
         for (Potion p : stock) {
             if (p instanceof PotionMana)
                 nbPotionMana++;
             else if (p instanceof PotionVie)
                 nbPotionVie++;
+            else if (p instanceof PotionBombe)
+                nbBombes++;
             else
                 nbClefs++;
         }
@@ -116,11 +117,13 @@ public class Inventaire extends JPanel {
      *        Instance de Potion
      */
     public void ajouterElement(Potion p) {
-        if (nbClefs == 0 && p instanceof PotionClef)
+        if (nbBombes == 0 && p instanceof PotionBombe)
             ajouter(p);
-        if (nbPotionMana < 3 && p instanceof PotionMana)
+        else if (nbPotionMana < 3 && p instanceof PotionMana)
             ajouter(p);
-        if (nbPotionVie < 3 && p instanceof PotionVie)
+        else if (nbPotionVie < 3 && p instanceof PotionVie)
+            ajouter(p);
+        else
             ajouter(p);
     }
 
@@ -150,7 +153,7 @@ public class Inventaire extends JPanel {
             if (nbPotionMana > 0)
                 supprimerElement(1);
         } else {
-            if (nbClefs > 0)
+            if (nbBombes > 0)
                 supprimerElement(2);
         }
     }
@@ -176,7 +179,7 @@ public class Inventaire extends JPanel {
                 this.stock.remove(p);
                 nonTrouve = false;
             }
-            if (p instanceof PotionClef && i == 2) {
+            if (p instanceof PotionBombe && i == 2) {
                 this.stock.remove(p);
                 nonTrouve = false;
             }
@@ -223,7 +226,7 @@ public class Inventaire extends JPanel {
         nbPieces++;
         if(nbPieces >= 4) {
             nbPieces = 0;
-            ajouterElement(new PotionClef());
+            ajouterElement(new PotionBombe());
         }
 
         repaint();
@@ -234,8 +237,8 @@ public class Inventaire extends JPanel {
      * @return
      *         Le nombre de clés
      */
-    public int getNbClefs() {
-        return nbClefs;
+    public int getNbBombes() {
+        return nbBombes;
     }
 
 

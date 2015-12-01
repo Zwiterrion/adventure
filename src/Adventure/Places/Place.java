@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Place est une classe permetant de créer un lieu
  */
-public abstract class Place implements Cloneable{
+public abstract class Place implements Cloneable {
 
     public Triple LEVEL_SOL[][];
     public Triple LEVEL_OBJECTS[][];
@@ -132,7 +132,7 @@ public abstract class Place implements Cloneable{
                 ajoutObjet(i, j, new Vide());
                 heros.setPos_in(positions[i][j]);
                 break;
-            case 8: ajoutObjet(i, j, new Clef()); break;
+            case 8: ajoutObjet(i, j, new Bombe()); break;
             case 9: ajoutObjet(i, j, new Maison()); break;
             case 10: ajoutObjet(i, j, new Etagere(num.getDir())); break;
             case 11: ajoutObjet(i, j, new Tree());break;
@@ -153,6 +153,7 @@ public abstract class Place implements Cloneable{
             case 18 : ajoutObjet(i,j, new Princesse()); break;
             case 19 : ajoutObjet(i,j, new Prison(num.getDir())); break;
             case 20 : ajoutObjet(i,j, new Panneau(num.getDir())); break;
+            case 21 : ajoutObjet(i,j, new Clef()); break;
             default: ajoutObjet(i, j, new Vide());break;
 
         }

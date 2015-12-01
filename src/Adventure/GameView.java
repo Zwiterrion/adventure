@@ -24,7 +24,7 @@ public class GameView {
 
         this.gameModel = gameModel;
 
-        window.setBounds(300, 100, w, h);
+        window.setBounds(0, 0, w, h);
         window.setVisible(true);
         window.setResizable(false);
 

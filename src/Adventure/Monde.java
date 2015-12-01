@@ -166,6 +166,7 @@ public final class Monde extends JPanel {
             }
             else if (object instanceof Ramassable) {
                 heros.ramasserObjet((Ramassable) object);
+                afficheClefTrouve((Ramassable)object);
                 place.mapObjects.put(place.positions[p.x][p.y], new Vide());
                 return true;
             }
@@ -253,7 +254,7 @@ public final class Monde extends JPanel {
      */
     public void teleportation(Sortie s) {
         initialisationNiveau(s);
-        pageDeDescription();
+        pageDeDescription(place.nom);
         attente(1000);
         repaint();
     }
@@ -261,12 +262,12 @@ public final class Monde extends JPanel {
     /**
      * Affiche la page noire de transition entre deux lieux
      */
-    public void pageDeDescription() {
+    public void pageDeDescription(String s) {
 
         Graphics g = getGraphics();
         g.setColor(Color.BLACK);
         g.fillRect(0, 0, SCREEN_SIZE, SCREEN_SIZE);
-        annonce.setTexteAAfficher(place.nom);
+        annonce.setTexteAAfficher(s);
         annonce.paint(g);
     }
 
@@ -330,14 +331,7 @@ public final class Monde extends JPanel {
         }
         else {
             if(dest.equalsIgnoreCase("parking")){
-                if(placeCourante.equalsIgnoreCase("bibliotheque"))
-                    heros.setPos_in(place.positions[1][8]);
-                else if(placeCourante.equalsIgnoreCase("salletp"))
-                    heros.setPos_in(place.positions[9][7]);
-                else if(placeCourante.equalsIgnoreCase("ifmi"))
-                    heros.setPos_in(place.positions[8][1]);
-                else
-                    heros.setPos_in(place.positions[6][1]);
+                    heros.setPos_in(place.positions[4][5]);
             }
             else {
                 int y = 8-heros.getPos_in().y;
@@ -388,7 +382,7 @@ public final class Monde extends JPanel {
 
     public boolean poseBombe() {
 
-        if(heros.getMana() >= 10 && heros.getInventaire().getNbClefs() > 0) {
+        if(heros.getMana() >= 10 && heros.getInventaire().getNbBombes() > 0) {
             heros.perdMana(10);
             ObjetCarte c = place.mapObjects.get(place.positions[heros.getPos_in().x][heros.getPos_in().y]);
             if(c instanceof SortieFermee) {
@@ -401,7 +395,7 @@ public final class Monde extends JPanel {
                 ((SortieFermee) c).ouvre();
             }
             else
-                place.mapObjects.put(place.positions[heros.getPos_in().x][heros.getPos_in().y], new Clef());
+                place.mapObjects.put(place.positions[heros.getPos_in().x][heros.getPos_in().y], new Bombe());
 
             repaint();
             return true;
@@ -459,6 +453,15 @@ public final class Monde extends JPanel {
 
     public void setMouse(boolean mouse) {
         heros.getInventaire().setMouse(mouse);
+    }
+
+    public void afficheClefTrouve(Ramassable r) {
+        if(r instanceof Clef) {
+            pageDeDescription("Clef trouve !");
+            attente(1200);
+            repaint();
+        }
+
     }
 }
 

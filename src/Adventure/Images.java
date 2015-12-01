@@ -86,6 +86,8 @@ public class Images {
     public static Image RESET;
     public static Image RESET_APPUYE;
 
+    public static Image CLEF_FIN;
+
     /**
      * Charge les images depuis leur repertoire res/, si une image n'est pas charge, le jeu est bloque et une exception est levee
      */
@@ -171,6 +173,8 @@ public class Images {
 
             PRISON_EST = ImageIO.read(new FileInputStream("res/prison.png"));
             PRISON_NORD = ImageIO.read(new FileInputStream("res/prisonNord.png"));
+
+            CLEF_FIN = ImageIO.read(new FileInputStream("res/clef.png"));
 
         } catch (IOException e) {
             System.err.println("Impossible de charger tout le contenu : Images.chargementImage()");
