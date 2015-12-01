@@ -36,7 +36,7 @@ public class Heros {
         inventaire = new Inventaire(this);
         this.world = w;
         this.vie = 100;
-        this.mana = 100;
+        this.mana = 10;
         this.couleurVie = Color.GREEN;
         this.dir = Direction.EST;
         demarreThread();

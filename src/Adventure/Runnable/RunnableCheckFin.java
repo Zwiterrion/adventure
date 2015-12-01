@@ -39,7 +39,7 @@ public class RunnableCheckFin implements Runnable {
         Position pHeros = new Position(h.getPos_in().x, h.getPos_in().y);
 
         if(pHeros.x == 4 && pHeros.y == 3) {
-            h.getWorld().getPlace().ajoutObjet(4,3, new Vide());
+            h.getWorld().getPlace().ajoutObjet(4,4, new Vide());
             end = true;
             stop = true;
             h.getWorld().gagne();

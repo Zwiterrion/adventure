@@ -363,7 +363,7 @@ public final class Monde extends JPanel {
     public boolean poseBombe() {
 
         if(heros.getMana() >= 10 && heros.getInventaire().getNbBombes() > 0) {
-            heros.perdMana(10);
+            heros.perdMana(20);
             ObjetCarte c = place.mapObjects.get(place.positions[heros.getPos_in().x][heros.getPos_in().y]);
             if(c instanceof SortieFermee) {
                 ((SortieFermee) c).enExplosion();
@@ -445,7 +445,8 @@ public final class Monde extends JPanel {
 
     public void gagne() {
         pageDeDescription("Therese est libere!");
-        attente(2000);
+        description.setTexteAAfficher("Therese est libere! ! Jeu fini !");
+        attente(5000);
         paint(this.getGraphics());
     }
 

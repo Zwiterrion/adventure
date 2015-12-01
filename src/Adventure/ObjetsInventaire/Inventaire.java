@@ -100,9 +100,9 @@ public class Inventaire extends JPanel {
      */
     public void calculPotions() {
         this.nbPotionVie = 0;
-        this.nbPieces = 0;
         this.nbBombes = 0;
         this.nbPotionMana = 0;
+        this.nbClefs = 0;
 
         for (Potion p : stock) {
             if (p instanceof PotionMana)

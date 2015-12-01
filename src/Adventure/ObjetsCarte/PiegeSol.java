@@ -24,6 +24,6 @@ public class PiegeSol extends ObjetCarte implements Fixe, Piege {
      */
     @Override
     public int degat() {
-        return 25;
+        return 20;
     }
 }
