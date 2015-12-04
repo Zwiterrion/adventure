@@ -1,8 +1,10 @@
-package Adventure.ObjetsInventaire;
+package Adventure;
 
-import Adventure.Heros;
-import Adventure.Images;
+import Adventure.Interface.Ramassable;
 import Adventure.ObjetsCarte.Bombe;
+import Adventure.ObjetsCarte.Mana;
+import Adventure.ObjetsCarte.Piece;
+import Adventure.ObjetsCarte.Vie;
 import Adventure.Runnable.AnimationPotionMana;
 import Adventure.Runnable.AnimationPotionVie;
 
@@ -17,10 +19,10 @@ import java.util.List;
 public class Inventaire extends JPanel {
 
     private Image image;
-    private List<Potion> stock;
+    private List<Ramassable> stock;
 
-    private int nbPotionVie;
-    private int nbPotionMana;
+    private int nbVie;
+    private int nbMana;
     private int nbBombes;
     private int nbPieces;
     private int nbClefs;
@@ -37,7 +39,7 @@ public class Inventaire extends JPanel {
      */
     public Inventaire(Heros heros) {
         image = Images.INVENTAIRE;
-        stock = new ArrayList<Potion>();
+        stock = new ArrayList<Ramassable>();
         recommencer();
         calculPotions();
 
@@ -46,10 +48,10 @@ public class Inventaire extends JPanel {
     }
 
     public void recommencer() {
-        this.nbPotionVie = 0;
+        this.nbVie = 0;
         this.nbPieces = 0;
         this.nbBombes = 0;
-        this.nbPotionMana = 0;
+        this.nbMana = 0;
         stock.clear();
     }
 
@@ -88,9 +90,9 @@ public class Inventaire extends JPanel {
 
         g.setColor(new Color(9, 128, 1));
         g.setFont(new Font("Verdana", Font.PLAIN, 20));
-        g.drawString(String.valueOf(nbPotionVie), 102, 80);
+        g.drawString(String.valueOf(nbVie), 102, 80);
         g.setColor(new Color(44, 148, 204));
-        g.drawString(String.valueOf(nbPotionMana), 175, 80);
+        g.drawString(String.valueOf(nbMana), 175, 80);
         g.setColor(new Color(0, 0, 0));
         g.drawString(String.valueOf(nbBombes), 245, 81);
     }
@@ -99,17 +101,17 @@ public class Inventaire extends JPanel {
      * Calcule le nombre de points pour chaque élément de l'inventaire
      */
     public void calculPotions() {
-        this.nbPotionVie = 0;
+        this.nbVie = 0;
         this.nbBombes = 0;
-        this.nbPotionMana = 0;
+        this.nbMana = 0;
         this.nbClefs = 0;
 
-        for (Potion p : stock) {
-            if (p instanceof PotionMana)
-                nbPotionMana++;
-            else if (p instanceof PotionVie)
-                nbPotionVie++;
-            else if (p instanceof PotionBombe)
+        for (Ramassable p : stock) {
+            if (p instanceof Mana)
+                nbMana++;
+            else if (p instanceof Vie)
+                nbVie++;
+            else if (p instanceof Bombe)
                 nbBombes++;
             else
                 nbClefs++;
@@ -121,14 +123,16 @@ public class Inventaire extends JPanel {
      * @param p
      *        Instance de Potion
      */
-    public void ajouterElement(Potion p) {
+    public void ajouterElement(Ramassable p) {
 
-        if(nbBombes == 0 && p instanceof PotionBombe)
+        if(nbBombes == 0 && p instanceof Bombe)
             ajouter(p);
-        else if (nbPotionMana < 3 && p instanceof PotionMana)
+        else if (nbMana < 3 && p instanceof Mana)
             ajouter(p);
-        else if (nbPotionVie < 3 && p instanceof PotionVie)
+        else if (nbVie < 3 && p instanceof Vie)
             ajouter(p);
+        else if(p instanceof Piece)
+            remplirCompteurCle();
         else
             ajouter(p);
     }
@@ -139,7 +143,7 @@ public class Inventaire extends JPanel {
      * @param p
      *        Instance de Potion
      */
-    public void ajouter(Potion p) {
+    public void ajouter(Ramassable p) {
         this.stock.add(p);
         calculPotions();
         repaint();
@@ -153,10 +157,10 @@ public class Inventaire extends JPanel {
     public void utiliser(int i) {
 
         if (i == 0) {
-            if (nbPotionVie > 0)
+            if (nbVie > 0)
                 supprimerElement(0);
         } else if (i == 1) {
-            if (nbPotionMana > 0)
+            if (nbMana > 0)
                 supprimerElement(1);
         } else {
             if (nbBombes > 0)
@@ -173,24 +177,28 @@ public class Inventaire extends JPanel {
 
         int a = 0;
         boolean nonTrouve = true;
+
+        Ramassable p = null;
+
         while (a < stock.size() && nonTrouve) {
-            Potion p = stock.get(a);
-            if (p instanceof PotionVie && i == 0) {
+            p = stock.get(a);
+            if (p instanceof Vie && i == 0) {
                 nextThread(true, p);
-                this.stock.remove(p);
                 nonTrouve = false;
             }
-            if (p instanceof PotionMana && i == 1) {
+            if (p instanceof Mana && i == 1) {
                 nextThread(false, p);
-                this.stock.remove(p);
                 nonTrouve = false;
             }
-            if (p instanceof PotionBombe && i == 2) {
-                this.stock.remove(p);
+            if (p instanceof Bombe && i == 2) {
                 nonTrouve = false;
             }
             a++;
         }
+
+        if(!nonTrouve && p != null)
+            this.stock.remove(p);
+
         calculPotions();
     }
 
@@ -201,14 +209,14 @@ public class Inventaire extends JPanel {
      * @param p
      *          Instance de la Potion en question
      */
-    public void nextThread(boolean lequel, Potion p) {
+    public void nextThread(boolean lequel, Ramassable p) {
 
         Thread t;
         if (lequel) {
-            runnableVie.setPotion(p.value);
+            runnableVie.setPotion(p.quantite());
             t = new Thread(runnableVie);
         } else {
-            runnableMana.setPotion(p.value);
+            runnableMana.setPotion(p.quantite());
             t = new Thread(runnableMana);
         }
 
@@ -232,7 +240,7 @@ public class Inventaire extends JPanel {
         nbPieces++;
         if(nbPieces >= 4) {
             nbPieces = 0;
-            ajouterElement(new PotionBombe());
+            ajouterElement(new Bombe());
         }
 
         repaint();
