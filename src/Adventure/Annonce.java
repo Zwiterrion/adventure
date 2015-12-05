@@ -26,8 +26,8 @@ public class Annonce extends Canvas {
         this.SCREEN_SIZE = SCREEN_SIZE;
 
         try {
-            InputStream myStream = new BufferedInputStream(new FileInputStream("res/font/RedZone.ttf"));
-            font = Font.createFont(Font.TRUETYPE_FONT, myStream);
+            InputStream is = getClass().getResourceAsStream("/RedZone.ttf");
+            font = Font.createFont(Font.TRUETYPE_FONT, is);
             font = font.deriveFont(Font.PLAIN, size);
         } catch (FontFormatException | IOException e) {
             e.printStackTrace();
