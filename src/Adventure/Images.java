@@ -115,7 +115,7 @@ public class Images {
 
             HEROS_N = ImageIO.read(getClass().getResource("/nord.png"));
             HEROS_S = ImageIO.read(getClass().getResource("/bas.png"));
-            HEROS_E = Toolkit.getDefaultToolkit().createImage("/droite.png");
+            HEROS_E = ImageIO.read(getClass().getResource("/droite.png"));
             HEROS_O = ImageIO.read(getClass().getResource("/gauche.png"));
 
             MUR = ImageIO.read(getClass().getResource("/mur.png"));
