@@ -254,21 +254,21 @@ public final class Monde extends JPanel {
      */
     public void teleportation(Sortie s) {
         initialisationNiveau(s);
-        pageDeDescription(place.nom);
-        attente(1000);
+        pageDeDescription(place.nom, 1000);
         repaint();
     }
 
     /**
      * Affiche la page noire de transition entre deux lieux
      */
-    public void pageDeDescription(String s) {
+    public void pageDeDescription(String s, int attente) {
 
         Graphics g = getGraphics();
         g.setColor(Color.BLACK);
         g.fillRect(0, 0, SCREEN_SIZE, SCREEN_SIZE);
         annonce.setTexteAAfficher(s);
         annonce.paint(g);
+        attente(attente);
     }
 
     /**
@@ -424,10 +424,10 @@ public final class Monde extends JPanel {
     }
 
     public void relance() {
-        niveaux = new Niveaux(heros);
-        initialisationNiveau(null);
         heros.recommenceNiveau();
         heros.getInventaire().recommencer();
+        niveaux = new Niveaux(heros);
+        initialisationNiveau(null);
         repaint();
     }
 
@@ -437,24 +437,18 @@ public final class Monde extends JPanel {
 
     public void afficheClefTrouve(Ramassable r) {
         if(r instanceof Clef) {
-            pageDeDescription("Clef trouve !");
-            attente(1200);
+            pageDeDescription("Clef trouve !", 1200);
             repaint();
         }
     }
 
     public void gagne() {
-        pageDeDescription("Therese est libere!");
+        pageDeDescription("Therese est libere!", 3000);
         description.setTexteAAfficher("Therese est libere! ! Jeu fini !");
-        attente(5000);
-        paint(this.getGraphics());
     }
 
     public void perdu() {
-        pageDeDescription("Plus de vie !");
-        attente(2000);
-        paint(this.getGraphics());
-
+        pageDeDescription("Plus de vie !", 1500);
         relance();
     }
 

@@ -48,7 +48,8 @@ public class RunnableEstEnVie implements Runnable {
         }
 
         if(heros.getVie() <= 0)
-             heros.getWorld().perdu();
+            heros.getWorld().perdu();
+
     }
 
 }

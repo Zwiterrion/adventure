@@ -220,7 +220,7 @@
     <cellule type="5" direction="SUD"/>
     <cellule type="0" direction="SUD"/>
     <cellule type="5" direction="SUD"/>
-    <cellule type="0" direction="TOUTES"/>
+    <cellule type="3" direction="TOUTES"/>
     <cellule type="1" direction="TOUTES"/>
 
     <!-- Ligne 9 -->

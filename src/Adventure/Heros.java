@@ -31,14 +31,9 @@ public class Heros {
      *      Instance du Monde, le héros connais son monde
      */
     public Heros(Monde w) {
-        image = Images.HEROS_E;
         inventaire = new Inventaire(this);
         this.world = w;
-        this.vie = 100;
-        this.mana = 10;
-        this.couleurVie = Color.GREEN;
-        this.dir = Direction.EST;
-        demarreThread();
+        recommenceNiveau();
     }
 
     /**
@@ -49,9 +44,10 @@ public class Heros {
         this.mana = 100;
         image = Images.HEROS_E;
         this.vie = 100;
-        this.mana = 100;
+        this.mana = 10;
         this.couleurVie = Color.GREEN;
         this.dir = Direction.EST;
+        demarreThread();
     }
 
     /**
