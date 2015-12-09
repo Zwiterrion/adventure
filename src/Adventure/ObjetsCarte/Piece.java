@@ -10,7 +10,7 @@ import Adventure.Position;
 import Adventure.Runnable.AnimationPiece;
 
 /**
- * Crée une instance de Piece
+ * Cree une instance de Piece
  */
 public class Piece extends ObjetCarte implements Fixe, Ramassable, Animable {
 
@@ -27,7 +27,7 @@ public class Piece extends ObjetCarte implements Fixe, Ramassable, Animable {
      * @param p
      *        La position dans la carte
      * @param h
-     *        Instance du héros
+     *        Instance du heros
      */
     public Piece(Position p, Heros h) {
         this.p = IsometricHelper.point2DToIso(p);

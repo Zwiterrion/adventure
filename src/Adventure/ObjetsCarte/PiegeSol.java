@@ -5,7 +5,7 @@ import Adventure.Interface.Fixe;
 import Adventure.Interface.Piege;
 
 /**
- * Crée une instance de PiegeSol
+ * Cree une instance de PiegeSol
  */
 public class PiegeSol extends ObjetCarte implements Fixe, Piege {
 

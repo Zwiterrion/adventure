@@ -17,6 +17,7 @@ public class UIutilisateur extends Canvas {
     /**
      * Dessine le héros avec sa barre d'inventaire
      * @param g
+     *      Instance de la classe Graphics
      */
     @Override
     public void paint(Graphics g) {
@@ -28,6 +29,7 @@ public class UIutilisateur extends Canvas {
     /**
      * Dessine la barre d'inventaire du heros
      * @param g
+     *  Instance de la classe Graphics
      */
     public void dessineBarres(Graphics g) {
         Position point = calculPositionBarres();

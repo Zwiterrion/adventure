@@ -4,7 +4,7 @@ import Adventure.Images;
 import Adventure.Interface.Fixe;
 
 /**
- * Crée une instance de Sortie
+ * Cree une instance de Sortie
  */
 public class Sortie extends ObjetCarte implements Fixe {
 

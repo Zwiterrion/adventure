@@ -5,7 +5,7 @@ import Adventure.Direction;
 import java.awt.*;
 
 /**
- * Crée un objet de la carte de jeu
+ * Cree un objet de la carte de jeu
  */
 public abstract class ObjetCarte {
 
@@ -20,7 +20,7 @@ public abstract class ObjetCarte {
     }
 
     /**
-     * Construit l'objet avec une direction donnée
+     * Construit l'objet avec une direction donnee
      * @param d
      *        La direction de l'objet
      */

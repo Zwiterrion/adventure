@@ -17,6 +17,8 @@ public class Couloir extends Place {
      *          La première destination face au héros
      * @param destinationBis
      *          La deuxième destination
+     * @param inverser
+     *          inverser la position du panneau ou non
      */
     public Couloir(Heros h, String destination, String destinationBis, boolean inverser) {
         super(h, "couloir");

@@ -4,7 +4,7 @@ import Adventure.Images;
 import Adventure.Interface.Fixe;
 
 /**
- * Crée une instance de Tableau
+ * Cree une instance de Tableau
  */
 public class Tableau extends ObjetCarte implements Fixe {
 

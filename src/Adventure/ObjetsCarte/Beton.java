@@ -4,7 +4,7 @@ import Adventure.Images;
 import Adventure.Interface.Fixe;
 
 /**
- *Crée une instance de Beton
+ *Cree une instance de Beton
  */
 public class Beton extends ObjetCarte implements Fixe {
 

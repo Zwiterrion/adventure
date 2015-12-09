@@ -152,7 +152,7 @@ public class Inventaire extends JPanel {
     /**
      * Diminue le nombre de la potion utilisée par le héros
      * @param i
-     *         Numéro associé à la potion(0->potionVie, 1->PotionMana, 2->Clefs)
+     *         Numéro associé à la potion(0-potionVie, 1-PotionMana, 2-Clefs)
      */
     public void utiliser(int i) {
 
@@ -171,7 +171,7 @@ public class Inventaire extends JPanel {
     /**
      * Enlève la potion de la liste des potions du héros
      * @param i
-     *      Numéro associé à la potion(0->potionVie, 1->PotionMana, 2->Clefs)
+     *      Numéro associé à la potion(0-potionVie, 1-PotionMana, 2-Clefs)
      */
     public void supprimerElement(int i) {
 
@@ -205,7 +205,7 @@ public class Inventaire extends JPanel {
     /**
      * Démarre l'animation de décrémentation de la potion
      * @param lequel
-     *              détérmine la potion à enlever(false-> potionMana, true-> potionVie)
+     *              détérmine la potion à enlever(false-potionMana, true-potionVie)
      * @param p
      *          Instance de la Potion en question
      */

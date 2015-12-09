@@ -7,7 +7,7 @@ import Adventure.Interface.Fixe;
 import Adventure.Runnable.RunnableCheckFin;
 
 /**
- * Crée une instance de Princesse
+ * Cree une instance de Princesse
  */
 public class Princesse extends ObjetCarte implements Fixe, Animable {
 

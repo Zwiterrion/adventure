@@ -6,7 +6,7 @@ import Adventure.Images;
 import Adventure.Interface.Fixe;
 
 /**
- * Crée une instance de Maison
+ * Cree une instance de Maison
  */
 public class Prison extends ObjetCarte implements Fixe {
 

@@ -5,7 +5,7 @@ import Adventure.Images;
 import Adventure.Interface.Fixe;
 
 /**
- * Crée une instance d'Etagere
+ * Cree une instance d'Etagere
  */
 public class Etagere extends ObjetCarte implements Fixe {
 

@@ -5,7 +5,7 @@ import Adventure.Images;
 import Adventure.Interface.Fixe;
 
 /**
- * Crée une instance de la classe Panneau
+ * Cree une instance de la classe Panneau
  */
 public class Panneau extends ObjetCarte implements Fixe{
 

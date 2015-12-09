@@ -5,6 +5,7 @@ public class Launcher {
     /**
      * Thread principal du jeu
      * @param args
+     *      Arguments passés en parmètres de l'exécutable
      */
     public static void main(String[] args) {
         javax.swing.SwingUtilities.invokeLater(() -> {

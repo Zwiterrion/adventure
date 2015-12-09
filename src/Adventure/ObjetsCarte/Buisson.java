@@ -6,7 +6,7 @@ import Adventure.Images;
 import Adventure.Interface.Fixe;
 
 /**
- * Crée une instance de Buisson
+ * Cree une instance de Buisson
  */
 public class Buisson extends ObjetCarte implements Fixe {
 

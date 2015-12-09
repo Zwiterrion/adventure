@@ -5,7 +5,7 @@ import Adventure.Images;
 import Adventure.Interface.Deplacable;
 
 /**
- * Crée une instance de Maison
+ * Cree une instance de Maison
  */
 public class MurDeplacable extends Mur implements Deplacable {
 

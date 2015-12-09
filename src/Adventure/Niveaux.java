@@ -3,7 +3,7 @@ package Adventure;
 import Adventure.Places.*;
 
 /**
- * Created by Etienne on 30/11/2015.
+ * Cree les niveaux du jeu
  */
 public class Niveaux {
 

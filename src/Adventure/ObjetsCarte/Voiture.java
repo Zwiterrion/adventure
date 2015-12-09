@@ -5,7 +5,7 @@ import Adventure.Images;
 import Adventure.Interface.Fixe;
 
 /**
- * Crée une instance de Voiture
+ * Cree une instance de Voiture
  */
 public class Voiture extends ObjetCarte implements Fixe {
 

@@ -2,7 +2,7 @@ package Adventure.ObjetsCarte;
 
 
 /**
- * Crée une instance du Vide
+ * Cree une instance du Vide
  */
 public class Vide extends ObjetCarte {
 

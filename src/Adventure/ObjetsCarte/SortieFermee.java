@@ -5,7 +5,7 @@ import Adventure.Images;
 import Adventure.Interface.Fixe;
 
 /**
- * Crée une instance de SortieFermee
+ * Cree une instance de SortieFermee
  */
 public class SortieFermee extends Sortie implements Fixe {
 

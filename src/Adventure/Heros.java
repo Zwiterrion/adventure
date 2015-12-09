@@ -1,10 +1,6 @@
 package Adventure;
 
 import Adventure.Interface.Ramassable;
-import Adventure.ObjetsCarte.Bombe;
-import Adventure.ObjetsCarte.Clef;
-import Adventure.ObjetsCarte.Mana;
-import Adventure.ObjetsCarte.Vie;
 import Adventure.Runnable.RunnableEstEnVie;
 
 import java.awt.*;
@@ -62,6 +58,7 @@ public class Heros {
     /**
      * Utilise un des objets ramasse, et redessine le monde
      * @param i
+     *      Objet numéro i
      */
     public void utiliserObjet(int i) {
         inventaire.utiliser(i);

@@ -5,7 +5,7 @@ import Adventure.Images;
 import Adventure.Interface.Fixe;
 
 /**
- * Crée une instance de Mur
+ * Cree une instance de Mur
  */
 public class Mur extends ObjetCarte implements Fixe {
 

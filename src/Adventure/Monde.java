@@ -2,7 +2,9 @@ package Adventure;
 
 import Adventure.Interface.*;
 import Adventure.ObjetsCarte.*;
-import Adventure.Places.*;
+import Adventure.Places.CouloirPiege;
+import Adventure.Places.Parking;
+import Adventure.Places.Place;
 
 import javax.swing.*;
 import java.awt.*;
@@ -260,6 +262,10 @@ public final class Monde extends JPanel {
 
     /**
      * Affiche la page noire de transition entre deux lieux
+     * @param s
+     *      Message à afficher
+     * @param attente
+     *      Temps à attendre
      */
     public void pageDeDescription(String s, int attente) {
 
@@ -274,6 +280,7 @@ public final class Monde extends JPanel {
     /**
      * Fait patienter le thread principal
      * @param time
+     *      Tenmps à attendre
      */
     public void attente(int time) {
         try {

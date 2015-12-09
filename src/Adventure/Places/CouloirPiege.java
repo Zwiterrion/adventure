@@ -1,12 +1,10 @@
 package Adventure.Places;
 
-import Adventure.Direction;
 import Adventure.Heros;
 import Adventure.ObjetsCarte.PiegeSol;
-import Adventure.ObjetsCarte.Sortie;
 
 /**
- * Crée un nouveau lieu de type Place
+ * Cree un nouveau lieu de type Place
  */
 public class CouloirPiege extends Couloir {
 
@@ -18,6 +16,8 @@ public class CouloirPiege extends Couloir {
      *          La première destination face au héros
      * @param destinationBis
      *          La deuxième destination
+     * @param inverser
+     *          inverser la position du panneau ou non
      */
     public CouloirPiege(Heros h, String destination, String destinationBis, boolean inverser) {
         super(h, destination, destinationBis, inverser);

@@ -5,7 +5,7 @@ import Adventure.Interface.Fixe;
 import Adventure.Interface.Ramassable;
 
 /**
- * Crée une instance de Mana
+ * Cree une instance de Mana
  */
 public class Mana extends ObjetCarte implements Ramassable, Fixe {
 

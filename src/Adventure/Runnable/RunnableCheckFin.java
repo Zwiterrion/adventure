@@ -1,7 +1,6 @@
 package Adventure.Runnable;
 
 import Adventure.Heros;
-import Adventure.ObjetsCarte.Princesse;
 import Adventure.ObjetsCarte.Vide;
 import Adventure.Position;
 

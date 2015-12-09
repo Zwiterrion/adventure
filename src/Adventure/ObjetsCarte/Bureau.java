@@ -5,7 +5,7 @@ import Adventure.Images;
 import Adventure.Interface.Fixe;
 
 /**
- * Crée une instance de Bureau
+ * Cree une instance de Bureau
  */
 public class Bureau extends ObjetCarte implements Fixe {
 

@@ -5,7 +5,7 @@ import Adventure.Images;
 import Adventure.Interface.Fixe;
 
 /**
- * Crée une instance de Carrelage
+ * Cree une instance de Carrelage
  */
 public class Carrelage extends ObjetCarte implements Fixe {
 

@@ -2,14 +2,12 @@ package Adventure.ObjetsCarte;
 
 import Adventure.Direction;
 import Adventure.Heros;
-import Adventure.Images;
 import Adventure.Interface.Animable;
 import Adventure.Interface.Fixe;
-import Adventure.Runnable.RunnableCheckFin;
 import Adventure.Runnable.RunnableCheckPrison;
 
 /**
- * Crée une instance de Princesse
+ * Cree une instance de Princesse
  */
 public class PrisonFinale extends Prison implements Fixe, Animable {
 

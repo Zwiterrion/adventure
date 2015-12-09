@@ -4,7 +4,7 @@ import Adventure.Images;
 import Adventure.Interface.Fixe;
 
 /**
- * Crée une instance de Tree
+ * Cree une instance de Tree
  */
 public class Tree extends ObjetCarte implements Fixe {
 

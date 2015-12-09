@@ -5,7 +5,7 @@ import Adventure.Interface.Fixe;
 import Adventure.Interface.Ramassable;
 
 /**
- * Crée une instance de Bombe
+ * Cree une instance de Bombe
  */
 public class Clef extends ObjetCarte implements Ramassable, Fixe {
 

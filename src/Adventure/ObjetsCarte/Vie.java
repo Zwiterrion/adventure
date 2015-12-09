@@ -5,7 +5,7 @@ import Adventure.Interface.Fixe;
 import Adventure.Interface.Ramassable;
 
 /**
- * Crée une instance de Vie
+ * Cree une instance de Vie
  */
 public class Vie extends ObjetCarte implements Ramassable, Fixe {
 
